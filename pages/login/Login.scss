@@ -1,0 +1,72 @@
+@import "utils/veriables";
+
+.login-wrap {
+  height: 100%;
+  //background-color: #f3f3f3;
+  //background-image: url(/static/icons/background.svg);
+  background-size: cover;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  input {
+    width: 285px;
+    height: 50px;
+    padding-left: 19px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 19px;
+    font-family: 'Open Sans', sans-serif;
+
+    &::placeholder {
+      color: $color-black;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 19px;
+    }
+  }
+
+  .login {
+    &__form {
+    border-radius: 5px;
+    background: white;
+    width: 520px;
+    height: 580px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    font-family: 'Open Sans', sans-serif;
+    //border-bottom: 10px solid #3a536b;
+      &-logo {
+        margin: 70px 0 70px 0;
+        display: flex;
+        justify-content: center;
+        &-img {
+          width: 344px;
+          height: 68px;
+        }
+      }
+      .ui.inverted.segment {
+        display: flex;
+        justify-content: center;
+        .field {
+          padding-bottom: 20px;
+          .ui.fluid input {
+            border-radius: 5px;
+            border: 1px solid #cdcdcd;
+          }
+        }
+      }
+  }
+    &__title {
+      font-weight: 600;
+      font-size: 20px;
+      text-align: center;
+      margin-bottom: 28px;
+      color: $color-orange;
+      line-height: 27px;
+      text-align: center;
+      font-family: 'Open Sans', sans-serif;
+    }
+}
+}
+
