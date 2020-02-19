@@ -4,7 +4,6 @@ import { combineReducers } from 'redux';
 import uiReducers from './ui';
 
 const combinedReducer = combineReducers({
-    // entities: entitiesReducers,
     ui: uiReducers,
 });
 

@@ -1,13 +1,23 @@
 import "./Login.scss";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { Button, Form, Segment } from "semantic-ui-react";
 import { Image } from "semantic-ui-react";
 
+const Login = ({ signIn, isSignIn }) => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [user, setUser] = useState({ email: "", password: "" });
 
-const Login = () => {
-  const handleSignIn = () => {
-    console.log("handleSignIn");
+  const handleSignIn = (e) => {
+    e.preventDefault();
+    // const user = JSON.stringify(user);
+    console.log(JSON.stringify(user));
+    setIsLoading(true);
+    signIn({'user': JSON.stringify(user)})
+      .then(() => {
+        setIsLoading(false);
+      })
+      .catch(() => setIsLoading(false));
   };
   return (
     <div className="login-wrap">
@@ -20,19 +30,30 @@ const Login = () => {
         </div>
         <div className="login__title">Login to Your Account</div>
         <Form.Field>
-          <input placeholder='Email' />
+          <Form.Input
+            type='email'
+            value={user.email}
+            onChange={(e, {value}) => setUser({ ...user, email: value })}
+            placeholder="Email"
+          />
         </Form.Field>
         <Form.Field>
-          <input placeholder='Password' />
+          <Form.Input
+            type='password'
+            value={user.password}
+            onChange={(e, {value}) => setUser({ ...user, password: value })}
+            placeholder="Password"
+          />
         </Form.Field>
-        <Button type='submit'>Submit</Button>
+        <Button type="submit">Submit</Button>
       </Form>
     </div>
   );
 };
 
 Login.prototypes = {
-
+  signIn: PropTypes.func.isRequired,
+  isSignIn: PropTypes.bool
 };
 
 export default Login;

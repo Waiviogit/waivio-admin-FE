@@ -1,0 +1,6 @@
+{
+    "API_HOST": "https://waiviodev.com/admin-api",
+    "auth": {
+        "sign_in": "/auth/sign_in"
+    }
+}
