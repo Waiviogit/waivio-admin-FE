@@ -1,9 +1,6 @@
 {
-  "extends": "airbnb",
-  "plugins": [
-    "jest",
-    "react-hooks"
-  ],
+  "extends": ["airbnb", "plugin:prettier/recommended"],
+  "plugins": ["jest", "react-hooks"],
   "env": {
     "jest": true,
     "es6": true,
@@ -19,7 +16,7 @@
     "camelcase": "off",
     "arrow-body-style": "off",
     "react/jsx-tag-spacing": "off",
-    "spaced-comment":"off",
+    "spaced-comment": "off",
     "import/first": "off",
     "no-underscore-dangle": "off",
     "no-continue": "off",
@@ -32,14 +29,17 @@
     "no-trailing-spaces": "off",
     "import/extensions": "off",
     "import/no-unresolved": "off",
-    "import/no-extraneous-dependencies":"off",
-    "function-paren-newline":"off",
+    "import/no-extraneous-dependencies": "off",
+    "function-paren-newline": "off",
     "import/no-dynamic-require": "off",
-    "consistent-return":"off",
+    "consistent-return": "off",
     "react/forbid-prop-types": "off",
-    "no-use-before-define": ["error", {"variables": false, "functions": false, "classes": false}],
+    "no-use-before-define": [
+      "error",
+      { "variables": false, "functions": false, "classes": false }
+    ],
     "no-mixed-operators": "off",
-    "no-param-reassign":"off",
+    "no-param-reassign": "off",
     "jsx-a11y/alt-text": "off",
     "jsx-a11y/anchor-is-valid": "off",
     "import/prefer-default-export": "off",
@@ -60,21 +60,27 @@
     "jest/no-identical-title": "error",
     "jest/prefer-to-have-length": "warn",
     "jest/valid-expect": "error",
-    "react/jsx-no-bind": [2, {
-      "ignoreDOMComponents": true,
-      "ignoreRefs": true,
-      "allowArrowFunctions": true,
-      "allowFunctions": false,
-      "allowBind": true
-    }],
+    "react/jsx-no-bind": [
+      2,
+      {
+        "ignoreDOMComponents": true,
+        "ignoreRefs": true,
+        "allowArrowFunctions": true,
+        "allowFunctions": false,
+        "allowBind": true
+      }
+    ],
     "class-methods-use-this": "off",
-    "max-len": ["error", {
-      "code": 120 ,
-      "ignoreStrings":true,
-      "ignoreTemplateLiterals":true,
-      "ignoreRegExpLiterals":true,
-      "ignoreComments":true
-    }],
+    "max-len": [
+      "error",
+      {
+        "code": 120,
+        "ignoreStrings": true,
+        "ignoreTemplateLiterals": true,
+        "ignoreRegExpLiterals": true,
+        "ignoreComments": true
+      }
+    ],
     "no-nested-ternary": "off",
     "no-useless-escape": "off"
   },
