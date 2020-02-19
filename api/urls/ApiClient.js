@@ -33,6 +33,9 @@ export default class ApiClient {
         return request({
             url: `${this.prefix}${requestUrl}`,
             method: 'post',
+            headers: {
+                'Content-Type': 'application/json'
+            },
             data: payload,
             responseType,
         });
@@ -70,6 +73,7 @@ const request = ({
         params,
         data,
         responseType,
+        headers: { 'content-type': 'application/json' },
     })
         .then((response) => {
             if (response.headers) {

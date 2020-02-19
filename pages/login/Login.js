@@ -10,10 +10,9 @@ const Login = ({ signIn, isSignIn }) => {
 
   const handleSignIn = (e) => {
     e.preventDefault();
-    // const user = JSON.stringify(user);
-    console.log(JSON.stringify(user));
+    const requestData = JSON.stringify({ user: user });
     setIsLoading(true);
-    signIn({'user': JSON.stringify(user)})
+    signIn(requestData)
       .then(() => {
         setIsLoading(false);
       })
