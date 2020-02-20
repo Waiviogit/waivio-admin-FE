@@ -4,13 +4,13 @@ import parseJson from 'helpers/parseJson';
 // import { setDownloadProgress } from 'redux/actions/entities/contentActions';
 import { authTokenFormat, hasAuthInfo } from './authToken';
 
-const authHeadersKeys = ['access-token'];
+const authHeadersKeys = ['authorization'];
 
 export const updateCookies = (headers, ctx = {}) => {
     if (!headers || !hasAuthInfo(headers)) return null;
     setDefaultHeaders(headers);
     const authToken = authTokenFormat(headers);
-    setCookie(ctx, 'access-token', JSON.stringify(authToken), { path: '/' });
+    setCookie(ctx, 'authorization', JSON.stringify(authToken), { path: '/' });
 };
 
 export function deleteAuthHeaders() {

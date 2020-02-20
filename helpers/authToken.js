@@ -7,12 +7,12 @@ export const hasAuthInfo = (res) => {
 };
 
 export const getAuthInfo = (ctx) => {
-    return parseCookies(ctx)['authorization'];
+    return parseCookies(ctx)['access-token'];
 };
 
 export function authTokenFormat(res) {
     const headers = parseJson(res);
-    return {'access-token': headers['access-token']};
+    return {'authorization': headers['access-token']};
 }
 
 export function deleteAuthCookie(name) {

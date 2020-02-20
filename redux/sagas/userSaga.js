@@ -33,14 +33,14 @@ export function* signOut() {
   try {
     yield call([api.auth, api.auth.signOut]);
     yield put(authActions.signOutSuccess());
-    yield call(deleteAuthCookie, 'access-token');
+    yield call(deleteAuthCookie, 'authorization');
     yield call(removeStorageData, 'isLogin');
     yield call(deleteAuthHeaders);
     yield put(authActions.clearUserStore());
     yield call(redirect, '/login');
   } catch (error) {
     yield put(authActions.signOutError());
-    yield call(deleteAuthCookie, 'access-token');
+    yield call(deleteAuthCookie, 'authorization');
     yield call(deleteAuthHeaders);
     yield put(authActions.clearUserStore());
     yield call(redirect, '/login');

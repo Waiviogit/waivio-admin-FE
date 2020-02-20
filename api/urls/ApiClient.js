@@ -64,7 +64,7 @@ export default class ApiClient {
 const request = ({
                      url, method, data, params = {}, responseType,
                  }) => {
-    setDefaultHeaders(parseCookies()['access-token']);
+    setDefaultHeaders(parseCookies()['authorization']);
     return axios({
         method,
         url,
@@ -113,7 +113,7 @@ const request = ({
             }
             if (response.error.statusCode === 401) {
                 deleteAuthHeaders();
-                destroyCookie({}, 'access-token');
+                destroyCookie({}, 'authorization');
                 redirect('/');
             }
             throw response;
