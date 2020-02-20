@@ -1,25 +1,31 @@
 import "./Login.scss";
+import _ from 'lodash';
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { Button, Form, Segment } from "semantic-ui-react";
+import { Button, Form } from "semantic-ui-react";
 import { Image } from "semantic-ui-react";
+import { setStorageData, removeStorageData } from 'helpers/localeStorage';
+import { updateCookies } from 'helpers/headers';
+import { redirect } from "helpers/redirect";
 
-const Login = ({ signIn, isSignIn }) => {
+const Login = ({ signIn, isSignIn, initialize}) => {
   const [isLoading, setIsLoading] = useState(false);
   const [user, setUser] = useState({ email: "", password: "" });
-
   const handleSignIn = (e) => {
     e.preventDefault();
-    const requestData = JSON.stringify({ user: user });
     setIsLoading(true);
-    signIn(requestData)
+    setStorageData('isLogin', true);
+    signIn({ user: user })
       .then(() => {
         setIsLoading(false);
+        initialize();
+        removeStorageData('isLogin', true);
       })
       .catch(() => setIsLoading(false));
   };
   return (
     <div className="login-wrap">
+      {!isSignIn && (
       <Form onSubmit={handleSignIn} className="login__form">
         <div className="login__form-logo">
           <Image
@@ -46,6 +52,7 @@ const Login = ({ signIn, isSignIn }) => {
         </Form.Field>
         <Button type="submit">Submit</Button>
       </Form>
+      )}
     </div>
   );
 };
@@ -53,6 +60,14 @@ const Login = ({ signIn, isSignIn }) => {
 Login.prototypes = {
   signIn: PropTypes.func.isRequired,
   isSignIn: PropTypes.bool
+};
+
+Login.getInitialProps = async (ctx) => {
+  if (!_.isEmpty(ctx.query)) {
+    const headers = { ...ctx.query };
+    updateCookies(headers, ctx);
+    redirect('/', ctx);
+  }
 };
 
 export default Login;

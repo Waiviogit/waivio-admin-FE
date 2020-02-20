@@ -19,6 +19,7 @@ export function userReducer(state = initialState, action) {
       return { ...state, user: action.payload, isSignIn: true };
     case actions.SIGN_IN_ERROR:
       return initialState;
+    case actions.SIGN_OUT_SUCCESS:
     default:
       return state;
   }

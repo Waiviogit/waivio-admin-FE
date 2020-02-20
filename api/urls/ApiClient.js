@@ -1,8 +1,8 @@
 import axios from 'axios';
 import _ from 'lodash';
-// import { updateCookies, setDefaultHeaders, deleteAuthHeaders } from 'helpers/headers';
+import { updateCookies, setDefaultHeaders, deleteAuthHeaders } from 'helpers/headers';
 import { redirect } from 'helpers/redirect';
-// import { parseCookies, destroyCookie } from 'nookies';
+import { parseCookies, destroyCookie } from 'nookies';
 import config from 'api/urls/urls-config';
 
 export default class ApiClient {
@@ -33,9 +33,6 @@ export default class ApiClient {
         return request({
             url: `${this.prefix}${requestUrl}`,
             method: 'post',
-            headers: {
-                'Content-Type': 'application/json'
-            },
             data: payload,
             responseType,
         });
@@ -47,26 +44,27 @@ export default class ApiClient {
             method: 'delete',
             data: payload,
             params,
+
         });
     }
 
-    // validateToken(requestUrl, headers) {
-    //     return axios({ method: 'GET', url: `${this.prefix}${requestUrl}`, headers: { ...JSON.parse(headers) } })
-    //         .then((response) => {
-    //             if (response.data && response.data.data) {
-    //                 response.data = response.data.data;
-    //             }
-    //             return response;
-    //         }).catch((error) => {
-    //             return error;
-    //         });
-    // }
+    validateToken(requestUrl, headers) {
+        return axios({ method: 'GET', url: `${this.prefix}${requestUrl}`, headers: { ...JSON.parse(headers) } })
+            .then((response) => {
+                if (response.data && response.data.data) {
+                    response.data = response.data.data;
+                }
+                return response;
+            }).catch((error) => {
+                return error;
+            });
+    }
 }
 
 const request = ({
                      url, method, data, params = {}, responseType,
                  }) => {
-    // setDefaultHeaders(parseCookies()['auth-headers']);
+    setDefaultHeaders(parseCookies()['access-token']);
     return axios({
         method,
         url,
@@ -77,7 +75,7 @@ const request = ({
     })
         .then((response) => {
             if (response.headers) {
-                // updateCookies(response.headers);
+                updateCookies(response.headers);
             }
             if (response.status >= 200 && response.status < 300) {
                 if (response.data && response.data.data) {
@@ -87,7 +85,7 @@ const request = ({
             }
         }).catch((xhr) => {
             if (xhr.response && xhr.response.headers) {
-                // updateCookies(xhr.response.headers);
+                updateCookies(xhr.response.headers);
             }
             const response = { error: {} };
             response.error.statusCode = (xhr && xhr.response && xhr.response.status) || 500;
@@ -114,8 +112,8 @@ const request = ({
                 response.error.blob = xhr.response.data;
             }
             if (response.error.statusCode === 401) {
-                // deleteAuthHeaders();
-                // destroyCookie({}, 'auth-headers');
+                deleteAuthHeaders();
+                destroyCookie({}, 'access-token');
                 redirect('/');
             }
             throw response;

@@ -3,23 +3,16 @@ import parseJson from 'helpers/parseJson';
 
 export const hasAuthInfo = (res) => {
     const headers = parseJson(res);
-    return headers && !!headers['access-token'] && !!headers.client
-        && !!headers.uid && !!headers.expiry;
+    return headers && !!headers['access-token']
 };
 
 export const getAuthInfo = (ctx) => {
-    return parseCookies(ctx)['auth-headers'];
+    return parseCookies(ctx)['authorization'];
 };
 
 export function authTokenFormat(res) {
     const headers = parseJson(res);
-    return {
-        'authorization': headers['access-token'],
-        client: headers.client,
-        uid: headers.uid,
-        expiry: headers.expiry,
-        'token-type': headers['token-type'],
-    };
+    return {'access-token': headers['access-token']};
 }
 
 export function deleteAuthCookie(name) {

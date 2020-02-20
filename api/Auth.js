@@ -5,4 +5,7 @@ export default class Auth extends Base {
     signIn(data) {
         return this.apiClient.post(config.auth.sign_in, data);
     }
+    signOut() {
+        return this.apiClient.delete(config.auth.sign_out);
+    }
 }

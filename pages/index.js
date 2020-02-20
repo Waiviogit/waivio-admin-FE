@@ -3,7 +3,7 @@ import { redirect } from "../helpers/redirect";
 
 class Index extends React.Component {
   static async getInitialProps(ctx) {
-    redirect('/login', ctx);
+    redirect('/main', ctx);
     return {};
   }
 
