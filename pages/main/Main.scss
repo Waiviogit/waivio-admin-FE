@@ -1,0 +1,41 @@
+@import "utils/veriables";
+
+.menu-wrap {
+  height: 98%;
+  width: 98%;
+  margin: 10px auto;
+  padding-bottom: 12px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+
+  .menu__body {
+    &-right {
+      .ui.button:last-child {
+        width: 110px;
+        background-color: $color-orange;
+        color: $color-white;
+        height: 40px;
+        font-family: 'Open Sans', sans-serif;
+        font-weight: bold;
+        border-radius: 5px;
+        border: none;
+        font-size: 15px;
+        cursor: pointer;
+      }
+    }
+
+    a:hover {
+      margin: 0px;
+    }
+
+    img {
+      width: 150px;
+    }
+
+    .ui.button {
+      background: 0 0;
+      color: rgba(255,255,255,.9);
+    }
+  }
+}
