@@ -23,10 +23,11 @@ const ModalCreateModerator = ({ upgradeToModerator }) => {
         })
         .catch(() => setIsLoading(false));
   };
+  const stopPropagation = e => e.stopPropagation();
   return (
     <>
       <Button onClick={handleShow}>Create Moderator</Button>
-      <Modal size="tiny" open={isOpen} onClose={handleClose}>
+      <Modal size="tiny" open={isOpen} onClose={handleClose} onClick={stopPropagation}>
         <Modal.Header>
           <div className="modalCreateModerator__title">
             <div>Create moderator</div>

@@ -26,10 +26,11 @@ const ModalUpdateModerator = ({ updateModerator }) => {
         { key: 'delete', text: 'Delete', value: 'Delete' },
         { key: 'add', text: 'Add', value: 'Add' }
     ];
+    const stopPropagation = e => e.stopPropagation();
     return (
         <>
             <Button onClick={handleShow}>Update Moderator</Button>
-            <Modal size="tiny" open={isOpen} onClose={handleClose}>
+            <Modal size="tiny" open={isOpen} onClose={handleClose} onClick={stopPropagation}>
                 <Modal.Header>
                     <div className="modalCreateModerator__title">
                         <div>Update moderator</div>

@@ -1,7 +1,7 @@
 import './Main.scss';
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import {Button, Image, Menu} from "semantic-ui-react";
+import {Button, Image, Menu, Dropdown} from "semantic-ui-react";
 import { setStorageData } from "helpers/localeStorage";
 import ModalCreateModerator from 'components/Modals/ModalCreateModerator';
 import ModalDeleteModerator from 'components/Modals/ModalDeleteModerator';
@@ -31,15 +31,23 @@ const Main = ({ signOut }) => {
           onClick={handleItemClick}
         />
         <Menu.Item>
-          <ModalCreateModerator/>
+          <Dropdown text='Moderator'>
+            <Dropdown.Menu>
+              <Dropdown.Item text='New' >
+                <ModalCreateModerator/>
+              </Dropdown.Item>
+
+              <Dropdown.Item text='New' >
+                <ModalDeleteModerator/>
+              </Dropdown.Item>
+
+              <Dropdown.Item text='New' >
+                <ModalUpdateModerator/>
+              </Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
         </Menu.Item>
-        <Menu.Item>
-          <ModalDeleteModerator/>
-        </Menu.Item>
-        <Menu.Item>
-          <ModalUpdateModerator/>
-        </Menu.Item>
-        <Menu.Menu className='menu__body-right' position="right">
+        <Menu.Menu className='menu__body-right' position="right" >
           <Menu.Item>
             <Button onClick={handleClick}>Sign Out</Button>
           </Menu.Item>

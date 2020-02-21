@@ -37,8 +37,17 @@
     }
 
     .ui.button {
-      background: 0 0;
+      background: 0;
       color: rgba(255,255,255,.9);
+    }
+
+    .menu {
+      background-color: #1b1c1d;
+      color: $color-white;
+      border-radius: 5px;
+      .item:hover {
+          background: $color-grey!important;
+        }
     }
   }
 }
