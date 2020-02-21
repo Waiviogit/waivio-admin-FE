@@ -4,6 +4,8 @@ import PropTypes from "prop-types";
 import {Button, Image, Menu} from "semantic-ui-react";
 import { setStorageData } from "helpers/localeStorage";
 import ModalCreateModerator from 'components/Modals/ModalCreateModerator';
+import ModalDeleteModerator from 'components/Modals/ModalDeleteModerator';
+import ModalUpdateModerator from 'components/Modals/ModalUpdateModerator';
 
 const Main = ({ signOut }) => {
   const [activeItem, setActiveItem] = useState(false);
@@ -28,12 +30,14 @@ const Main = ({ signOut }) => {
           active={activeItem === "home"}
           onClick={handleItemClick}
         />
-        <Menu.Item
-          name="Create Moderator"
-          active={activeItem === "messages"}
-          onClick={handleItemClick}
-        >
+        <Menu.Item>
           <ModalCreateModerator/>
+        </Menu.Item>
+        <Menu.Item>
+          <ModalDeleteModerator/>
+        </Menu.Item>
+        <Menu.Item>
+          <ModalUpdateModerator/>
         </Menu.Item>
         <Menu.Menu className='menu__body-right' position="right">
           <Menu.Item>

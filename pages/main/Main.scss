@@ -23,6 +23,9 @@
         font-size: 15px;
         cursor: pointer;
       }
+      .ui.button:hover {
+        opacity: 0.7;
+      }
     }
 
     a:hover {

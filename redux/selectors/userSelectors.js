@@ -4,9 +4,9 @@ export const getUiState = state => state.ui;
 
 export const getUserState = createSelector(
     getUiState,
-    ui => ui.user,
+    ui => ui.admin,
 );
 export const getSignInState = createSelector(
     getUserState,
-    user => user.isSignIn,
+    admin => admin.isSignIn,
 );

@@ -1,0 +1,63 @@
+@import "../../../utils/veriables";
+
+.ui.tiny.modal {
+  .header {
+    background: $color-orange;
+    color: $color-white;
+    font-size: 20px;
+  }
+
+  .modalDeleteModerator {
+    &__title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      img {
+        width: 13px;
+      }
+    }
+
+    &__form {
+      .field {
+        label {
+          font-size: 14px;
+          line-height: 19px;
+          font-family: "Open Sans", sans-serif;
+        }
+      }
+      input {
+        width: 285px;
+        height: 50px;
+        padding-left: 19px;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 19px;
+        font-family: "Open Sans", sans-serif;
+        border: 1px solid #cdcdcd;
+        &::placeholder {
+          font-size: 14px;
+          line-height: 19px;
+        }
+        &:focus {
+          border: 1px solid $color-orange !important;
+        }
+
+
+      }
+    }
+  }
+
+  button {
+    background: $color-orange;
+  }
+
+  button:focus {
+    background: $color-orange;
+  }
+
+  button:hover {
+    background: $color-orange;
+    opacity: 0.7;
+  }
+}

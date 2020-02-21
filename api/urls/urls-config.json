@@ -3,5 +3,11 @@
     "auth": {
         "sign_in": "/auth/sign_in",
         "sign_out": "/auth/sign_out"
+    },
+    "status": {
+        "create": "/app/moderator/create",
+        "delete": "/app/moderator/delete",
+        "push": "/app/updateModerator/push",
+        "pull": "/app/updateModerator/pull"
     }
 }
