@@ -1,8 +1,8 @@
 import Router from 'next/router';
 import { getAuthInfo } from "./authToken";
-import { clearUserStore } from 'redux/actions/authActions';
+import { clearUserStore } from '../redux/actions/authActions';
 
-export const isAuthenticated = ctx => !!getAuthInfo(ctx);
+export const isAuthenticated = (ctx) => !!getAuthInfo(ctx);
 
 export const redirectIfAuthenticated = (res) => {
     if (isAuthenticated(res)) {

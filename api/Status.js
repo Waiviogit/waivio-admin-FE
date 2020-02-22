@@ -1,4 +1,4 @@
-import config from "api/urls/urls-config";
+import config from "../api/urls/urls-config";
 import Base from "./Base";
 
 export default class StatusOfUser extends Base {

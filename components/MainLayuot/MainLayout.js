@@ -1,7 +1,6 @@
 import './MainLayout.scss';
 import PropTypes from 'prop-types';
 import React from 'react';
-import classNames from 'classnames';
 
 const MainLayout = ({ children, pathname }) => {
     return (

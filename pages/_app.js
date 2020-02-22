@@ -9,7 +9,6 @@ import configureStore from "../redux/store";
 import MainLayout from "../components/MainLayuot";
 
 NProgress.configure({
-  parent: "#work-area",
   easing: "ease",
   speed: 300,
   minimum: 0.4
@@ -36,6 +35,7 @@ export class WaivioAdmin extends App {
       pageProps = await Component.getInitialProps(ctx);
     return { pageProps, router: { pathname: ctx.pathname, query: ctx.query } };
   }
+
   render() {
     const { Component, pageProps, store, router } = this.props;
     // const locale = getLocaleState(store.getState());

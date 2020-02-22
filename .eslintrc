@@ -1,5 +1,5 @@
 {
-  "extends": ["airbnb", "plugin:prettier/recommended"],
+  "extends": ["airbnb"],
   "plugins": ["jest", "react-hooks"],
   "env": {
     "jest": true,
@@ -82,7 +82,11 @@
       }
     ],
     "no-nested-ternary": "off",
-    "no-useless-escape": "off"
+    "no-useless-escape": "off",
+    "no-multiple-empty-lines": [
+      "error",
+      { "max": 1, "maxEOF": 1 }
+    ]
   },
   "globals": {
     "window": true,
@@ -91,3 +95,4 @@
   },
   "parser": "babel-eslint"
 }
+

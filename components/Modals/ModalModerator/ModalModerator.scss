@@ -1,0 +1,57 @@
+@import "utils/veriables";
+
+.modal-moderator {
+  &__button {
+    display: flex;
+    justify-content: flex-end;
+
+    button {
+      width: 120px;
+    }
+  }
+
+  &__content {
+    &-form {
+      .ui.form.field {
+        label {
+          font-size: 14px;
+          line-height: 19px;
+          font-family: "Open Sans", sans-serif;
+        }
+        .ui.input input {
+            width: 285px;
+            height: 50px;
+            padding-left: 19px;
+            font-weight: 600;
+            font-size: 14px;
+            line-height: 19px;
+            font-family: "Open Sans", sans-serif;
+            border: 1px solid #cdcdcd;
+            &::placeholder {
+              font-size: 14px;
+              line-height: 19px;
+            }
+            &:focus {
+              border: 1px solid $color-orange !important;
+            }
+          }
+        }
+    }
+  }
+
+
+
+  //  &__button {
+  //    display: flex;
+  //    justify-content: flex-end;
+  //  }
+  //
+  //  &__content {
+  //    &__form {
+
+  //    }
+  //  }
+  //
+  //
+  //}
+}

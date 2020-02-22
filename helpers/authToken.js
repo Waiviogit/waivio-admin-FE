@@ -1,9 +1,9 @@
 import { parseCookies } from "nookies";
-import parseJson from 'helpers/parseJson';
+import parseJson from "./parseJson";
 
 export const hasAuthInfo = (res) => {
     const headers = parseJson(res);
-    return headers && !!headers['access-token']
+    return headers && !!headers['access-token'];
 };
 
 export const getAuthInfo = (ctx) => {
@@ -12,7 +12,7 @@ export const getAuthInfo = (ctx) => {
 
 export function authTokenFormat(res) {
     const headers = parseJson(res);
-    return {'authorization': headers['access-token']};
+    return { authorization: headers['access-token'] };
 }
 
 export function deleteAuthCookie(name) {

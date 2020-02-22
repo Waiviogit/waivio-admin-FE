@@ -1,13 +1,13 @@
 import { put, takeEvery, call } from "redux-saga/effects";
-import * as authActions from "redux/actions/authActions";
-import * as userActions from "redux/actions/userActions";
-import api from "api/AuthConfig/apiAuth";
+import * as authActions from "../../redux/actions/authActions";
+import * as userActions from "../../redux/actions/userActions";
+import api from "../../api/AuthConfig/apiAuth";
 import { redirect } from "../../helpers/redirect";
-import { deleteAuthCookie } from "helpers/authToken";
-import { deleteAuthHeaders, updateCookies } from "helpers/headers";
-import { removeStorageData } from "helpers/localeStorage";
+import { deleteAuthCookie } from "../../helpers/authToken";
+import { deleteAuthHeaders, updateCookies } from "../../helpers/headers";
+import { removeStorageData } from "../../helpers/localeStorage";
 import { parseCookies, destroyCookie } from "nookies";
-import parseJson from "helpers/parseJson";
+import parseJson from "../../helpers/parseJson";
 
 export default function* actionWatcher() {
   yield takeEvery(authActions.SIGN_IN_REQUEST, signIn);

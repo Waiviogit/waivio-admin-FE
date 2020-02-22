@@ -1,0 +1,32 @@
+@import "../../../utils/veriables";
+
+.is-custom-modal-header {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-touch-callout: none;
+  display: flex !important;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $color-orange !important;
+  color: $color-white !important;
+  border: none !important;
+  font-size: 15px !important;
+  padding: 20px !important;
+  font-weight: 700 !important;
+  &__body {
+    display: flex;
+    width: 100%;
+    &-text {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      word-break: break-word;
+      white-space: nowrap;
+      text-transform: uppercase;
+    }
+    img {
+      height: 15px !important;
+      margin-right: 5px !important;
+    }
+  }
+}

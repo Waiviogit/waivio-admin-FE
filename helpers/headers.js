@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { setCookie } from 'nookies';
-import parseJson from 'helpers/parseJson';
+import parseJson from "./parseJson";
 // import { setDownloadProgress } from 'redux/actions/entities/contentActions';
 import { authTokenFormat, hasAuthInfo } from './authToken';
 
