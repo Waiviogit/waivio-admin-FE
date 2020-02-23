@@ -10,13 +10,24 @@
   flex-direction: column;
 
   .menu__body {
+    .menu.transition.visible {
+      margin-top: 10px;
+      .item {
+        button {
+          width: 150px;
+          &:hover {
+            background: $color-orange !important;
+          }
+        }
+      }
+    }
     &-right {
       .ui.button:last-child {
         width: 110px;
         background-color: $color-orange;
         color: $color-white;
         height: 40px;
-        font-family: 'Open Sans', sans-serif;
+        font-family: "Open Sans", sans-serif;
         font-weight: bold;
         border-radius: 5px;
         border: none;
@@ -38,16 +49,16 @@
 
     .ui.button {
       background: 0;
-      color: rgba(255,255,255,.9);
+      color: rgba(255, 255, 255, 0.9);
     }
 
     .menu {
-      background-color: #1b1c1d;
+      background-color: $color-black;
       color: $color-white;
       border-radius: 5px;
-      .item:hover {
-          background: $color-grey!important;
-        }
+       .item:hover {
+        background: $color-grey !important;
+      }
     }
   }
 }

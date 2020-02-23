@@ -1,8 +1,8 @@
 import "./Login.scss";
 import _ from 'lodash';
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { Button, Form, Image } from "semantic-ui-react";
+import { Form, Image } from "semantic-ui-react";
 
 import { setStorageData, removeStorageData } from '../../helpers/localeStorage';
 import { updateCookies } from '../../helpers/headers';
@@ -60,10 +60,9 @@ const Login = ({ signIn, isSignIn, initialize }) => {
     );
 };
 
-Login.prototypes = {
+Login.propTypes = {
     signIn: PropTypes.func.isRequired,
     isSignIn: PropTypes.bool,
-    isLoading: PropTypes.bool,
 };
 
 Login.getInitialProps = async (ctx) => {

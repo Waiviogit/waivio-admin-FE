@@ -8,6 +8,7 @@ import {
     upgradeStatusToModeratorRequest,
     upgradeStatusToUserRequest,
 } from '../../redux/actions/userActions';
+import withRedirectIfNotAuth from '../../components/HOC/helpers/withRedirectIfNotAuth';
 
 const mapDispatchToProps = (dispatch) => ({
     signOut: dispatchRequestClient(dispatch, signOut),
@@ -16,5 +17,5 @@ const mapDispatchToProps = (dispatch) => ({
     upgradeToModerator: dispatchRequestClient(dispatch, upgradeStatusToModeratorRequest),
 });
 
-export default connect(null, mapDispatchToProps)(Main);
+export default connect(null, mapDispatchToProps)(withRedirectIfNotAuth(Main));
 

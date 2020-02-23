@@ -1,5 +1,6 @@
 import React from "react";
 import { redirect } from "../helpers/redirect";
+import withRedirectIfNotAuth from '../components/HOC/helpers/withRedirectIfNotAuth';
 
 class Index extends React.Component {
     static async getInitialProps(ctx) {
@@ -7,10 +8,9 @@ class Index extends React.Component {
         return {};
     }
     
-    
     render() {
         return <div>Index.js</div>;
     }
 }
 
-export default Index;
+export default withRedirectIfNotAuth(Index);

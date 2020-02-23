@@ -23,7 +23,7 @@ const ModalModerator = ({
     const stopPropagation = (e) => e.stopPropagation();
     return (
         <>
-            <CustomButton color="orange" content={showButtonContent} onClick={handleShow}/>
+            <CustomButton content={showButtonContent} onClick={handleShow}/>
             <Modal size="tiny" open={isOpen} onClick={stopPropagation}>
                 <CustomModalHeader onClose={handleClose} title={title} icon='clear'/>
                 <Modal.Content>
@@ -52,9 +52,9 @@ ModalModerator.propTypes = {
     isUpdate: PropTypes.bool,
     isDelete: PropTypes.bool,
     isCreate: PropTypes.bool,
-    upgradeToModerator: PropTypes.func.isRequired,
-    updateModerator: PropTypes.func.isRequired,
-    upgradeToUser: PropTypes.func.isRequired,
+    upgradeToModerator: PropTypes.func,
+    updateModerator: PropTypes.func,
+    upgradeToUser: PropTypes.func,
 };
 
 export default ModalModerator;

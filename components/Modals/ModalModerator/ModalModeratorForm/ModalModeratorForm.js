@@ -99,9 +99,9 @@ const ModalModeratorForm = ({
 ModalModeratorForm.propTypes = {
     submitButtonContent: PropTypes.string,
     isUpdate: PropTypes.bool,
-    upgradeToModerator: PropTypes.func.isRequired,
-    updateModerator: PropTypes.func.isRequired,
-    upgradeToUser: PropTypes.func.isRequired,
+    upgradeToModerator: PropTypes.func,
+    updateModerator: PropTypes.func,
+    upgradeToUser: PropTypes.func,
     isDelete: PropTypes.bool,
     isCreate: PropTypes.bool,
     onClose: PropTypes.func,

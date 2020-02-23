@@ -7,7 +7,7 @@ export const hasAuthInfo = (res) => {
 };
 
 export const getAuthInfo = (ctx) => {
-    return parseCookies(ctx)['access-token'];
+    return parseCookies(ctx)['authorization'];
 };
 
 export function authTokenFormat(res) {

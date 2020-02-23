@@ -62,7 +62,7 @@ const Main = ({ signOut, upgradeToModerator, updateModerator, upgradeToUser }) =
                         </Dropdown.Menu>
                     </Dropdown>
                 </Menu.Item>
-                <Menu.Menu onClick={handleItemClick} className='menu__body-right' position="right" >
+                <Menu.Menu className='menu__body-right' position="right" >
                     <Menu.Item>
                         <CustomButton onClick={handleClick} content='Sign Out'/>
                     </Menu.Item>
@@ -77,7 +77,6 @@ Main.propTypes = {
     upgradeToModerator: PropTypes.func.isRequired,
     updateModerator: PropTypes.func.isRequired,
     upgradeToUser: PropTypes.func.isRequired,
-    isLoading: PropTypes.bool,
 };
 
 export default Main;
