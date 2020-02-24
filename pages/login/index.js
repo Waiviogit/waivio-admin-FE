@@ -11,7 +11,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
     signIn: dispatchRequestClient(dispatch, signIn),
-    // initialize: () => initialize(null, dispatch),
+    initialize: () => initialize(null, dispatch),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRedirectIfAuth(Login));

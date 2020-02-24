@@ -20,6 +20,7 @@ const Login = ({ signIn, isSignIn, initialize }) => {
         signIn({ user })
             .then(() => {
                 setIsLoading(false);
+                setStorageData('userEmail', user.email);
                 initialize();
                 removeStorageData('isLogin', true);
             })

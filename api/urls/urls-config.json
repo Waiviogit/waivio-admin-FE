@@ -9,5 +9,9 @@
         "delete": "/app/moderator/delete",
         "push": "/app/updateModerator/push",
         "pull": "/app/updateModerator/pull"
+    },
+    "apps": {
+        "apps": "/app",
+        "show": "/show"
     }
 }

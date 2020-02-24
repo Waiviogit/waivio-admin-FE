@@ -38,6 +38,7 @@ export function* signOut() {
     yield put(authActions.signOutSuccess());
     yield call(deleteAuthCookie, "authorization");
     yield call(removeStorageData, "isLogin");
+    yield call(removeStorageData, "userEmail");
     yield call(deleteAuthHeaders);
     yield put(authActions.clearUserStore());
     yield call(redirect, "/login");

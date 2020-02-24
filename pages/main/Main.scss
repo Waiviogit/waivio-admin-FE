@@ -1,18 +1,24 @@
 @import "utils/veriables";
-
-.menu-wrap {
-  height: 98%;
-  width: 98%;
-  margin: 10px auto;
-  padding-bottom: 12px;
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-
-  .menu__body {
+.main {
+  &__menu-wrap {
+    height: 98%;
+    width: 98%;
+    margin: 10px auto;
+    padding-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+  }
+  &__menu-body {
     .menu.transition.visible {
+      background-color: $color-black;
       margin-top: 10px;
+      border-radius: 5px;
+      .item:hover {
+        background: $color-grey !important;
+      }
       .item {
+
         button {
           width: 150px;
           &:hover {
@@ -51,14 +57,6 @@
       background: 0;
       color: rgba(255, 255, 255, 0.9);
     }
-
-    .menu {
-      background-color: $color-black;
-      color: $color-white;
-      border-radius: 5px;
-       .item:hover {
-        background: $color-grey !important;
-      }
-    }
   }
 }
+
