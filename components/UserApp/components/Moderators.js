@@ -27,9 +27,9 @@ export const Moderators = ({ moderators }) => {
                                 <div style={{ display: "flex", flex: 1 }} >
                                     <Icon name='dropdown' />
                                     {name}
-                                </div>                            
-                                <Button>update</Button>
-                                <Button>Delete</Button>
+                                </div>
+                                <Button icon={"undo"}/>
+                                <Button color='red' icon="delete"/>
                             </div>                           
                         </Accordion.Title>
                         <Accordion.Content active={activeIndex === index}>
@@ -39,8 +39,8 @@ export const Moderators = ({ moderators }) => {
                                     <div style={{ display: "flex", flex: 1 }} >
                                         {permlink}
                                     </div>
-                                    <Button>update</Button>
-                                    <Button>Delete</Button>
+                                    <Button >Update</Button>
+                                    <Button color='red' icon="delete"/>
                                 </Segment>
                             ))}
                         </Accordion.Content>

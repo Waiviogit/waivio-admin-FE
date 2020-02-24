@@ -1,19 +1,21 @@
 @import "utils/veriables";
 .main {
   &__menu-wrap {
-    height: 98%;
-    width: 98%;
-    margin: 10px auto;
+    height: 100%;
+    width: 100%;
+    margin: 0 auto;
     padding-bottom: 12px;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
   }
   &__menu-body {
+    border-radius: 0!important;
+
     .menu.transition.visible {
       background-color: $color-black;
       margin-top: 10px;
-      border-radius: 5px;
+
       .item:hover {
         background: $color-grey !important;
       }

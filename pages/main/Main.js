@@ -2,7 +2,7 @@ import './Main.scss';
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import _ from 'lodash';
-import { Image, Menu, Dropdown, Accordion } from "semantic-ui-react";
+import { Image, Menu, Dropdown, Container } from "semantic-ui-react";
 import { setStorageData, getStorageData } from "../../helpers/localeStorage";
 import ModalModerator from '../../components/Modals/ModalModerator';
 import UserApp from '../../components/UserApp';
@@ -91,7 +91,7 @@ const Main = ({
                     </Menu.Menu>
                 </Menu>
             </div>
-            <div className='main__body'>
+            <Container className='main__body'>
                 <div className='main__body-header'>All Your Apps</div>
                 <div className='main__body-content'>
                     {/*<UserApp defaultActiveIndex={0} panels={rootPanels} styled />*/}
@@ -105,7 +105,7 @@ const Main = ({
                         />
                     ))}
                 </div>
-            </div>
+            </Container>
         </div>
     );
 };
