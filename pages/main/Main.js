@@ -2,22 +2,27 @@ import './Main.scss';
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import _ from 'lodash';
-import { Image, Menu, Dropdown } from "semantic-ui-react";
-import { setStorageData } from "../../helpers/localeStorage";
+import { Image, Menu, Dropdown, Accordion } from "semantic-ui-react";
+import { setStorageData, getStorageData } from "../../helpers/localeStorage";
 import ModalModerator from '../../components/Modals/ModalModerator';
+import UserApp from '../../components/UserApp';
 import { CustomButton } from '../../components/common/buttons';
 import { useLocalStorage } from "../../helpers/useLocalStorage";
-import { Accordion } from 'semantic-ui-react';
-import { getStorageData } from '../../helpers/localeStorage';
-import { dispatchRequest } from '../../helpers/asyncActions';
-import { getAllApps } from '../../redux/actions/appsActions';
+import { apps } from '../../components/UserApp/mock';
 
-const Main = ({ signOut, upgradeToModerator, updateModerator, upgradeToUser, user, getAllApps, apps, appsName, appModerators }) => {
+const Main = ({
+    signOut,
+    upgradeToModerator,
+    updateModerator,
+    upgradeToUser,
+    user,
+    getAllApps,
+    // apps,
+}) => {
     const [activeItem, setActiveItem] = useState(false);
-    // const userEmail = getStorageData('userEmail');
-    useEffect(() => {
-        getAllApps(user.admin.email);
-    }, []);
+    const [activeIndex, setActiveIndex] = useState(-1);
+    const [userEmail] = useLocalStorage('userEmail');
+
     const handleItemClick = (e, { name }) => {
         setActiveItem(name);
     };
@@ -25,15 +30,12 @@ const Main = ({ signOut, upgradeToModerator, updateModerator, upgradeToUser, use
         setStorageData("isLogout", true);
         signOut();
     };
-    const names = apps.map(item => ( item.name ));
-    console.log(names, 'names');
-    const moderators = apps.map(item => ({ name: item.moderators.map(moderator => moderator.name).toString(), author_permlinks: item.moderators.map(moderator => moderator.author_permlinks)}));
-    console.log(moderators, 'moderators');
-    // const rootPanels = [
-    //     { key: 'panel-1', title: appsName[0], content: appModerators[0].map(item => ({ name: item.moderators.map(moderator => moderator.name), author_permlinks: item.moderators.map(moderator => moderator.author_permlinks)}))},
-    //
-    // ];
-    console.log(apps);
+
+    useEffect(() => {
+        getAllApps(userEmail);
+    }, []);
+
+    console.log(apps, 'apps');
     return (
         <div className='main'>
             <div className='main__menu-wrap'>
@@ -92,11 +94,15 @@ const Main = ({ signOut, upgradeToModerator, updateModerator, upgradeToUser, use
             <div className='main__body'>
                 <div className='main__body-header'>All Your Apps</div>
                 <div className='main__body-content'>
-                    {/*<Accordion defaultActiveIndex={0} panels={rootPanels} styled />*/}
-                    {_.map(apps, app => (
-                        <div className='main__body-content-item' key={app.id}>
-                            {app.name}
-                        </div>
+                    {/*<UserApp defaultActiveIndex={0} panels={rootPanels} styled />*/}
+                    {_.map(apps, (app) => (
+                        <UserApp 
+                            className='main__body-content-item' 
+                            key={app._id} 
+                            app={app} 
+                            activeIndex={activeIndex}
+                            setActiveIndex={setActiveIndex}
+                        />
                     ))}
                 </div>
             </div>
@@ -111,6 +117,7 @@ Main.propTypes = {
     upgradeToUser: PropTypes.func.isRequired,
     user: PropTypes.func,
     apps: PropTypes.array,
+    getAllApps: PropTypes.func,
 };
 
 export default Main;
