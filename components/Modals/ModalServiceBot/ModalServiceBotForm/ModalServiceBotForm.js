@@ -3,45 +3,37 @@ import PropTypes from 'prop-types';
 import { Dropdown, Form } from 'semantic-ui-react';
 import { CustomButton } from '../../../common/buttons';
 
-const ModalModeratorForm = ({ 
-    submitButtonContent, 
-    isUpdate, 
-    isDelete, 
-    isCreate, 
-    upgradeToModerator, 
-    updateModerator, 
-    upgradeToUser,
-    onClose,
-}) => {
+const ModalServiceBotForm = ({ onClose, isUpdate, isCreate, isDelete, submitButtonContent }) => {
     const [isLoading, setIsLoading] = useState(false);
     const [app, setApp] = useState(null);
     const handleChange = (e, { value }) => setOperation(value);
-    const [moderator, setModerator] = useState({
+    const [serviceBot, setServiceBot] = useState({
         name: "",
-        author_permlinks: [],
+        postingKey: "",
+        roles: [],
     });
     const [operation, setOperation] = useState(null);
     const options = [
         { key: 'delete', text: 'Delete', value: 'Delete' },
         { key: 'add', text: 'Add', value: 'Add' },
     ];
-    const getActionForModerator = () => {
+    const getActionForServiceBot = () => {
         let action = null;
         if (isCreate) {
-            action = upgradeToModerator({ app, moderator });
+            action = upgradeToModerator({ app, serviceBot });
         } else if (isUpdate) {
-            action = updateModerator({ type: operation, data: { app, moderator } });
+            action = updateModerator({ type: operation, data: { app, serviceBot } });
         } else if (isDelete) {
-            action = upgradeToUser({ app, moderator });
+            action = upgradeToUser({ app, serviceBot });
         }
         return action;
     };
     const handleSubmit = (e) => {
         e.preventDefault();
         setIsLoading(true);
-        const action = getActionForModerator();
+        const action = getActionForServiceBot();
         action
-            .then(() => {                
+            .then(() => {
                 setIsLoading(false);
                 onClose();
             })
@@ -63,8 +55,17 @@ const ModalModeratorForm = ({
                     <Form.Input
                         label="Name"
                         type="name"
-                        value={moderator.name}
-                        onChange={(e, { value }) => setModerator({ ...moderator, name: value })}
+                        value={serviceBot.name}
+                        onChange={(e, { value }) => setServiceBot({ ...serviceBot, name: value })}
+                        placeholder="Name"
+                    />
+                </Form.Field>
+                <Form.Field>
+                    <Form.Input
+                        label="Posting Key"
+                        type="name"
+                        value={serviceBot.postingKey}
+                        onChange={(e, { value }) => setServiceBot({ ...serviceBot, postingKey: value })}
                         placeholder="Name"
                     />
                 </Form.Field>
@@ -76,11 +77,11 @@ const ModalModeratorForm = ({
                 {!isDelete && (
                     <Form.Field>
                         <Form.Input
-                            label="Permlinks"
+                            label="Roles"
                             type='text'
-                            value={moderator.author_permlinks}
-                            onChange={(e, { value }) => setModerator({ ...moderator, author_permlinks: [value] })}
-                            placeholder="Permlinks"
+                            value={serviceBot.roles}
+                            onChange={(e, { value }) => setServiceBot({ ...serviceBot, roles: [value] })}
+                            placeholder="Roles"
                         />
                     </Form.Field>
                 )}
@@ -98,7 +99,7 @@ const ModalModeratorForm = ({
     );
 };
 
-ModalModeratorForm.propTypes = {
+ModalServiceBotForm.propTypes = {
     submitButtonContent: PropTypes.string,
     isUpdate: PropTypes.bool,
     upgradeToModerator: PropTypes.func,
@@ -109,4 +110,4 @@ ModalModeratorForm.propTypes = {
     onClose: PropTypes.func,
 };
 
-export default ModalModeratorForm;
+export default ModalServiceBotForm;

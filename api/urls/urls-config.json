@@ -13,5 +13,11 @@
     "apps": {
         "apps": "/app",
         "show": "/show"
+    },
+    "bots": {
+        "create": "/app/serviceBots/create",
+        "delete": "/app/serviceBots/delete",
+        "push": "/app/updateServiceBots/push",
+        "pull": "/app/updateServiceBots/pull"
     }
 }

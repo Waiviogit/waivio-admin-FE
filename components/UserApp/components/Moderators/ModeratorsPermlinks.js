@@ -15,12 +15,6 @@ export const ModeratorsPermlinks = ({ author_permlinks }) => {
           {author_permlinks.map(permlink => (
             <Table.Row>
               <Table.Cell>{permlink}</Table.Cell>
-              <Table.Cell textAlign="right">
-                <Button>Update</Button>
-                <Button color="red" icon="delete">
-                  Delete
-                </Button>
-              </Table.Cell>
             </Table.Row>
           ))}
         </Table.Body>

@@ -8,7 +8,7 @@ import ModalModerator from '../../components/Modals/ModalModerator';
 import UserApp from '../../components/UserApp';
 import { CustomButton } from '../../components/common/buttons';
 import { useLocalStorage } from "../../helpers/useLocalStorage";
-import { apps } from '../../components/UserApp/mock';
+// import { apps } from '../../components/UserApp/mock';
 
 const Main = ({
     signOut,
@@ -17,7 +17,7 @@ const Main = ({
     upgradeToUser,
     user,
     getAllApps,
-    // apps,
+    apps,
 }) => {
     const [activeItem, setActiveItem] = useState(false);
     const [activeIndex, setActiveIndex] = useState(-1);
@@ -50,39 +50,6 @@ const Main = ({
                         active={activeItem === "home"}
                         onClick={handleItemClick}
                     />
-                    <Menu.Item onClick={handleItemClick}>
-                        <Dropdown text='Moderator'>
-                            <Dropdown.Menu>
-                                <Dropdown.Item text='New' >
-                                    <ModalModerator
-                                        showButtonContent='Create Moderator'
-                                        submitButtonContent='Create'
-                                        title='Create Moderator'
-                                        isCreate
-                                        upgradeToModerator={upgradeToModerator}
-                                    />
-                                </Dropdown.Item>
-                                <Dropdown.Item text='New' >
-                                    <ModalModerator
-                                        showButtonContent='Update Moderator'
-                                        submitButtonContent='Update'
-                                        title='Update Moderator'
-                                        isUpdate
-                                        updateModerator={updateModerator}
-                                    />
-                                </Dropdown.Item>
-                                <Dropdown.Item text='New' >
-                                    <ModalModerator
-                                        showButtonContent='Delete Moderator'
-                                        submitButtonContent='Delete'
-                                        title='Delete Moderator'
-                                        isDelete
-                                        upgradeToUser={upgradeToUser}
-                                    />
-                                </Dropdown.Item>
-                            </Dropdown.Menu>
-                        </Dropdown>
-                    </Menu.Item>
                     <Menu.Menu className='main__menu-body-right' position="right" >
                         <Menu.Item>
                             <CustomButton onClick={handleClick} content='Sign Out'/>
