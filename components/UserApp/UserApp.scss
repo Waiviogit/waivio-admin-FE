@@ -1,0 +1,30 @@
+.user-app-content {
+  &__moderators {
+    display: flex;
+    justify-content: space-between;
+    &-names {
+      border: none!important;
+    }
+  }
+  &__title{
+    display: flex;
+    justify-content: space-between;
+  }
+  &__topUsers {
+    display: flex;
+    justify-content: space-between;
+    &-names {
+      border: none!important;
+    }
+  }
+  &__serviceBots {
+    display: flex;
+    justify-content: space-between;
+    &-names {
+      border: none!important;
+    }
+    &-content {
+
+    }
+  }
+}

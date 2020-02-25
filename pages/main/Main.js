@@ -35,7 +35,6 @@ const Main = ({
         getAllApps(userEmail);
     }, []);
 
-    console.log(apps, 'apps');
     return (
         <div className='main'>
             <div className='main__menu-wrap'>
@@ -92,9 +91,8 @@ const Main = ({
                 </Menu>
             </div>
             <Container className='main__body'>
-                <div className='main__body-header'>All Your Apps</div>
+                <div className='main__body-header'><h1>All Your Apps</h1></div>
                 <div className='main__body-content'>
-                    {/*<UserApp defaultActiveIndex={0} panels={rootPanels} styled />*/}
                     {_.map(apps, (app) => (
                         <UserApp 
                             className='main__body-content-item' 

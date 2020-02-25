@@ -12,7 +12,6 @@ const UserApp = ({ app, activeIndex, setActiveIndex }) => {
         setActiveIndex(_id);
     };
 
-    console.log(app);
     return (
         <Accordion fluid styled>
             <Accordion.Title

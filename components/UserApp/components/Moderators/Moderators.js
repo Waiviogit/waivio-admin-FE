@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Accordion, Icon, Button, Segment } from 'semantic-ui-react';
+import ModeratorsPermlinks from "./ModeratorsPermlinks";
+import ModeratorsNames from "./ModeratorsNames";
 
 export const Moderators = ({ moderators }) => {
     const [activeIndex, setActiveIndex] = useState(-1);
@@ -16,38 +18,22 @@ export const Moderators = ({ moderators }) => {
         <Accordion fluid styled>
             {moderators.map((moderator, index) => {
                 const { name, author_permlinks } = moderator;
-                return ( 
+                return (
                     <>
                         <Accordion.Title
                             active={activeIndex === index}
                             index={index}
                             onClick={() => handleClick(index)}
                         >
-                            <div style={{ display: "flex" }}>
-                                <div style={{ display: "flex", flex: 1 }} >
-                                    <Icon name='dropdown' />
-                                    {name}
-                                </div>
-                                <Button icon={"undo"}/>
-                                <Button color='red' icon="delete"/>
-                            </div>                           
+                            <ModeratorsNames name={name}/>
+
                         </Accordion.Title>
                         <Accordion.Content active={activeIndex === index}>
-                            <h5>author_permlinks</h5>
-                            { author_permlinks.map((permlink) => (
-                                <Segment style={{ display: "flex" }}>
-                                    <div style={{ display: "flex", flex: 1 }} >
-                                        {permlink}
-                                    </div>
-                                    <Button >Update</Button>
-                                    <Button color='red' icon="delete"/>
-                                </Segment>
-                            ))}
+                            <ModeratorsPermlinks author_permlinks={author_permlinks}/>
                         </Accordion.Content>
                     </>
                 );
             })}
-            
         </Accordion>
     );
 };
