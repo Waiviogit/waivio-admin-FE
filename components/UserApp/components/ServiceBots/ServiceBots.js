@@ -1,39 +1,37 @@
-import React, { useState } from 'react';
-import {Accordion} from "semantic-ui-react";
-import { ServiceBotsNames } from './ServiceBotsNames';
-import { ServiceBotsContent } from './ServiceBotsContent';
+import React from 'react';
+import { Table } from "semantic-ui-react";
 
-export const ServiceBots = ({ service_bots }) => {
-    const [activeIndex, setActiveIndex] = useState(-1);
+import TableRow from './TableRow';
+import ModalServiceBot from '../../../Modals/ModalServiceBot';
 
-    const handleClick = (index) => {
-        if (activeIndex === index) {
-            setActiveIndex(-1);
-            return;
-        }
-        setActiveIndex(index);
-    };
-
+const ServiceBots = ({ service_bots, updateServiceBot, deleteServiceBot, appName }) => {
     return (
-        <Accordion fluid styled>
-            {service_bots.map((bot, index) => {
-                const { name, postingKey, roles } = bot;
-                return (
-                    <>
-                        <Accordion.Title
-                            active={activeIndex === index}
-                            index={index}
-                            onClick={() => handleClick(index)}
-                        >
-                            <ServiceBotsNames name={name}/>
-                        </Accordion.Title>
-                        <Accordion.Content active={activeIndex === index}>
-                            <ServiceBotsContent postingKey={postingKey} roles={roles}/>
-                        </Accordion.Content>
-                    </>
-                );
-            })}
-        </Accordion>
+        <Table
+            fixed
+            striped
+            singleLine
+            unstackable
+            className="user-app-content__serviceBots-content"
+        >
+            <Table.Header>
+                <Table.Row>
+                    <Table.HeaderCell>Name</Table.HeaderCell>
+                    <Table.HeaderCell>Posting Key</Table.HeaderCell>
+                    <Table.HeaderCell>Roles</Table.HeaderCell>
+                    <Table.HeaderCell></Table.HeaderCell>
+                </Table.Row>
+            </Table.Header>
+            <Table.Body>
+                {service_bots.map((bot) => (
+                    <TableRow
+                        bot={bot}
+                        appName={appName}
+                        updateServiceBot={updateServiceBot} 
+                        deleteServiceBot={deleteServiceBot}
+                    />              
+                ))}
+            </Table.Body>
+        </Table>
     );
 };
 

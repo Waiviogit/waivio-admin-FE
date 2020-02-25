@@ -24,6 +24,7 @@ const UserApp = ({ app, activeIndex, setActiveIndex }) => {
             </Accordion.Title>
             <Accordion.Content active={activeIndex === _id}>
                 <UserAppContent
+                    appName={name}
                     moderators={moderators}
                     top_users={top_users}
                     service_bots={service_bots}

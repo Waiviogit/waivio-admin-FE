@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import {Accordion, Button, Table} from "semantic-ui-react";
+import React, { useState } from 'react';
+import { Accordion, Button, Table } from "semantic-ui-react";
 
 export const BlackList = ({ black_list_users }) => {
     const [activeIndex, setActiveIndex] = useState(-1);
@@ -14,16 +14,16 @@ export const BlackList = ({ black_list_users }) => {
 
     return (
         <Accordion fluid styled>
-                    <Table fixed singleLine unstackable>
-                        {/*<Table.Header>*/}
-                        {/*    <Table.Row>*/}
-                        {/*        <Table.HeaderCell>Users</Table.HeaderCell>*/}
-                        {/*        <Table.HeaderCell></Table.HeaderCell>*/}
-                        {/*    </Table.Row>*/}
-                        {/*</Table.Header>*/}
-                        <Table.Body>
-                            {black_list_users.map((user, index) => {
-                                return (
+            <Table fixed singleLine unstackable>
+                <Table.Header>
+                    <Table.Row>
+                        <Table.HeaderCell>Users</Table.HeaderCell>
+                        <Table.HeaderCell></Table.HeaderCell>
+                    </Table.Row>
+                </Table.Header>
+                <Table.Body>
+                    {black_list_users.map((user, index) => {
+                        return (
                             <Table.Row>
                                 <Table.Cell>{user}</Table.Cell>
                                 <Table.Cell textAlign="right">
@@ -32,11 +32,10 @@ export const BlackList = ({ black_list_users }) => {
                                     </Button>
                                 </Table.Cell>
                             </Table.Row>
-                                );
-                            })};
-                        </Table.Body>
-                    </Table>
-
+                        );
+                    })}
+                </Table.Body>
+            </Table>
         </Accordion>
     );
 };
