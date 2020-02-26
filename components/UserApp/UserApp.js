@@ -1,6 +1,6 @@
 import React from 'react';
 import { Accordion, Icon, Button, Segment } from "semantic-ui-react";
-import  UserAppContent from './components';
+import UserAppContent from './components';
 
 const UserApp = ({ app, activeIndex, setActiveIndex }) => {
     const { name, _id, moderators, top_users, service_bots, black_list_users } = app;

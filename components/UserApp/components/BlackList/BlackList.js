@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Accordion, Button, Table } from "semantic-ui-react";
 
-export const BlackList = ({ black_list_users }) => {
+const BlackList = ({ black_list_users }) => {
     const [activeIndex, setActiveIndex] = useState(-1);
 
     const handleClick = (index) => {

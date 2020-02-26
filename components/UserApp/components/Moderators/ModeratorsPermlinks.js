@@ -1,7 +1,7 @@
 import React from "react";
 import { Table, Button } from "semantic-ui-react";
 
-export const ModeratorsPermlinks = ({ author_permlinks }) => {
+const ModeratorsPermlinks = ({ author_permlinks }) => {
     return (
         <>
             <Table fixed singleLine unstackable>

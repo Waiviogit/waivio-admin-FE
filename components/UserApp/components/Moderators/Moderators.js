@@ -3,7 +3,7 @@ import { Accordion, Icon, Button, Segment } from 'semantic-ui-react';
 import ModeratorsPermlinks from "./ModeratorsPermlinks";
 import ModeratorsNames from "./ModeratorsNames";
 
-export const Moderators = ({ moderators }) => {
+const Moderators = ({ moderators }) => {
     const [activeIndex, setActiveIndex] = useState(-1);
 
     const handleClick = (index) => {
@@ -26,7 +26,6 @@ export const Moderators = ({ moderators }) => {
                             onClick={() => handleClick(index)}
                         >
                             <ModeratorsNames name={name}/>
-
                         </Accordion.Title>
                         <Accordion.Content active={activeIndex === index}>
                             <ModeratorsPermlinks author_permlinks={author_permlinks}/>
