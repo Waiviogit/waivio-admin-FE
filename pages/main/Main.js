@@ -46,7 +46,7 @@ const Main = ({
                         />
                     </Menu.Item>
                     <Menu.Item
-                        name="home"
+                        name="Main"
                         active={activeItem === "home"}
                         onClick={handleItemClick}
                     />

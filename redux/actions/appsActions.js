@@ -16,6 +16,10 @@ export const DELETE_SERVICE_BOT_REQUEST = "DELETE_SERVICE_BOT_REQUEST";
 export const DELETE_SERVICE_BOT_SUCCESS = "DELETE_SERVICE_BOT_SUCCESS";
 export const DELETE_SERVICE_BOT_ERROR = "DELETE_SERVICE_BOT_ERROR";
 
+export const DELETE_BLACK_LIST_USER_REQUEST = "DELETE_BLACK_LIST_USER_REQUEST";
+export const DELETE_BLACK_LIST_USER_SUCCESS = "DELETE_BLACK_LIST_USER_SUCCESS";
+export const DELETE_BLACK_LIST_USER_ERROR = "DELETE_BLACK_LIST_USER_ERROR";
+
 export const getAllApps = payload => ({
     type: GET_ALL_APPS_REQUEST,
     ...payload,
@@ -73,5 +77,20 @@ export const deleteServiceBotSuccess = (payload) => ({
 
 export const deleteServiceBotError = (payload) => ({
     type: DELETE_SERVICE_BOT_ERROR,
+    payload,
+});
+
+export const deleteBlackListUsersRequest = (payload) => ({
+    type: DELETE_BLACK_LIST_USER_REQUEST,
+    ...payload,
+});
+
+export const deleteBlackListUsersSuccess = (payload) => ({
+    type: DELETE_BLACK_LIST_USER_SUCCESS,
+    payload,
+});
+
+export const deleteBlackListUsersError = (payload) => ({
+    type: DELETE_BLACK_LIST_USER_ERROR,
     payload,
 });

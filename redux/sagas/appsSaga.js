@@ -67,6 +67,7 @@ export function* updateServiceBot({ payload, resolve, reject }) {
 
 export function* deleteServiceBot({ payload, resolve, reject }) {
     try {
+        console.log('deleteServiceBot', payload);
         const { data } = yield call([api.apps, api.apps.deleteServiceBot], payload);
         yield call(resolve, data);
         yield put(appsActions.deleteServiceBotSuccess());
@@ -79,6 +80,25 @@ export function* deleteServiceBot({ payload, resolve, reject }) {
     } catch (error) {
     // yield put(showNotification(error));
         yield put(appsActions.deleteServiceBotError());
+        yield call(reject, error);
+    }
+}
+
+export function* deleteBlackListUsers({ payload, resolve, reject }) {
+    try {
+        console.log('deleteServiceBot', payload);
+        const { data } = yield call([api.apps, api.apps.deleteBlackListUsers], payload);
+        yield call(resolve, data);
+        yield put(appsActions.deleteBlackListUsersSuccess());
+        // yield call(showSuccessNotification, {
+        //   id:
+        //     payload.ids.length === 1
+        //       ? "demo_user_upgraded_to_user"
+        //       : "demo_user_upgraded_to_users"
+        // });
+    } catch (error) {
+        // yield put(showNotification(error));
+        yield put(appsActions.deleteBlackListUsersError());
         yield call(reject, error);
     }
 }

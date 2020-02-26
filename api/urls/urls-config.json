@@ -15,9 +15,13 @@
         "show": "/show"
     },
     "bots": {
-        "create": "/app/serviceBots/create",
-        "delete": "/app/serviceBots/delete",
-        "push": "/app/updateServiceBots/push",
-        "pull": "/app/updateServiceBots/pull"
+        "create": "/app/add/serviceBots",
+        "delete": "/app/delete/serviceBots",
+        "push": "/app/push/serviceBots",
+        "pull": "/app/pull/serviceBots"
+    },
+    "blackList": {
+        "blackList" : "/blackList",
+        "pull": "/app/pull"
     }
 }

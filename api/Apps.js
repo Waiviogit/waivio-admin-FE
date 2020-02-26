@@ -20,4 +20,8 @@ export default class Apps extends Base {
     deleteServiceBot(data) {
         return this.apiClient.post(config.bots.delete, data);
     }
+
+    deleteBlackListUsers({data, app}) {
+        return this.apiClient.get(`${config.blackList.pull}/${app}/${config.blackList.blackList}`, data);
+    }
 }

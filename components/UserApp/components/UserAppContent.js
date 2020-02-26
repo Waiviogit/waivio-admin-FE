@@ -2,7 +2,6 @@ import "../UserApp.scss";
 import React, { useState } from "react";
 import { Accordion, Button, Icon } from "semantic-ui-react";
 import dynamic from 'next/dynamic';
-
 const Moderators = dynamic(() => import("./Moderators/Moderators"));
 const TopUsers = dynamic(() => import("./TopUsers"));
 const ServiceBots = dynamic(() => import("./ServiceBots"));
@@ -16,6 +15,7 @@ export const UserAppContent = ({
     service_bots,
     black_list_users,
     upgradeToModerator,
+    createServiceBot,
     appName,
 }) => {
     const [activeIndex, setActiveIndex] = useState(-1);
@@ -92,7 +92,8 @@ export const UserAppContent = ({
                             submitButtonContent="Create"
                             title="Create Service Bot"
                             type="create"
-                            onFormSubmit={upgradeToModerator}
+                            onFormSubmit={createServiceBot}
+                            appName={appName}
                         />
                     </div>
                 </div>
