@@ -120,7 +120,7 @@ export const UserAppContent = ({
             </Accordion.Title>
             <Accordion.Content active={activeIndex === 3}>
                 <div className="user-app-content__serviceBots">
-                    <BlackList black_list_users={black_list_users} />
+                    <BlackList black_list_users={black_list_users} appName={appName}/>
                 </div>
             </Accordion.Content>
         </>

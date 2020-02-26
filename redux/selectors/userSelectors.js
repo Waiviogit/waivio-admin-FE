@@ -6,6 +6,12 @@ export const getUserState = createSelector(
     getUiState,
     ui => ui.admin,
 );
+
+export const getAdminState = createSelector(
+    getUserState,
+    admin => admin.admin,
+);
+
 export const getSignInState = createSelector(
     getUserState,
     admin => admin.isSignIn,

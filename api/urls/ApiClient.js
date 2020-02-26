@@ -15,6 +15,7 @@ export default class ApiClient {
     }
 
     get(requestUrl, payload = {}, params, responseType, onDownloadProgress) {
+        console.log('requestUrl', payload, 'params', params)
         return request({
             url: `${this.prefix}${requestUrl}`,
             method: "get",

@@ -1,12 +1,15 @@
-import { put, takeEvery, call } from "redux-saga/effects";
+import { put, takeEvery, call, select } from "redux-saga/effects";
 import * as appsActions from "../actions/appsActions";
 import api from "../../api/AuthConfig/apiAuth";
 import { deleteAuthHeaders, updateCookies } from "../../helpers/headers";
+import { getAdminState } from '../selectors/userSelectors';
 
 export default function* actionWatcher() {
     yield takeEvery(appsActions.GET_ALL_APPS_REQUEST, getAllApps);
     yield takeEvery(appsActions.CREATE_SERVICE_BOT_REQUEST, createServiceBot);
     yield takeEvery(appsActions.UPDATE_SERVICE_BOT_REQUEST, updateServiceBot);
+    yield takeEvery(appsActions.DELETE_SERVICE_BOT_REQUEST, deleteServiceBot);
+    yield takeEvery(appsActions.DELETE_BLACK_LIST_USER_REQUEST, deleteBlackListUsers);
 }
 
 export function* getAllApps({ payload, resolve, reject, ctx }) {
@@ -66,11 +69,13 @@ export function* updateServiceBot({ payload, resolve, reject }) {
 }
 
 export function* deleteServiceBot({ payload, resolve, reject }) {
+    const { email } = yield select(getAdminState);
     try {
         console.log('deleteServiceBot', payload);
         const { data } = yield call([api.apps, api.apps.deleteServiceBot], payload);
         yield call(resolve, data);
         yield put(appsActions.deleteServiceBotSuccess());
+        yield put(appsActions.getAllApps(email));
     // yield call(showSuccessNotification, {
     //   id:
     //     payload.ids.length === 1
@@ -86,7 +91,6 @@ export function* deleteServiceBot({ payload, resolve, reject }) {
 
 export function* deleteBlackListUsers({ payload, resolve, reject }) {
     try {
-        console.log('deleteServiceBot', payload);
         const { data } = yield call([api.apps, api.apps.deleteBlackListUsers], payload);
         yield call(resolve, data);
         yield put(appsActions.deleteBlackListUsersSuccess());

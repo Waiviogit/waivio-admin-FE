@@ -21,14 +21,14 @@ const ServiceBots = ({ service_bots, updateServiceBot, deleteServiceBot, appName
                 </Table.Row>
             </Table.Header>
             <Table.Body>
-                {/*{service_bots.map(bot => (*/}
-                {/*    <TableRow*/}
-                {/*        bot={bot}*/}
-                {/*        appName={appName}*/}
-                {/*        updateServiceBot={updateServiceBot}*/}
-                {/*        deleteServiceBot={deleteServiceBot}*/}
-                {/*    />*/}
-                {/*))}*/}
+                {service_bots.map(bot => (
+                    <TableRow
+                        bot={bot}
+                        appName={appName}
+                        updateServiceBot={updateServiceBot}
+                        deleteServiceBot={deleteServiceBot}
+                    />
+                ))}
             </Table.Body>
         </Table>
     );

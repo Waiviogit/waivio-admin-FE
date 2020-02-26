@@ -17,7 +17,6 @@ const ModalServiceBot = ({
   bot
 }) => {
   const [isOpen, setIsOpen] = useState(false);
-  console.log("appName ModalServiceBot", appName);
 
   const handleShow = () => setIsOpen(true);
   const handleClose = () => setIsOpen(false);

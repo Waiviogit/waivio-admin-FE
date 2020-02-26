@@ -6,12 +6,13 @@ const renderRole = (role) => <div>{role}</div>;
 
 const TableRow = ({ bot, updateServiceBot, deleteServiceBot, appName }) => {
     const { name, postingKey, roles } = bot;
+
     return (
         <Table.Row>
             <Table.Cell >{name}</Table.Cell>
             <Table.Cell >{postingKey}</Table.Cell>
             <Table.Cell >
-                { roles.map((role) => renderRole(role)) }
+                {roles && roles.map((role) => renderRole(role)) }
             </Table.Cell>
             <Table.Cell textAlign="right">
                 <ModalServiceBot

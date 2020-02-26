@@ -1,5 +1,5 @@
-import config from "./urls/urls-config";
-import Base from "./Base";
+import config from './urls/urls-config';
+import Base from './Base';
 
 export default class Apps extends Base {
     getAllApps(data) {
@@ -7,7 +7,7 @@ export default class Apps extends Base {
     }
 
     createServiceBot(data) {
-        return this.apiClient.post(config.bots.create, data)
+        return this.apiClient.post(config.bots.create, data);
     }
 
     updateServiceBot({ data, type }) {
@@ -21,7 +21,7 @@ export default class Apps extends Base {
         return this.apiClient.post(config.bots.delete, data);
     }
 
-    deleteBlackListUsers({data, app}) {
-        return this.apiClient.get(`${config.blackList.pull}/${app}/${config.blackList.blackList}`, data);
+    deleteBlackListUsers({ data, app }) {
+        return this.apiClient.get(`${config.blackList.pull}/${app}${config.blackList.blackList}`, {}, data);
     }
 }
