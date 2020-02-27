@@ -8,6 +8,7 @@ const ServiceBots = dynamic(() => import("./ServiceBots"));
 const BlackList = dynamic(() => import("./BlackList"));
 import ModalModerator from "../../Modals/ModalModerator";
 import ModalServiceBot from "../../Modals/ModalServiceBot";
+import ModalBlackList from "../../Modals/ModalBlackList";
 
 export const UserAppContent = ({
     moderators,
@@ -66,9 +67,6 @@ export const UserAppContent = ({
                         <Icon name="dropdown" />
                         Top Users
                     </div>
-                    <div className="user-app-content__title-btn">
-                        <Button>Add</Button>
-                    </div>
                 </div>
             </Accordion.Title>
             <Accordion.Content active={activeIndex === 1}>
@@ -114,7 +112,13 @@ export const UserAppContent = ({
                         User's Black List
                     </div>
                     <div className="user-app-content__title-btn">
-                        <Button>Add</Button>
+                        <ModalBlackList
+                            showButtonContent="Add User"
+                            submitButtonContent="Add"
+                            title="Add User"
+                            appName={appName}
+                            // upgradeToModerator={upgradeToModerator}
+                        />
                     </div>
                 </div>
             </Accordion.Title>

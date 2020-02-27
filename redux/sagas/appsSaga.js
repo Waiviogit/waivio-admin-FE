@@ -10,6 +10,7 @@ export default function* actionWatcher() {
     yield takeEvery(appsActions.UPDATE_SERVICE_BOT_REQUEST, updateServiceBot);
     yield takeEvery(appsActions.DELETE_SERVICE_BOT_REQUEST, deleteServiceBot);
     yield takeEvery(appsActions.DELETE_BLACK_LIST_USER_REQUEST, deleteBlackListUsers);
+    yield takeEvery(appsActions.ADD_BLACK_LIST_USER_REQUEST, addBlackListUsers);
 }
 
 export function* getAllApps({ payload, resolve, reject, ctx }) {
@@ -103,6 +104,25 @@ export function* deleteBlackListUsers({ payload, resolve, reject }) {
     } catch (error) {
         // yield put(showNotification(error));
         yield put(appsActions.deleteBlackListUsersError());
+        yield call(reject, error);
+    }
+}
+
+export function* addBlackListUsers({ payload, resolve, reject }) {
+    console.log('addBlackListUsers', payload);
+    try {
+        const { data } = yield call([api.apps, api.apps.addBlackListUsers], payload);
+        yield call(resolve, data);
+        yield put(appsActions.addBlackListUsersSuccess());
+        // yield call(showSuccessNotification, {
+        //   id:
+        //     payload.ids.length === 1
+        //       ? "demo_user_upgraded_to_user"
+        //       : "demo_user_upgraded_to_users"
+        // });
+    } catch (error) {
+        // yield put(showNotification(error));
+        yield put(appsActions.addBlackListUsersError());
         yield call(reject, error);
     }
 }

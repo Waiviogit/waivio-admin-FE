@@ -2,7 +2,6 @@ import React from 'react';
 import { Table } from "semantic-ui-react";
 import TableRow from './TableRow';
 
-
 const ServiceBots = ({ service_bots, updateServiceBot, deleteServiceBot, appName }) => {
     return (
         <Table

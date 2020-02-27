@@ -1,6 +1,4 @@
 import * as actions from "../../actions/appsActions";
-import { DELETE_BLACK_LIST_USER_REQUEST } from "../../actions/appsActions";
-import { DELETE_BLACK_LIST_USER_SUCCESS } from "../../actions/appsActions";
 
 const initialState = {
     apps: []
@@ -15,6 +13,8 @@ export function appsReducer(state = initialState, action) {
     case actions.DELETE_SERVICE_BOT_SUCCESS:
         return  { ...state, service_bots: action.payload};
     case actions.DELETE_BLACK_LIST_USER_SUCCESS:
+        return  { ...state, black_list_users: action.payload};
+    case actions.ADD_BLACK_LIST_USER_SUCCESS:
         return  { ...state, black_list_users: action.payload};
         default:
             return state;

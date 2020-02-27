@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { dispatchRequestClient } from "../../../../helpers/asyncActions";
-import ModeratorsNames from "./ModeratorsNames";
+import Moderators from "./Moderators";
 import {updateModeratorRequest, upgradeStatusToUserRequest} from "../../../../redux/actions/userActions";
 
 const mapDispatchToProps = (dispatch) => ({
@@ -8,4 +8,4 @@ const mapDispatchToProps = (dispatch) => ({
     upgradeToUser: dispatchRequestClient(dispatch, upgradeStatusToUserRequest),
 });
 
-export default connect(null, mapDispatchToProps)(ModeratorsNames);
+export default connect(null, mapDispatchToProps)(Moderators);

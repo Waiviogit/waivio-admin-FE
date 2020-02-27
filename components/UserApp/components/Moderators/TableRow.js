@@ -1,37 +1,36 @@
 import React from 'react';
 import { Table } from 'semantic-ui-react';
-import ModalServiceBot from '../../../Modals/ModalServiceBot';
+import ModalModerator from '../../../Modals/ModalModerator';
 
-const renderRole = (role) => <div>{role}</div>;
+const renderPermlink = (permlink) => <div>{permlink}</div>;
 
-const TableRow = ({ bot, updateServiceBot, deleteServiceBot, appName }) => {
-    const { name, postingKey, roles } = bot;
+const TableRow = ({ moderator, updateModerator, upgradeToUser, appName }) => {
+    const { name, author_permlinks } = moderator;
 
     return (
         <Table.Row>
             <Table.Cell >{name}</Table.Cell>
-            <Table.Cell >{postingKey}</Table.Cell>
             <Table.Cell >
-                {roles.length && roles.map((role) => renderRole(role)) }
+                {author_permlinks && author_permlinks.map(permlink => renderPermlink(permlink)) }
             </Table.Cell>
             <Table.Cell textAlign="right">
-                <ModalServiceBot
+                <ModalModerator
                     appName={appName}
                     showButtonContent='Update'
                     submitButtonContent='Update'
-                    title='Update Service Bot'
+                    title='Update To Moderator'
                     type={'update'}
-                    onFormSubmit={updateServiceBot}
-                    bot={bot}
+                    onFormSubmit={updateModerator}
+                    moderator={moderator}
                 />
-                <ModalServiceBot
+                <ModalModerator
                     appName={appName}
                     showButtonContent='Delete'
                     submitButtonContent='Delete'
-                    title='Delete Service Bot'
+                    title='Upgrade To User'
                     type={'delete'}
-                    onFormSubmit={deleteServiceBot}
-                    bot={bot}
+                    onFormSubmit={upgradeToUser}
+                    moderator={moderator}
                 />
             </Table.Cell>
         </Table.Row>

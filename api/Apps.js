@@ -24,4 +24,8 @@ export default class Apps extends Base {
     deleteBlackListUsers({ data, app }) {
         return this.apiClient.get(`${config.blackList.pull}/${app}${config.blackList.blackList}`, {}, data);
     }
+
+    addBlackListUsers({ data, app }) {
+        return this.apiClient.get(`${config.blackList.push}/${app}${config.blackList.blackList}`, {}, data);
+    }
 }

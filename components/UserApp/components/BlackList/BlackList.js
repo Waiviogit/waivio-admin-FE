@@ -6,7 +6,7 @@ const BlackList = ({ black_list_users, deleteBlackListUsers, appName }) => {
 
     const handleClick = (user) => {
         setIsLoading(true);
-        const requestData = { data: { names: [user] }, app: appName };
+        const requestData = { data: { names: user }, app: appName };
         deleteBlackListUsers(requestData)
             .then(() => {
                 setIsLoading(false);

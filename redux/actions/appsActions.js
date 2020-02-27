@@ -20,6 +20,10 @@ export const DELETE_BLACK_LIST_USER_REQUEST = "DELETE_BLACK_LIST_USER_REQUEST";
 export const DELETE_BLACK_LIST_USER_SUCCESS = "DELETE_BLACK_LIST_USER_SUCCESS";
 export const DELETE_BLACK_LIST_USER_ERROR = "DELETE_BLACK_LIST_USER_ERROR";
 
+export const ADD_BLACK_LIST_USER_REQUEST = "ADD_BLACK_LIST_USER_REQUEST";
+export const ADD_BLACK_LIST_USER_SUCCESS = "ADD_BLACK_LIST_USER_SUCCESS";
+export const ADD_BLACK_LIST_USER_ERROR = "ADD_BLACK_LIST_USER_ERROR";
+
 export const getAllApps = payload => ({
     type: GET_ALL_APPS_REQUEST,
     ...payload,
@@ -92,5 +96,20 @@ export const deleteBlackListUsersSuccess = (payload) => ({
 
 export const deleteBlackListUsersError = (payload) => ({
     type: DELETE_BLACK_LIST_USER_ERROR,
+    payload,
+});
+
+export const addBlackListUsersRequest = (payload) => ({
+    type: ADD_BLACK_LIST_USER_REQUEST,
+    ...payload,
+});
+
+export const addBlackListUsersSuccess = (payload) => ({
+    type: ADD_BLACK_LIST_USER_SUCCESS,
+    payload,
+});
+
+export const addBlackListUsersError = (payload) => ({
+    type: ADD_BLACK_LIST_USER_ERROR,
     payload,
 });

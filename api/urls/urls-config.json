@@ -22,6 +22,7 @@
     },
     "blackList": {
         "blackList" : "/blackList",
-        "pull": "/app/pull"
+        "pull": "/app/pull",
+        "push": "/app/push"
     }
 }
