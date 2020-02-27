@@ -10,7 +10,7 @@ import {
 } from '../../redux/actions/userActions';
 import withRedirectIfNotAuth from '../../components/HOC/helpers/withRedirectIfNotAuth';
 import { getAllApps } from '../../redux/actions/appsActions';
-import {getUserState, getApps, getAppsNameState, getAppsModeratorsState} from "../../redux/selectors/userSelectors";
+import { getUserState, getApps, getAppsNameState, getAppsModeratorsState } from "../../redux/selectors/userSelectors";
 
 const mapStateToProps = (state) => ({
     user: getUserState(state),
@@ -24,7 +24,7 @@ const mapDispatchToProps = (dispatch) => ({
     updateModerator: dispatchRequestClient(dispatch, updateModeratorRequest),
     upgradeToUser: dispatchRequestClient(dispatch, upgradeStatusToUserRequest),
     upgradeToModerator: dispatchRequestClient(dispatch, upgradeStatusToModeratorRequest),
-    getAllApps: dispatchRequestClient(dispatch, getAllApps)
+    getAllApps: dispatchRequestClient(dispatch, getAllApps),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRedirectIfNotAuth(Main));

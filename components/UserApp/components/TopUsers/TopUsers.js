@@ -14,7 +14,7 @@ export const TopUsers = ({ top_users }) => {
                 {top_users.map((user) => {
                     const { name, weight } = user;
                     return (
-                        <Table.Row>
+                        <Table.Row key={weight}>
                             <Table.Cell>{name}</Table.Cell>
                             <Table.Cell>{weight}</Table.Cell>
                         </Table.Row>

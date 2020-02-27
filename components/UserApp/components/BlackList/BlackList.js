@@ -26,9 +26,9 @@ const BlackList = ({ black_list_users, deleteBlackListUsers, appName }) => {
                     </Table.Row>
                 </Table.Header>
                 <Table.Body>
-                    {black_list_users.map((user) => {
+                    {black_list_users.map((user, index) => {
                         return (
-                            <Table.Row>
+                            <Table.Row key={`${user}${index}`}>
                                 <Table.Cell>{user}</Table.Cell>
                                 <Table.Cell textAlign="right">
                                     <CustomButton onClick={() => handleClick(user)} content='Delete' color='orange'/>

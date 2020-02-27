@@ -46,8 +46,8 @@ const ModalBotDeleteContent = ({
 
 ModalBotDeleteContent.propTypes = {
     onFormSubmit: PropTypes.func,
-    appName: PropTypes.bool,
-    type: PropTypes.bool,
+    appName: PropTypes.string,
+    type: PropTypes.string,
     onClose: PropTypes.func,
     bot: PropTypes.object,
 };

@@ -20,7 +20,7 @@ const Main = ({
     apps,
 }) => {
     const [activeItem, setActiveItem] = useState(false);
-    const [activeIndex, setActiveIndex] = useState(-1);
+    const [activeIndex, setActiveIndex] = useState('');
     const [userEmail] = useLocalStorage('userEmail');
 
     const handleItemClick = (e, { name }) => {
@@ -80,7 +80,7 @@ Main.propTypes = {
     upgradeToModerator: PropTypes.func.isRequired,
     updateModerator: PropTypes.func.isRequired,
     upgradeToUser: PropTypes.func.isRequired,
-    user: PropTypes.func,
+    user: PropTypes.object,
     apps: PropTypes.array,
     getAllApps: PropTypes.func,
 };

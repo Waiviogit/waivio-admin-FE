@@ -2,7 +2,7 @@ import "../UserApp.scss";
 import React, { useState } from "react";
 import { Accordion, Icon } from "semantic-ui-react";
 import dynamic from 'next/dynamic';
-const Moderators = dynamic(() => import("./Moderators/Moderators"));
+const Moderators = dynamic(() => import("./Moderators"));
 const TopUsers = dynamic(() => import("./TopUsers"));
 const ServiceBots = dynamic(() => import("./ServiceBots"));
 const BlackList = dynamic(() => import("./BlackList"));
@@ -20,7 +20,6 @@ export const UserAppContent = ({
     appName,
 }) => {
     const [activeIndex, setActiveIndex] = useState(-1);
-    console.log('appName', appName);
     const handleClick = (index) => {
         if (activeIndex === index) {
             setActiveIndex(-1);
@@ -58,23 +57,7 @@ export const UserAppContent = ({
                     <Moderators moderators={moderators} appName={appName} />
                 </div>
             </Accordion.Content>
-            <Accordion.Title
-                active={activeIndex === 1}
-                index={1}
-                onClick={() => handleClick(1)}
-            >
-                <div className="user-app-content__title">
-                    <div className="user-app-content__title-content">
-                        <Icon name="dropdown" />
-                        Top Users
-                    </div>
-                </div>
-            </Accordion.Title>
-            <Accordion.Content active={activeIndex === 1}>
-                <div className="user-app-content__topUsers">
-                    <TopUsers top_users={top_users} />
-                </div>
-            </Accordion.Content>
+
             <Accordion.Title
                 active={activeIndex === 2}
                 index={2}
@@ -125,6 +108,23 @@ export const UserAppContent = ({
             <Accordion.Content active={activeIndex === 3}>
                 <div className="user-app-content__serviceBots">
                     <BlackList black_list_users={black_list_users} appName={appName}/>
+                </div>
+            </Accordion.Content>
+            <Accordion.Title
+                active={activeIndex === 1}
+                index={1}
+                onClick={() => handleClick(1)}
+            >
+                <div className="user-app-content__title">
+                    <div className="user-app-content__title-content">
+                        <Icon name="dropdown" />
+                        Top Users
+                    </div>
+                </div>
+            </Accordion.Title>
+            <Accordion.Content active={activeIndex === 1}>
+                <div className="user-app-content__topUsers">
+                    <TopUsers top_users={top_users} />
                 </div>
             </Accordion.Content>
         </>

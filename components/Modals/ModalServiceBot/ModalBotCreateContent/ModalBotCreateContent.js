@@ -14,16 +14,16 @@ const ModalBotCreateContent = ({
     const [postingKey, setPostingKey] = useState(null);
     const [roles, setRoles] = useState(null);
 
-    const handleChangeName = e => {
+    const handleChangeName = (e) => {
         setName(e.target.value);
     };
 
-    const handleChangePostingKey = e => {
+    const handleChangePostingKey = (e) => {
         setPostingKey(e.target.value);
     };
 
     const handleSubmit = () => {
-        const requestData = { app: appName, name: name, postingKey: postingKey, roles: roles };
+        const requestData = { app: appName, name, postingKey, roles };
         console.log(requestData);
         setIsLoading(true);
         onFormSubmit(requestData)
@@ -46,21 +46,21 @@ const ModalBotCreateContent = ({
                         placeholder="Name"
                     />
                 </Form.Field>
-                    <Form.Field>
-                        <Form.Input
-                            label="Posting Key"
-                            type="text"
-                            onChange={handleChangePostingKey}
-                            value={postingKey}
-                            placeholder="Posting Key"
-                        />
-                    </Form.Field>
+                <Form.Field>
+                    <Form.Input
+                        label="Posting Key"
+                        type="text"
+                        onChange={handleChangePostingKey}
+                        value={postingKey}
+                        placeholder="Posting Key"
+                    />
+                </Form.Field>
                 <Form.Field>
                     <Form.Input
                         label="Roles"
                         type='text'
                         value={roles}
-                        onChange={(e, { value }) => setRoles( [value])}
+                        onChange={(e, { value }) => setRoles([value])}
                         placeholder="Roles"
                     />
                 </Form.Field>
@@ -82,7 +82,7 @@ const ModalBotCreateContent = ({
 ModalBotCreateContent.propTypes = {
     submitButtonContent: PropTypes.string,
     onFormSubmit: PropTypes.func,
-    appName: PropTypes.bool,
+    appName: PropTypes.string,
     onClose: PropTypes.func,
 };
 

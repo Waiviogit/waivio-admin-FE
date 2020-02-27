@@ -2,7 +2,7 @@ import React from 'react';
 import { Table } from 'semantic-ui-react';
 import ModalServiceBot from '../../../Modals/ModalServiceBot';
 
-const renderRole = (role) => <div>{role}</div>;
+const renderRole = (role) => <div key={role}>{role}</div>;
 
 const TableRow = ({ bot, updateServiceBot, deleteServiceBot, appName }) => {
     const { name, postingKey, roles } = bot;

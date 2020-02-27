@@ -14,12 +14,12 @@ const ModalModeratorCreateContent = ({
     const [permlinks, setPermlinks] = useState(null);
     const [roles, setRoles] = useState(null);
 
-    const handleChangeName = e => {
+    const handleChangeName = (e) => {
         setName(e.target.value);
     };
 
     const handleSubmit = () => {
-        const requestData = { app: appName, moderator: {name: name, author_permlinks: permlinks} };
+        const requestData = { app: appName, moderator: { name, author_permlinks: permlinks } };
         console.log(requestData);
         setIsLoading(true);
         onFormSubmit(requestData)
@@ -47,11 +47,10 @@ const ModalModeratorCreateContent = ({
                         label="Permlinks"
                         type='text'
                         value={roles}
-                        onChange={(e, { value }) => setPermlinks( [value])}
+                        onChange={(e, { value }) => setPermlinks([value])}
                         placeholder="Permlinks"
                     />
                 </Form.Field>
-
 
                 <div className="modal-moderator__button">
                     <CustomButton

@@ -38,7 +38,7 @@ const UserApp = ({ app, activeIndex, setActiveIndex }) => {
 
 UserApp.propTypes = {
     app: PropTypes.object,
-    activeIndex: PropTypes.number,
+    activeIndex: PropTypes.string,
     setActiveIndex: PropTypes.func,
 };
 

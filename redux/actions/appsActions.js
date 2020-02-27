@@ -1,8 +1,9 @@
-import {UPDATE_MODERATOR_ERROR, UPDATE_MODERATOR_REQUEST, UPDATE_MODERATOR_SUCCESS} from "./userActions";
+import { UPDATE_MODERATOR_ERROR, UPDATE_MODERATOR_REQUEST, UPDATE_MODERATOR_SUCCESS } from "./userActions";
 
 export const GET_ALL_APPS_REQUEST = 'GET_ALL_APPS_REQUEST';
 export const GET_ALL_APPS_SUCCESS = 'GET_ALL_APPS_SUCCESS';
 export const GET_ALL_APPS_ERROR = 'GET_ALL_APPS_ERROR';
+export const UPDATE_ALL_APPS_REQUEST = 'UPDATE_ALL_APPS_REQUEST';
 
 export const CREATE_SERVICE_BOT_REQUEST = "CREATE_SERVICE_BOT_REQUEST";
 export const CREATE_SERVICE_BOT_SUCCESS = "CREATE_SERVICE_BOT_SUCCESS";
@@ -24,17 +25,22 @@ export const ADD_BLACK_LIST_USER_REQUEST = "ADD_BLACK_LIST_USER_REQUEST";
 export const ADD_BLACK_LIST_USER_SUCCESS = "ADD_BLACK_LIST_USER_SUCCESS";
 export const ADD_BLACK_LIST_USER_ERROR = "ADD_BLACK_LIST_USER_ERROR";
 
-export const getAllApps = payload => ({
+export const getAllApps = (payload) => ({
     type: GET_ALL_APPS_REQUEST,
     ...payload,
 });
 
-export const getAllAppsSuccess = payload => ({
+export const updateAllAps = (ctx) => ({
+    type: UPDATE_ALL_APPS_REQUEST,
+    ctx,
+});
+
+export const getAllAppsSuccess = (payload) => ({
     type: GET_ALL_APPS_SUCCESS,
     payload,
 });
 
-export const getAllAppsError = payload => ({
+export const getAllAppsError = (payload) => ({
     type: GET_ALL_APPS_ERROR,
     payload,
 });

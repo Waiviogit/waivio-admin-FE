@@ -6,7 +6,7 @@ import { CustomButton } from '../../common/buttons';
 import CustomModalHeader from '../../common/CustomModalHeader';
 import ModalModeratorDeleteContent from "./ModalModeratorDeleteContent";
 import ModalModeratorUpdateContent from "./ModalModeratorUpdateContent";
-import ModalModeratorCreateContent from '../ModalModerator/ModalModeratorCreateContent';
+import ModalModeratorCreateContent from "./ModalModeratorCreateContent";
 
 const ModalModerator = ({
     title,
@@ -21,7 +21,7 @@ const ModalModerator = ({
 
     const handleShow = () => setIsOpen(true);
     const handleClose = () => setIsOpen(false);
-    const stopPropagation = e => e.stopPropagation();
+    const stopPropagation = (e) => e.stopPropagation();
     const getRenderModal = () => {
         let renderModal = null;
         if (type === "delete") {
@@ -56,8 +56,8 @@ const ModalModerator = ({
                     appName={appName}
                     onClose={handleClose}
                 />
-                );
-            }
+            );
+        }
 
         return renderModal;
     };

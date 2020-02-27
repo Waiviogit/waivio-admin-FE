@@ -19,8 +19,9 @@ const Moderators = ({ moderators, appName, updateModerator, upgradeToUser }) => 
                 </Table.Row>
             </Table.Header>
             <Table.Body>
-                {moderators.map(moderator => (
+                {moderators.map((moderator, index) => (
                     <TableRow
+                        key={`${index}${moderator.name}`}
                         moderator={moderator}
                         appName={appName}
                         updateModerator={updateModerator}

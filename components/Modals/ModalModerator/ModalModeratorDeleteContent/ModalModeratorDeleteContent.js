@@ -10,13 +10,11 @@ const ModalModeratorDeleteContent = ({
     type,
     moderator,
 }) => {
-    console.log('appName', appName);
     const [isLoading, setIsLoading] = useState(false);
     const { name, author_permlinks } = moderator;
 
     const handleSubmit = () => {
         const requestData = { app: appName, moderator: { name, author_permlinks} };
-        console.log('requestData', requestData);
         setIsLoading(true);
         onFormSubmit(requestData)
             .then(() => {

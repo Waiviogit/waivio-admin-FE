@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Table, Input } from "semantic-ui-react";
-import { CustomButton } from "../../../common/buttons";
 import PropTypes from "prop-types";
+import { CustomButton } from "../../../common/buttons";
 
 const ModalModeratorUpdateContent = ({
     onClose,
@@ -12,27 +12,28 @@ const ModalModeratorUpdateContent = ({
     const [isLoading, setIsLoading] = useState(false);
     const { name, author_permlinks } = moderator;
     const [permlinks, setPermlinks] = useState(author_permlinks || []);
-    const [inputValue, setInputValue] = useState(null);
+    const [inputValue, setInputValue] = useState('');
 
     const handleChange = (e) => {
         setInputValue(e.target.value);
     };
-
+    
     const handleClickAdd = () => {
-        setPermlinks([inputValue, ...permlinks]);
+        const newPermlinks = [inputValue, ...permlinks];
+        setPermlinks(newPermlinks);
         setInputValue("");
         const requestData = {
             type: "Add",
-            data: { app: appName, name, author_permlinks: permlinks },
+            data: { app: appName, moderator: { name, author_permlinks: newPermlinks } },
         };
         sendRequest(requestData);
     };
-    const handleClickDelete = (delIndex) => {
-        const newPermlinks = permlinks.filter((permlink, index) => index !== delIndex);
+    const handleClickDelete = (deletePermlink) => {
+        const newPermlinks = permlinks.filter((permlink) => permlink !== deletePermlink);
         setPermlinks(newPermlinks);
         const requestData = {
             type: "Delete",
-            data: { app: appName, name, author_permlinks: permlinks},
+            data: { app: appName, moderator: { name, author_permlinks: [deletePermlink] } },
         };
         sendRequest(requestData);
     };
@@ -67,12 +68,12 @@ const ModalModeratorUpdateContent = ({
                     </Table.Header>
                     <Table.Body>
                         {permlinks.map((permlink, index) => (
-                            <Table.Row>
-                                <Table.Cell key={index}>
+                            <Table.Row key={index}>
+                                <Table.Cell >
                                     <div>{permlink}</div>
                                 </Table.Cell>
                                 <Table.Cell textAlign="right">
-                                    <CustomButton color='orange' content='Delete' loading={isLoading} onClick={() => {handleClickDelete(index)}}/>
+                                    <CustomButton color='orange' content='Delete' loading={isLoading} onClick={() => { handleClickDelete(permlink); }}/>
                                 </Table.Cell>
                             </Table.Row>
                         ))}
@@ -84,7 +85,7 @@ const ModalModeratorUpdateContent = ({
 };
 
 ModalModeratorUpdateContent.propTypes = {
-    moderator: PropTypes.string,
+    moderator: PropTypes.object,
     onFormSubmit: PropTypes.func,
     onClose: PropTypes.func,
     appName: PropTypes.string,

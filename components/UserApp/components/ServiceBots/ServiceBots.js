@@ -22,6 +22,7 @@ const ServiceBots = ({ service_bots, updateServiceBot, deleteServiceBot, appName
             <Table.Body>
                 {service_bots.map(bot => (
                     <TableRow
+                        key={bot.name}
                         bot={bot}
                         appName={appName}
                         updateServiceBot={updateServiceBot}

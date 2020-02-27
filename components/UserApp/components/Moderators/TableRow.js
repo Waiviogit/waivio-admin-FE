@@ -2,7 +2,7 @@ import React from 'react';
 import { Table } from 'semantic-ui-react';
 import ModalModerator from '../../../Modals/ModalModerator';
 
-const renderPermlink = (permlink) => <div>{permlink}</div>;
+const renderPermlink = (permlink) => <div key={permlink}>{permlink}</div>;
 
 const TableRow = ({ moderator, updateModerator, upgradeToUser, appName }) => {
     const { name, author_permlinks } = moderator;

@@ -13,28 +13,29 @@ const ModalBotUpdateContent = ({
     const [isLoading, setIsLoading] = useState(false);
     const { name, postingKey, roles } = bot;
     const [botRoles, setBotRoles] = useState(roles || []);
-    const [inputValue, setInputValue] = useState(null);
+    const [inputValue, setInputValue] = useState('');
 
     const handleChange = (e) => {
         setInputValue(e.target.value);
     };
 
     const handleClickAdd = () => {
-        setBotRoles([inputValue, ...botRoles]);
+        const newBotRoles = [inputValue, ...botRoles];
+        setBotRoles(newBotRoles);
         setInputValue("");
         const requestData = {
             type: "Add",
-            data: { app: appName, name, postingKey, roles: botRoles },
+            data: { app: appName, name, postingKey, roles: newBotRoles },
         };
 
         sendRequest(requestData);
     };
-    const handleClickDelete = (delIndex) => {
-        const newBotRoles = botRoles.filter((botRole, index) => index !== delIndex);
+    const handleClickDelete = (role) => {
+        const newBotRoles = botRoles.filter((botRole) => botRole !== role);
         setBotRoles(newBotRoles);
         const requestData = {
             type: "Delete",
-            data: { app: appName, name, postingKey, roles: newBotRoles },
+            data: { app: appName, name, postingKey, roles: [role] },
         };
         sendRequest(requestData);
     };
@@ -68,13 +69,13 @@ const ModalBotUpdateContent = ({
                         </Table.Row>
                     </Table.Header>
                     <Table.Body>
-                        {botRoles.map((role, index) => (
-                            <Table.Row>
-                                <Table.Cell key={index}>
+                        {botRoles.map((role) => (
+                            <Table.Row key={role}>
+                                <Table.Cell>
                                     <div>{role}</div>
                                 </Table.Cell>
                                 <Table.Cell textAlign="right">
-                                    <CustomButton loading={isLoading} color='orange' content='Delete' onClick={() => {handleClickDelete(index)}}/>
+                                    <CustomButton loading={isLoading} color='orange' content='Delete' onClick={() => {handleClickDelete(role)}}/>
                                 </Table.Cell>
                             </Table.Row>
                         ))}
@@ -87,7 +88,7 @@ const ModalBotUpdateContent = ({
 
 ModalBotUpdateContent.propTypes = {
     onFormSubmit: PropTypes.func,
-    appName: PropTypes.bool,
+    appName: PropTypes.string,
     onClose: PropTypes.func,
     bot: PropTypes.object,
 };

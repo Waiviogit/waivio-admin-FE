@@ -6,6 +6,7 @@ import { getAdminState } from '../selectors/userSelectors';
 
 export default function* actionWatcher() {
     yield takeEvery(appsActions.GET_ALL_APPS_REQUEST, getAllApps);
+    yield takeEvery(appsActions.UPDATE_ALL_APPS_REQUEST, updateAllApps);
     yield takeEvery(appsActions.CREATE_SERVICE_BOT_REQUEST, createServiceBot);
     yield takeEvery(appsActions.UPDATE_SERVICE_BOT_REQUEST, updateServiceBot);
     yield takeEvery(appsActions.DELETE_SERVICE_BOT_REQUEST, deleteServiceBot);
@@ -15,28 +16,39 @@ export default function* actionWatcher() {
 
 export function* getAllApps({ payload, resolve, reject, ctx }) {
     try {
-        console.log(payload);
         const { data, headers } = yield call([api.apps, api.apps.getAllApps], payload);
         yield call(updateCookies, headers, ctx);
         yield call(resolve, data);
-        yield put(
-            appsActions.getAllAppsSuccess({
-                data,
-                isPage: payload ? payload.isPage : false,
-            }),
-        );
+        yield put(appsActions.getAllAppsSuccess({ data }));
     } catch (error) {
-    // yield put(showNotification(error));
+        yield put(appsActions.updateAllAps(ctx));
+        // yield put(showNotification(error));
         yield put(appsActions.getAllAppsError());
         yield call(reject, error);
     }
 }
 
-export function* createServiceBot({ payload, resolve, reject }) {
+export function* updateAllApps({ ctx }) {
+    const { email } = yield select(getAdminState);
     try {
-        const { data } = yield call([api.apps, api.apps.createServiceBot], payload);
+        const { data, headers } = yield call([api.apps, api.apps.getAllApps], email);
+        yield call(updateCookies, headers, ctx);
+        yield put(
+            appsActions.getAllAppsSuccess({ data }),
+        );
+    } catch (error) {
+        // yield put(showNotification(error));
+        yield put(appsActions.getAllAppsError());
+    }
+}
+
+export function* createServiceBot({ payload, resolve, reject, ctx }) {
+    try {
+        const { data, headers } = yield call([api.apps, api.apps.createServiceBot], payload);
+        yield call(updateCookies, headers, ctx);
         yield call(resolve, data);
         yield put(appsActions.createServiceBotSuccess());
+        yield put(appsActions.updateAllAps(ctx));
     // yield call(showSuccessNotification, {
     //   id:
     //     payload.ids.length === 1
@@ -50,12 +62,13 @@ export function* createServiceBot({ payload, resolve, reject }) {
     }
 }
 
-export function* updateServiceBot({ payload, resolve, reject }) {
+export function* updateServiceBot({ payload, resolve, reject, ctx }) {
     try {
-        console.log('updateServiceBot', payload);
-        const { data } = yield call([api.apps, api.apps.updateServiceBot], payload);
+        const { data, headers } = yield call([api.apps, api.apps.updateServiceBot], payload);
+        yield call(updateCookies, headers, ctx);
         yield call(resolve, data);
         yield put(appsActions.updateServiceBotSuccess());
+        yield put(appsActions.updateAllAps(ctx));
     // yield call(showSuccessNotification, {
     //   id:
     //     payload.ids.length === 1
@@ -69,14 +82,13 @@ export function* updateServiceBot({ payload, resolve, reject }) {
     }
 }
 
-export function* deleteServiceBot({ payload, resolve, reject }) {
-    const { email } = yield select(getAdminState);
+export function* deleteServiceBot({ payload, resolve, reject, ctx }) {
     try {
-        console.log('deleteServiceBot', payload);
-        const { data } = yield call([api.apps, api.apps.deleteServiceBot], payload);
+        const { data, headers } = yield call([api.apps, api.apps.deleteServiceBot], payload);
+        yield call(updateCookies, headers, ctx);
         yield call(resolve, data);
         yield put(appsActions.deleteServiceBotSuccess());
-        yield put(appsActions.getAllApps(email));
+        yield put(appsActions.updateAllAps(ctx));
     // yield call(showSuccessNotification, {
     //   id:
     //     payload.ids.length === 1
@@ -90,11 +102,13 @@ export function* deleteServiceBot({ payload, resolve, reject }) {
     }
 }
 
-export function* deleteBlackListUsers({ payload, resolve, reject }) {
+export function* deleteBlackListUsers({ payload, resolve, reject, ctx }) {
     try {
-        const { data } = yield call([api.apps, api.apps.deleteBlackListUsers], payload);
+        const { data, headers } = yield call([api.apps, api.apps.deleteBlackListUsers], payload);
+        yield call(updateCookies, headers, ctx);
         yield call(resolve, data);
         yield put(appsActions.deleteBlackListUsersSuccess());
+        yield put(appsActions.updateAllAps(ctx));
         // yield call(showSuccessNotification, {
         //   id:
         //     payload.ids.length === 1
@@ -108,12 +122,13 @@ export function* deleteBlackListUsers({ payload, resolve, reject }) {
     }
 }
 
-export function* addBlackListUsers({ payload, resolve, reject }) {
-    console.log('addBlackListUsers', payload);
+export function* addBlackListUsers({ payload, resolve, reject, ctx }) {
     try {
-        const { data } = yield call([api.apps, api.apps.addBlackListUsers], payload);
+        const { data, headers } = yield call([api.apps, api.apps.addBlackListUsers], payload);
+        yield call(updateCookies, headers, ctx);
         yield call(resolve, data);
         yield put(appsActions.addBlackListUsersSuccess());
+        yield put(appsActions.updateAllAps(ctx));
         // yield call(showSuccessNotification, {
         //   id:
         //     payload.ids.length === 1
