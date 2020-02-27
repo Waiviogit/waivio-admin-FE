@@ -1,6 +1,6 @@
 import React from "react";
 import { Provider } from "react-redux";
-import App, { Container } from "next/app";
+import App from "next/app";
 import routerEvents from "next-router-events";
 import NProgress from "nprogress";
 import withRedux from "next-redux-wrapper";
@@ -39,14 +39,13 @@ export class WaivioAdmin extends App {
     render() {
         const { Component, pageProps, store, router } = this.props;
         // const locale = getLocaleState(store.getState());
-        console.log('store', store);
         return (
             <Provider store={store}>
-                {/*<PersistGate loading={null} persistor={store.__PERSISTOR}>*/}
-                <MainLayout pathname={router.pathname}>
-                    <Component {...pageProps} />
-                </MainLayout>
-                {/*</PersistGate>*/}
+                <PersistGate loading={<div>Loading...</div>} persistor={store.__PERSISTOR}>
+                    <MainLayout pathname={router.pathname}>
+                        <Component {...pageProps} />
+                    </MainLayout>
+                </PersistGate>
             </Provider>
         );
     }

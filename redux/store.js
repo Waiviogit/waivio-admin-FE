@@ -6,29 +6,35 @@ import rootReducer from './reducers';
 import rootSaga from './sagas';
 
 const sagaMiddleware = createSagaMiddleware();
-const persistConfig = {
-    key: 'root',
-    storage,
-};
-
-const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 function configureStore(initialState) {
+    let store;
     const isServer = typeof window === 'undefined';
     const middleware = isServer || ['production', 'test'].includes(process.env.NODE_ENV)
         ? applyMiddleware(sagaMiddleware)
         : (window.__REDUX_DEVTOOLS_EXTENSION__
             ? compose(applyMiddleware(sagaMiddleware), window.__REDUX_DEVTOOLS_EXTENSION__())
             : compose(applyMiddleware(sagaMiddleware)));
-    const store = createStore(
-        // rootReducer,
-        persistedReducer,
-        initialState,
-        middleware,
-    );
 
-    store.__PERSISTOR = persistStore(store);
-    
+    if (isServer) {
+        store = createStore(
+            rootReducer,
+            initialState,
+            middleware,
+        );
+    } else {
+        const persistConfig = {
+            key: 'root',
+            storage,
+        };
+        store = createStore(
+            persistReducer(persistConfig, rootReducer),
+            initialState,
+            middleware,
+        );
+        store.__PERSISTOR = persistStore(store);
+    }
+
     store.runSagaTask = () => {
         store.sagaTask = sagaMiddleware.run(rootSaga);
     };
