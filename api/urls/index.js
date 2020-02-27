@@ -1,7 +1,7 @@
-import ApiClient from '../../api/urls/ApiClient';
-import Auth from '../../api/Auth';
-import StatusOfUser from '../../api/Status';
-import Apps from '../../api/Apps';
+import ApiClient from "./ApiClient";
+import Auth from "../Auth";
+import StatusOfUser from "../Status";
+import Apps from "../Apps";
 
 export default function ({ apiPrefix } = {}) {
     const api = new ApiClient({ prefix: apiPrefix });

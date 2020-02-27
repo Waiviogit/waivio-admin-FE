@@ -1,6 +1,8 @@
 import axios from "axios";
 import _ from "lodash";
 import { parseCookies, destroyCookie } from "nookies";
+import NProgress from 'nprogress';
+
 import {
     updateCookies,
     setDefaultHeaders,
@@ -69,8 +71,25 @@ export default class ApiClient {
     }
 }
 
+const calculatePercentage = (loaded, total) => (Math.floor(loaded * 1.0) / total);
+
+const setupUpdateProgress = () => {
+    axios.defaults.onDownloadProgress = (e) => {
+        const percentage = calculatePercentage(e.loaded, e.total);
+        NProgress.set(percentage);
+    };
+};
+
+const setupStopProgress = () => {
+    axios.interceptors.response.use((response) => {
+        NProgress.done(true);
+        return response;
+    });
+};
+
 const request = ({ url, method, data, params = {}, responseType }) => {
     setDefaultHeaders(parseCookies().authorization);
+    setupUpdateProgress();
     return axios({
         method,
         url,
@@ -80,6 +99,7 @@ const request = ({ url, method, data, params = {}, responseType }) => {
         headers: { "content-type": "application/json" },
     })
         .then((response) => {
+            setupStopProgress();
             if (response.headers) {
                 updateCookies(response.headers);
             }
@@ -91,6 +111,7 @@ const request = ({ url, method, data, params = {}, responseType }) => {
             }
         })
         .catch((xhr) => {
+            setupStopProgress();
             if (xhr.response && xhr.response.headers) {
                 updateCookies(xhr.response.headers);
             }
@@ -134,3 +155,4 @@ const request = ({ url, method, data, params = {}, responseType }) => {
             throw response;
         });
 };
+
