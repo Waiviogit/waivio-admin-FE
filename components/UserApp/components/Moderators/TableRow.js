@@ -27,7 +27,7 @@ const TableRow = ({ moderator, updateModerator, upgradeToUser, appName }) => {
                     appName={appName}
                     showButtonContent='Delete'
                     submitButtonContent='Delete'
-                    title='Upgrade To User'
+                    title='Delete from Moderators'
                     type={'delete'}
                     onFormSubmit={upgradeToUser}
                     moderator={moderator}

@@ -4,40 +4,72 @@ import PropTypes from 'prop-types';
 import { Modal } from "semantic-ui-react";
 import { CustomButton } from '../../common/buttons';
 import CustomModalHeader from '../../common/CustomModalHeader';
-import ModalModeratorForm from './ModalModeratorForm';
+import ModalModeratorDeleteContent from "./ModalModeratorDeleteContent";
+import ModalModeratorUpdateContent from "./ModalModeratorUpdateContent";
+import ModalModeratorCreateContent from '../ModalModerator/ModalModeratorCreateContent';
 
 const ModalModerator = ({
     title,
     showButtonContent,
     submitButtonContent,
-    upgradeToModerator,
-    updateModerator,
-    upgradeToUser,
-    isUpdate,
-    isDelete,
-    isCreate,
+    onFormSubmit,
+    appName,
+    type,
+    moderator,
 }) => {
-    const [isOpen, setIsOpen] = useState(false);    
+    const [isOpen, setIsOpen] = useState(false);
+
     const handleShow = () => setIsOpen(true);
     const handleClose = () => setIsOpen(false);
-    const stopPropagation = (e) => e.stopPropagation();
+    const stopPropagation = e => e.stopPropagation();
+    const getRenderModal = () => {
+        let renderModal = null;
+        if (type === "delete") {
+            renderModal = (
+                <ModalModeratorDeleteContent
+                    moderator={moderator}
+                    appName={appName}
+                    submitButtonContent={submitButtonContent}
+                    type={type}
+                    onFormSubmit={onFormSubmit}
+                    onClose={handleClose}
+                />
+            );
+        } else if (type === "update") {
+            renderModal = (
+                <ModalModeratorUpdateContent
+                    moderator={moderator}
+                    submitButtonContent={submitButtonContent}
+                    onFormSubmit={onFormSubmit}
+                    type={type}
+                    appName={appName}
+                    onClose={handleClose}
+                />
+            );
+        } else if (type === "create") {
+            renderModal = (
+                <ModalModeratorCreateContent
+                    moderator={moderator}
+                    submitButtonContent={submitButtonContent}
+                    onFormSubmit={onFormSubmit}
+                    type={type}
+                    appName={appName}
+                    onClose={handleClose}
+                />
+                );
+            }
+
+        return renderModal;
+    };
+
     return (
         <>
-            <CustomButton content={showButtonContent} onClick={handleShow}/>
+            <CustomButton color='orange' content={showButtonContent} onClick={handleShow}/>
             <Modal size="tiny" open={isOpen} onClick={stopPropagation}>
                 <CustomModalHeader onClose={handleClose} title={title} icon='clear'/>
                 <Modal.Content>
                     <div className='modal-moderator__content'>
-                        <ModalModeratorForm
-                            submitButtonContent={submitButtonContent}
-                            isUpdate={isUpdate}
-                            isCreate={isCreate}
-                            isDelete={isDelete}
-                            upgradeToModerator={upgradeToModerator}
-                            updateModerator={updateModerator}
-                            upgradeToUser={upgradeToUser}
-                            onClose={handleClose}
-                        />
+                        {getRenderModal()}
                     </div>
                 </Modal.Content>
             </Modal>

@@ -1,17 +1,16 @@
-import "../ModalServiceBot.scss";
 import React, { useState } from "react";
 import { Button, Table, Input } from "semantic-ui-react";
 import { CustomButton } from "../../../common/buttons";
 
-const ModalBotUpdateContent = ({
+const ModalModeratorUpdateContent = ({
     onClose,
     appName,
     onFormSubmit,
-    bot,
+    moderator,
 }) => {
     const [isLoading, setIsLoading] = useState(false);
-    const { name, postingKey, roles } = bot;
-    const [botRoles, setBotRoles] = useState(roles || []);
+    const { name, author_permlinks } = moderator;
+    const [permlinks, setPermlinks] = useState(author_permlinks || []);
     const [inputValue, setInputValue] = useState(null);
 
     const handleChange = (e) => {
@@ -19,21 +18,20 @@ const ModalBotUpdateContent = ({
     };
 
     const handleClickAdd = () => {
-        setBotRoles([inputValue, ...botRoles]);
+        setPermlinks([inputValue, ...permlinks]);
         setInputValue("");
         const requestData = {
             type: "Add",
-            data: { app: appName, name, postingKey, roles: botRoles },
+            data: { app: appName, name, author_permlinks: permlinks },
         };
-
         sendRequest(requestData);
     };
     const handleClickDelete = (delIndex) => {
-        const newBotRoles = botRoles.filter((botRole, index) => index !== delIndex);
-        setBotRoles(newBotRoles);
+        const newPermlinks = permlinks.filter((permlink, index) => index !== delIndex);
+        setPermlinks(newPermlinks);
         const requestData = {
             type: "Delete",
-            data: { app: appName, name, postingKey, roles: newBotRoles },
+            data: { app: appName, name, author_permlinks: permlinks},
         };
         sendRequest(requestData);
     };
@@ -49,31 +47,31 @@ const ModalBotUpdateContent = ({
     };
 
     return (
-        <div className="modal-serviceBot__content-form">
-            <div className="modal-serviceBot__content-form-input">
+        <div className="modal-moderator__content-form">
+            <div className="modal-moderator__content-form-input">
                 <Input
-                    placeholder="Role"
+                    placeholder="Permlink"
                     onChange={handleChange}
                     value={inputValue}
                 />
-                <CustomButton content='Add' color='orange' onClick={handleClickAdd} loading={isLoading}/>
+                <CustomButton color='orange' content='Add' onClick={handleClickAdd} loading={isLoading}/>
             </div>
-            {!!botRoles.length && (
+            {!!permlinks.length && (
                 <Table striped singleLine unstackable>
                     <Table.Header>
                         <Table.Row>
-                            <Table.HeaderCell>Roles</Table.HeaderCell>
+                            <Table.HeaderCell>Permlinks</Table.HeaderCell>
                             <Table.HeaderCell></Table.HeaderCell>
                         </Table.Row>
                     </Table.Header>
                     <Table.Body>
-                        {botRoles.map((role, index) => (
+                        {permlinks.map((permlink, index) => (
                             <Table.Row>
                                 <Table.Cell key={index}>
-                                    <div>{role}</div>
+                                    <div>{permlink}</div>
                                 </Table.Cell>
                                 <Table.Cell textAlign="right">
-                                    <CustomButton loading={isLoading} color='orange' content='Delete' onClick={() => {handleClickDelete(index)}}/>
+                                    <CustomButton color='orange' content='Delete' loading={isLoading} onClick={() => {handleClickDelete(index)}}/>
                                 </Table.Cell>
                             </Table.Row>
                         ))}
@@ -84,4 +82,4 @@ const ModalBotUpdateContent = ({
     );
 };
 
-export default ModalBotUpdateContent;
+export default ModalModeratorUpdateContent;

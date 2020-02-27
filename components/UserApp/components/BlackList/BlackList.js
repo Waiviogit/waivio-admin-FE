@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Accordion, Button, Table } from "semantic-ui-react";
+import { CustomButton } from '../../../common/buttons';
 
 const BlackList = ({ black_list_users, deleteBlackListUsers, appName }) => {
     const [isLoading, setIsLoading] = useState(false);
@@ -17,7 +18,7 @@ const BlackList = ({ black_list_users, deleteBlackListUsers, appName }) => {
 
     return (
         <Accordion fluid styled>
-            <Table fixed singleLine unstackable>
+            <Table fixed singleLine unstackable className="user-app-content__blackList-content">
                 <Table.Header>
                     <Table.Row>
                         <Table.HeaderCell>Users</Table.HeaderCell>
@@ -30,9 +31,7 @@ const BlackList = ({ black_list_users, deleteBlackListUsers, appName }) => {
                             <Table.Row>
                                 <Table.Cell>{user}</Table.Cell>
                                 <Table.Cell textAlign="right">
-                                    <Button onClick={() => handleClick(user)} color="red" icon="delete">
-                                        Delete
-                                    </Button>
+                                    <CustomButton onClick={() => handleClick(user)} content='Delete' color='orange'/>
                                 </Table.Cell>
                             </Table.Row>
                         );

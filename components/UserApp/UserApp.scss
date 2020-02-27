@@ -1,4 +1,7 @@
+@import "utils/veriables";
+
 .user-app-content {
+
   &__moderators {
     display: flex;
     justify-content: space-between;
@@ -9,6 +12,9 @@
   &__title{
     display: flex;
     justify-content: space-between;
+    &-btn button {
+      width: 170px;
+    }
   }
   &__topUsers {
     display: flex;
@@ -18,13 +24,13 @@
     }
   }
   &__serviceBots {
+    .accordion.ui.fluid.styled {
+      box-shadow: none!important;
+    }
     display: flex;
     justify-content: space-between;
     &-names {
       border: none!important;
-    }
-    &-content {
-
     }
   }
 }

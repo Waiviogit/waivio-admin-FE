@@ -1,26 +1,23 @@
-import React, { useState } from "react";
+import '../ModalModerator.scss';
+import React, { useState } from 'react';
 import PropTypes from "prop-types";
 import { CustomButton } from "../../../common/buttons";
 
-const ModalBotDeleteContent = ({
+const ModalModeratorDeleteContent = ({
     onClose,
     submitButtonContent,
     appName,
     onFormSubmit,
     type,
-    bot,
+    moderator,
 }) => {
-
-    const [isLoading, setIsLoading] = useState(false);
-    const { name, postingKey, roles } = bot;
     console.log('appName', appName);
+    const [isLoading, setIsLoading] = useState(false);
+    const { name, author_permlinks } = moderator;
+
     const handleSubmit = () => {
-        const requestData = {
-            app: appName,
-            name,
-            postingKey,
-            roles,
-        };
+        const requestData = { app: appName, moderator: { name, author_permlinks} };
+        console.log('requestData', requestData);
         setIsLoading(true);
         onFormSubmit(requestData)
             .then(() => {
@@ -33,10 +30,10 @@ const ModalBotDeleteContent = ({
     const handleClose = () => onClose();
 
     return (
-        <div className="modal-serviceBot__content-form">
+        <div className="modal-moderator__content-form">
             {type === "delete" && <span>Are you sure?</span>}
 
-            <div className="modal-serviceBot__content-btn">
+            <div className="modal-moderator__content-btn">
                 <CustomButton color="orange" content="No" onClick={handleClose} />
                 <CustomButton
                     color="orange"
@@ -44,12 +41,11 @@ const ModalBotDeleteContent = ({
                     onClick={handleSubmit}
                 />
             </div>
-
         </div>
     );
 };
 
-ModalBotDeleteContent.propTypes = {
+ModalModeratorDeleteContent.propTypes = {
     submitButtonContent: PropTypes.string,
     isUpdate: PropTypes.bool,
     upgradeToModerator: PropTypes.func,
@@ -60,4 +56,4 @@ ModalBotDeleteContent.propTypes = {
     onClose: PropTypes.func,
 };
 
-export default ModalBotDeleteContent;
+export default ModalModeratorDeleteContent;

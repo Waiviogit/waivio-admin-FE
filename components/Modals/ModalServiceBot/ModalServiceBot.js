@@ -62,7 +62,7 @@ const ModalServiceBot = ({
 
   return (
     <>
-      <CustomButton content={showButtonContent} onClick={handleShow} />
+      <CustomButton content={showButtonContent} color='orange' onClick={handleShow} />
       <Modal size="tiny" open={isOpen} onClick={stopPropagation}>
         <CustomModalHeader onClose={handleClose} title={title} icon="clear" />
         <Modal.Content>

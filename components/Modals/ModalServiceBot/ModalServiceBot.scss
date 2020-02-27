@@ -1,27 +1,46 @@
 @import "utils/veriables";
 
 .modal-serviceBot {
-  &__content-form-input {
-    display: flex;
-    justify-content: space-between;
-    .ui.input {
-      flex: 1;
-    }
-    input {
-      height: 50px;
-      padding-left: 19px;
-      font-weight: 600;
-      font-size: 14px;
-      line-height: 19px;
-      font-family: "Open Sans", sans-serif;
-      border: 1px solid #cdcdcd;
-      &::placeholder {
+  &__content-form {
+    &-input {
+      display: flex;
+      justify-content: space-between;
+
+      .ui.input {
+        flex: 1;
+      }
+
+      input {
+        height: 50px;
+        padding-left: 19px;
+        font-weight: 600;
         font-size: 14px;
         line-height: 19px;
+        font-family: "Open Sans", sans-serif;
+        border: 1px solid #cdcdcd;
+
+        &::placeholder {
+          font-size: 14px;
+          line-height: 19px;
+          font-weight: 600;
+        }
+
+        &:focus {
+          border: 1px solid $color-orange !important;
+        }
       }
-      &:focus {
-        border: 1px solid $color-orange !important;
-      }
+    }
+    span {
+      font-size: 14px;
+      font-family: "Open Sans", sans-serif;
+    }
+  }
+
+  &__content-btn {
+    display: flex;
+    justify-content: flex-end;
+    button {
+      width: 120px;
     }
   }
   &__button {

@@ -27,7 +27,7 @@ const ModalBlackList = ({ showButtonContent, submitButtonContent, title, appName
 
     return (
         <>
-            <CustomButton content={showButtonContent} onClick={handleShow}/>
+            <CustomButton color='orange' content={showButtonContent} onClick={handleShow}/>
             <Modal size="tiny" open={isOpen} onClick={stopPropagation}>
                 <CustomModalHeader onClose={handleClose} title={title} icon='clear'/>
                 <Modal.Content>

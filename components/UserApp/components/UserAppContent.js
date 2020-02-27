@@ -1,6 +1,6 @@
 import "../UserApp.scss";
 import React, { useState } from "react";
-import { Accordion, Button, Icon } from "semantic-ui-react";
+import { Accordion, Icon } from "semantic-ui-react";
 import dynamic from 'next/dynamic';
 const Moderators = dynamic(() => import("./Moderators/Moderators"));
 const TopUsers = dynamic(() => import("./TopUsers"));
@@ -20,7 +20,7 @@ export const UserAppContent = ({
     appName,
 }) => {
     const [activeIndex, setActiveIndex] = useState(-1);
-
+    console.log('appName', appName);
     const handleClick = (index) => {
         if (activeIndex === index) {
             setActiveIndex(-1);
@@ -46,15 +46,16 @@ export const UserAppContent = ({
                             showButtonContent="Create Moderator"
                             submitButtonContent="Create"
                             title="Create Moderator"
-                            isCreate
-                            upgradeToModerator={upgradeToModerator}
+                            appName={appName}
+                            onFormSubmit={upgradeToModerator}
+                            type='create'
                         />
                     </div>
                 </div>
             </Accordion.Title>
             <Accordion.Content active={activeIndex === 0}>
                 <div className="user-app-content__moderators">
-                    <Moderators moderators={moderators} />
+                    <Moderators moderators={moderators} appName={appName} />
                 </div>
             </Accordion.Content>
             <Accordion.Title
@@ -117,7 +118,6 @@ export const UserAppContent = ({
                             submitButtonContent="Add"
                             title="Add User"
                             appName={appName}
-                            // upgradeToModerator={upgradeToModerator}
                         />
                     </div>
                 </div>

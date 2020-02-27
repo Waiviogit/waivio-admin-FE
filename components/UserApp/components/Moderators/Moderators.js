@@ -1,20 +1,8 @@
-import React, { useState } from 'react';
-import { Accordion, Icon, Button, Segment, Table } from 'semantic-ui-react';
-import ModeratorsPermlinks from "./ModeratorsPermlinks";
-import ModeratorsNames from "./ModeratorsNames";
-import TableRow from "../Moderators/TableRow";
+import React from 'react';
+import { Table } from 'semantic-ui-react';
+import TableRow from "./TableRow";
 
 const Moderators = ({ moderators, appName, updateModerator, upgradeToUser }) => {
-    const [activeIndex, setActiveIndex] = useState(-1);
-
-    const handleClick = (index) => {
-        if (activeIndex === index) {
-            setActiveIndex(-1);
-            return;
-        }
-        setActiveIndex(index);
-    };
-
     return (
         <Table
             fixed

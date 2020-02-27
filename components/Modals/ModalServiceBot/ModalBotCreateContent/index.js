@@ -1,3 +1,3 @@
-import ModalServiceBotForm from "./";
+import ModalBotCreateContent from "./ModalBotCreateContent";
 
-export default ModalServiceBotForm;
+export default ModalBotCreateContent;
