@@ -75,6 +75,14 @@ const ModalServiceBot = ({
   );
 };
 
-ModalServiceBot.propTypes = {};
+ModalServiceBot.propTypes = {
+  type: PropTypes.string,
+  onFormSubmit: PropTypes.func,
+  showButtonContent: PropTypes.string,
+  submitButtonContent: PropTypes.string,
+  title: PropTypes.string,
+  appName: PropTypes.string,
+  bot: PropTypes.object,
+};
 
 export default ModalServiceBot;

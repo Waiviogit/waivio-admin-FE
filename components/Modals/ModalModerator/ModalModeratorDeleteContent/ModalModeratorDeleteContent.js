@@ -5,7 +5,6 @@ import { CustomButton } from "../../../common/buttons";
 
 const ModalModeratorDeleteContent = ({
     onClose,
-    submitButtonContent,
     appName,
     onFormSubmit,
     type,
@@ -46,14 +45,11 @@ const ModalModeratorDeleteContent = ({
 };
 
 ModalModeratorDeleteContent.propTypes = {
-    submitButtonContent: PropTypes.string,
-    isUpdate: PropTypes.bool,
-    upgradeToModerator: PropTypes.func,
-    updateModerator: PropTypes.func,
-    upgradeToUser: PropTypes.func,
-    isDelete: PropTypes.bool,
-    isCreate: PropTypes.bool,
+    type: PropTypes.string,
+    moderator: PropTypes.object,
+    onFormSubmit: PropTypes.func,
     onClose: PropTypes.func,
+    appName: PropTypes.string,
 };
 
 export default ModalModeratorDeleteContent;

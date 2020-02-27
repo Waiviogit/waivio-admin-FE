@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { CustomButton } from "../../common/buttons";
+import PropTypes from 'prop-types';
 import { Form, Modal } from "semantic-ui-react";
+import { CustomButton } from "../../common/buttons";
 import CustomModalHeader from "../../common/CustomModalHeader";
 
 const ModalBlackList = ({ showButtonContent, submitButtonContent, title, appName, onClose, addBlackListUsers }) => {
@@ -57,6 +58,15 @@ const ModalBlackList = ({ showButtonContent, submitButtonContent, title, appName
             </Modal>
         </>
     );
+};
+
+ModalBlackList.propTypes = {
+    showButtonContent: PropTypes.string,
+    submitButtonContent : PropTypes.string,
+    title: PropTypes.string,
+    appName: PropTypes.string,
+    onClose: PropTypes.func,
+    addBlackListUsers: PropTypes.func,
 };
 
 export default ModalBlackList;

@@ -9,9 +9,7 @@ const ModalModeratorCreateContent = ({
     appName,
     onFormSubmit,
 }) => {
-    console.log('appName', appName);
     const [isLoading, setIsLoading] = useState(false);
-
     const [name, setName] = useState(null);
     const [permlinks, setPermlinks] = useState(null);
     const [roles, setRoles] = useState(null);
@@ -31,8 +29,6 @@ const ModalModeratorCreateContent = ({
             })
             .catch(() => setIsLoading(false));
     };
-
-    const handleClose = () => onClose();
 
     return (
         <div className="modal-moderator__content-form">
@@ -73,13 +69,9 @@ const ModalModeratorCreateContent = ({
 
 ModalModeratorCreateContent.propTypes = {
     submitButtonContent: PropTypes.string,
-    isUpdate: PropTypes.bool,
-    upgradeToModerator: PropTypes.func,
-    updateModerator: PropTypes.func,
-    upgradeToUser: PropTypes.func,
-    isDelete: PropTypes.bool,
-    isCreate: PropTypes.bool,
+    onFormSubmit: PropTypes.func,
     onClose: PropTypes.func,
+    appName: PropTypes.string,
 };
 
 export default ModalModeratorCreateContent;

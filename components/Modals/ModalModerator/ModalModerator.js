@@ -81,12 +81,10 @@ ModalModerator.propTypes = {
     title: PropTypes.string,
     showButtonContent: PropTypes.string,
     submitButtonContent: PropTypes.string,
-    isUpdate: PropTypes.bool,
-    isDelete: PropTypes.bool,
-    isCreate: PropTypes.bool,
-    upgradeToModerator: PropTypes.func,
-    updateModerator: PropTypes.func,
-    upgradeToUser: PropTypes.func,
+    onFormSubmit: PropTypes.func,
+    appName: PropTypes.string,
+    type: PropTypes.string,
+    moderator: PropTypes.object,
 };
 
 export default ModalModerator;

@@ -1,5 +1,6 @@
 import React from 'react';
-import { Accordion, Icon, Button, Segment } from "semantic-ui-react";
+import PropTypes from "prop-types";
+import { Accordion, Icon } from "semantic-ui-react";
 import UserAppContent from './components';
 
 const UserApp = ({ app, activeIndex, setActiveIndex }) => {
@@ -33,6 +34,12 @@ const UserApp = ({ app, activeIndex, setActiveIndex }) => {
             </Accordion.Content>
         </Accordion>
     );
+};
+
+UserApp.propTypes = {
+    app: PropTypes.object,
+    activeIndex: PropTypes.number,
+    setActiveIndex: PropTypes.func,
 };
 
 export default UserApp;

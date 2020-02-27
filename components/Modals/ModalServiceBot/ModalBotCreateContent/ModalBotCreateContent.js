@@ -9,9 +9,7 @@ const ModalBotCreateContent = ({
     appName,
     onFormSubmit,
 }) => {
-    console.log('appName', appName);
     const [isLoading, setIsLoading] = useState(false);
-
     const [name, setName] = useState(null);
     const [postingKey, setPostingKey] = useState(null);
     const [roles, setRoles] = useState(null);
@@ -35,8 +33,6 @@ const ModalBotCreateContent = ({
             })
             .catch(() => setIsLoading(false));
     };
-
-    const handleClose = () => onClose();
 
     return (
         <div className="modal-serviceBot__content-form">
@@ -85,12 +81,8 @@ const ModalBotCreateContent = ({
 
 ModalBotCreateContent.propTypes = {
     submitButtonContent: PropTypes.string,
-    isUpdate: PropTypes.bool,
-    upgradeToModerator: PropTypes.func,
-    updateModerator: PropTypes.func,
-    upgradeToUser: PropTypes.func,
-    isDelete: PropTypes.bool,
-    isCreate: PropTypes.bool,
+    onFormSubmit: PropTypes.func,
+    appName: PropTypes.bool,
     onClose: PropTypes.func,
 };
 

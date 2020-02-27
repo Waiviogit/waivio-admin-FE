@@ -4,16 +4,13 @@ import { CustomButton } from "../../../common/buttons";
 
 const ModalBotDeleteContent = ({
     onClose,
-    submitButtonContent,
     appName,
     onFormSubmit,
     type,
     bot,
 }) => {
-
     const [isLoading, setIsLoading] = useState(false);
     const { name, postingKey, roles } = bot;
-    console.log('appName', appName);
     const handleSubmit = () => {
         const requestData = {
             app: appName,
@@ -35,7 +32,6 @@ const ModalBotDeleteContent = ({
     return (
         <div className="modal-serviceBot__content-form">
             {type === "delete" && <span>Are you sure?</span>}
-
             <div className="modal-serviceBot__content-btn">
                 <CustomButton color="orange" content="No" onClick={handleClose} />
                 <CustomButton
@@ -44,20 +40,16 @@ const ModalBotDeleteContent = ({
                     onClick={handleSubmit}
                 />
             </div>
-
         </div>
     );
 };
 
 ModalBotDeleteContent.propTypes = {
-    submitButtonContent: PropTypes.string,
-    isUpdate: PropTypes.bool,
-    upgradeToModerator: PropTypes.func,
-    updateModerator: PropTypes.func,
-    upgradeToUser: PropTypes.func,
-    isDelete: PropTypes.bool,
-    isCreate: PropTypes.bool,
+    onFormSubmit: PropTypes.func,
+    appName: PropTypes.bool,
+    type: PropTypes.bool,
     onClose: PropTypes.func,
+    bot: PropTypes.object,
 };
 
 export default ModalBotDeleteContent;

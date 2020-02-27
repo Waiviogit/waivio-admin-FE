@@ -2,6 +2,7 @@ import "../ModalServiceBot.scss";
 import React, { useState } from "react";
 import { Button, Table, Input } from "semantic-ui-react";
 import { CustomButton } from "../../../common/buttons";
+import PropTypes from "prop-types";
 
 const ModalBotUpdateContent = ({
     onClose,
@@ -82,6 +83,13 @@ const ModalBotUpdateContent = ({
             )}
         </div>
     );
+};
+
+ModalBotUpdateContent.propTypes = {
+    onFormSubmit: PropTypes.func,
+    appName: PropTypes.bool,
+    onClose: PropTypes.func,
+    bot: PropTypes.object,
 };
 
 export default ModalBotUpdateContent;

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { Button, Table, Input } from "semantic-ui-react";
+import { Table, Input } from "semantic-ui-react";
 import { CustomButton } from "../../../common/buttons";
+import PropTypes from "prop-types";
 
 const ModalModeratorUpdateContent = ({
     onClose,
@@ -80,6 +81,13 @@ const ModalModeratorUpdateContent = ({
             )}
         </div>
     );
+};
+
+ModalModeratorUpdateContent.propTypes = {
+    moderator: PropTypes.string,
+    onFormSubmit: PropTypes.func,
+    onClose: PropTypes.func,
+    appName: PropTypes.string,
 };
 
 export default ModalModeratorUpdateContent;
