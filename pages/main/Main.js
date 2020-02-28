@@ -48,7 +48,7 @@ const Main = ({ signOut, getAllApps, apps }) => {
                 </Menu>
             </div>
             <Container className='main__body'>
-                <div className='main__body-header'><h1>All Your Apps user</h1></div>
+                <div className='main__body-header'><h1>All Your Apps</h1></div>
                 <div className='main__body-content'>
                     {_.map(apps, (app) => (
                         <UserApp 
