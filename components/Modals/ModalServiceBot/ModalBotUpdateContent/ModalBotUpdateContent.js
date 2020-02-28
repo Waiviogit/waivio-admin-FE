@@ -19,15 +19,17 @@ const ModalBotUpdateContent = ({
     };
 
     const handleClickAdd = () => {
-        const newBotRoles = [inputValue, ...botRoles];
-        setBotRoles(newBotRoles);
-        setInputValue("");
-        const requestData = {
-            type: "Add",
-            data: { app: appName, name, postingKey, roles: newBotRoles },
-        };
+        if (inputValue) {
+            const newBotRoles = [inputValue, ...botRoles];
+            setBotRoles(newBotRoles);
+            setInputValue("");
+            const requestData = {
+                type: "Add",
+                data: { app: appName, name, postingKey, roles: newBotRoles },
+            };
 
-        sendRequest(requestData);
+            sendRequest(requestData);
+        }
     };
     const handleClickDelete = (role) => {
         const newBotRoles = botRoles.filter((botRole) => botRole !== role);

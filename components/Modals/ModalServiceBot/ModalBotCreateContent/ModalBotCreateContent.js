@@ -10,8 +10,8 @@ const ModalBotCreateContent = ({
     onFormSubmit,
 }) => {
     const [isLoading, setIsLoading] = useState(false);
-    const [name, setName] = useState(null);
-    const [postingKey, setPostingKey] = useState(null);
+    const [name, setName] = useState('');
+    const [postingKey, setPostingKey] = useState('');
     const [botRoles, setBotRoles] = useState([]);
     const [inputValue, setInputValue] = useState('');
 

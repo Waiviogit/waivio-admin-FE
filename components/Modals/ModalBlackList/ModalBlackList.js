@@ -10,7 +10,7 @@ const ModalBlackList = ({ showButtonContent, submitButtonContent, title, appName
     const handleShow = () => setIsOpen(true);
     const handleClose = () => setIsOpen(false);
     const stopPropagation = (e) => e.stopPropagation();
-    const [name, setName] = useState(null);
+    const [name, setName] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const handleChangeName = (e) => {
         setName(e.target.value);
