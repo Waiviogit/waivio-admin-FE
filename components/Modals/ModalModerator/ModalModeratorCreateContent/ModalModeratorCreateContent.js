@@ -10,7 +10,7 @@ const ModalModeratorCreateContent = ({
     onFormSubmit,
 }) => {
     const [isLoading, setIsLoading] = useState(false);
-    const [newModeratorName, setName] = useState(null);
+    const [newModeratorName, setName] = useState('');
     const [permlinks, setPermlinks] = useState([]);
 
     const handleChangeName = (e) => {

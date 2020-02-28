@@ -2,23 +2,13 @@ import './Main.scss';
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import _ from 'lodash';
-import { Image, Menu, Dropdown, Container } from "semantic-ui-react";
-import { setStorageData, getStorageData } from "../../helpers/localeStorage";
-import ModalModerator from '../../components/Modals/ModalModerator';
+import { Image, Menu, Container } from "semantic-ui-react";
+import { setStorageData } from "../../helpers/localeStorage";
 import UserApp from '../../components/UserApp';
 import { CustomButton } from '../../components/common/buttons';
 import { useLocalStorage } from "../../helpers/useLocalStorage";
-// import { apps } from '../../components/UserApp/mock';
 
-const Main = ({
-    signOut,
-    upgradeToModerator,
-    updateModerator,
-    upgradeToUser,
-    user,
-    getAllApps,
-    apps,
-}) => {
+const Main = ({ signOut, getAllApps, apps }) => {
     const [activeItem, setActiveItem] = useState(false);
     const [activeIndex, setActiveIndex] = useState('');
     const [userEmail] = useLocalStorage('userEmail');
@@ -77,10 +67,6 @@ const Main = ({
 
 Main.propTypes = {
     signOut: PropTypes.func.isRequired,
-    upgradeToModerator: PropTypes.func.isRequired,
-    updateModerator: PropTypes.func.isRequired,
-    upgradeToUser: PropTypes.func.isRequired,
-    user: PropTypes.object,
     apps: PropTypes.array,
     getAllApps: PropTypes.func,
 };

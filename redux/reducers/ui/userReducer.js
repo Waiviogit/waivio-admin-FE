@@ -2,11 +2,11 @@ import * as actions from "../../actions/authActions";
 
 const initialState = {
     isSignIn: false,
-  admin: {},
+    admin: {},
 };
 
 export function userReducer(state = initialState, action) {
-  const {type, payload} = action;
+    const { type, payload } = action;
     switch (type) {
     case actions.SIGN_IN_SUCCESS:
         return { ...state, admin: payload.admin, isSignIn: true };

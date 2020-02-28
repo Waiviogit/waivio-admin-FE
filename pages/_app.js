@@ -22,15 +22,6 @@ routerEvents.on("routeChangeError", NProgress.done);
 export class WaivioAdmin extends App {
     static async getInitialProps(props) {
         const { Component, ctx } = props;
-        // console.log('getInitialProps',  ctx);
-        // if (ctx.isServer) {
-        //     if (!notValidatedPaths.includes(ctx.pathname)) {
-        //         await dispatchRequest(ctx, validateToken)();
-        //     }
-        //     if (getSignInState(ctx.store.getState())) {
-        //         await initialize(ctx);
-        //     }
-        // }
         let pageProps = {};
         if (Component.getInitialProps) pageProps = await Component.getInitialProps(ctx);
         return { pageProps, router: { pathname: ctx.pathname, query: ctx.query } };
@@ -38,7 +29,6 @@ export class WaivioAdmin extends App {
 
     render() {
         const { Component, pageProps, store, router } = this.props;
-        // const locale = getLocaleState(store.getState());
         return (
             <Provider store={store}>
                 <PersistGate loading={<div>Loading...</div>} persistor={store.__PERSISTOR}>

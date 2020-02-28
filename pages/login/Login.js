@@ -8,11 +8,9 @@ import { setStorageData, removeStorageData } from '../../helpers/localeStorage';
 import { updateCookies } from '../../helpers/headers';
 import { redirect } from "../../helpers/redirect";
 import { CustomButton } from '../../components/common/buttons';
-import { useLocalStorage } from "../../helpers/useLocalStorage";
 
 const Login = ({ signIn, isSignIn }) => {
-    const [isLoading, setIsLoading] = useState(false);
-    // const [userEmail, setUserEmail] = useLocalStorage('userEmail');
+    const [isLoading, setIsLoading] = useState(false);    
     const [user, setUser] = useState({ email: "", password: "" });
 
     const handleSignIn = (e) => {
@@ -22,9 +20,7 @@ const Login = ({ signIn, isSignIn }) => {
         signIn({ user })
             .then(() => {
                 setIsLoading(false);
-                setStorageData('userEmail', user.email);
-                // setUserEmail(user.email);
-                initialize();
+                setStorageData('userEmail', user.email);                
                 removeStorageData('isLogin', true);
             })
             .catch(() => setIsLoading(false));
@@ -67,7 +63,6 @@ const Login = ({ signIn, isSignIn }) => {
 Login.propTypes = {
     signIn: PropTypes.func.isRequired,
     isSignIn: PropTypes.bool,
-    // initialize: PropTypes.func,
 };
 
 Login.getInitialProps = async (ctx) => {

@@ -1,5 +1,5 @@
 import { put, takeEvery, call } from "redux-saga/effects";
-import { parseCookies, destroyCookie } from "nookies";
+import { parseCookies } from "nookies";
 import * as authActions from "../actions/authActions";
 import * as userActions from "../actions/userActions";
 import api from "../../api/AuthConfig/apiAuth";
@@ -27,7 +27,6 @@ export function* signIn({ payload, resolve, reject }) {
         yield call(resolve, data);
         yield call(redirect, "/");
     } catch (error) {
-    // yield put(showNotification(error));
         yield put(authActions.signInError());
         yield call(reject, error);
     }
@@ -59,14 +58,7 @@ export function* upgradeToModerator({ payload, resolve, reject, ctx }) {
         yield call(resolve, data);
         yield put(userActions.upgradeStatusToModeratorSuccess());
         yield put(appsActions.updateAllAps(ctx));
-    // yield call(showSuccessNotification, {
-    //   id:
-    //     payload.ids.length === 1
-    //       ? "demo_user_upgraded_to_user"
-    //       : "demo_user_upgraded_to_users"
-    // });
     } catch (error) {
-    // yield put(showNotification(error));
         yield put(userActions.upgradeStatusToModeratorError());
         yield call(reject, error);
     }
@@ -79,14 +71,7 @@ export function* upgradeToUser({ payload, resolve, reject, ctx }) {
         yield call(resolve, data);
         yield put(userActions.upgradeStatusToUserSuccess());
         yield put(appsActions.updateAllAps(ctx));
-    // yield call(showSuccessNotification, {
-    //   id:
-    //     payload.ids.length === 1
-    //       ? "demo_user_upgraded_to_user"
-    //       : "demo_user_upgraded_to_users"
-    // });
     } catch (error) {
-    // yield put(showNotification(error));
         yield put(userActions.upgradeStatusToUserError());
         yield call(reject, error);
     }
@@ -99,14 +84,7 @@ export function* updateModerator({ payload, resolve, reject, ctx }) {
         yield call(resolve, data);
         yield put(userActions.upgradeModeratorSuccess());
         yield put(appsActions.updateAllAps(ctx));
-    // yield call(showSuccessNotification, {
-    //   id:
-    //     payload.ids.length === 1
-    //       ? "demo_user_upgraded_to_user"
-    //       : "demo_user_upgraded_to_users"
-    // });
     } catch (error) {
-    // yield put(showNotification(error));
         yield put(userActions.upgradeModeratorError());
         yield call(reject, error);
     }

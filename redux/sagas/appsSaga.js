@@ -1,7 +1,7 @@
 import { put, takeEvery, call, select } from "redux-saga/effects";
 import * as appsActions from "../actions/appsActions";
 import api from "../../api/AuthConfig/apiAuth";
-import { deleteAuthHeaders, updateCookies } from "../../helpers/headers";
+import { updateCookies } from "../../helpers/headers";
 import { getAdminState } from '../selectors/userSelectors';
 
 export default function* actionWatcher() {
@@ -22,7 +22,6 @@ export function* getAllApps({ payload, resolve, reject, ctx }) {
         yield put(appsActions.getAllAppsSuccess({ data }));
     } catch (error) {
         yield put(appsActions.updateAllAps(ctx));
-        // yield put(showNotification(error));
         yield put(appsActions.getAllAppsError());
         yield call(reject, error);
     }
@@ -37,7 +36,6 @@ export function* updateAllApps({ ctx }) {
             appsActions.getAllAppsSuccess({ data }),
         );
     } catch (error) {
-        // yield put(showNotification(error));
         yield put(appsActions.getAllAppsError());
     }
 }
@@ -49,14 +47,7 @@ export function* createServiceBot({ payload, resolve, reject, ctx }) {
         yield call(resolve, data);
         yield put(appsActions.createServiceBotSuccess());
         yield put(appsActions.updateAllAps(ctx));
-    // yield call(showSuccessNotification, {
-    //   id:
-    //     payload.ids.length === 1
-    //       ? "demo_user_upgraded_to_user"
-    //       : "demo_user_upgraded_to_users"
-    // });
     } catch (error) {
-    // yield put(showNotification(error));
         yield put(appsActions.createServiceBotError());
         yield call(reject, error);
     }
@@ -69,14 +60,7 @@ export function* updateServiceBot({ payload, resolve, reject, ctx }) {
         yield call(resolve, data);
         yield put(appsActions.updateServiceBotSuccess());
         yield put(appsActions.updateAllAps(ctx));
-    // yield call(showSuccessNotification, {
-    //   id:
-    //     payload.ids.length === 1
-    //       ? "demo_user_upgraded_to_user"
-    //       : "demo_user_upgraded_to_users"
-    // });
     } catch (error) {
-    // yield put(showNotification(error));
         yield put(appsActions.updateServiceBotError());
         yield call(reject, error);
     }
@@ -89,14 +73,7 @@ export function* deleteServiceBot({ payload, resolve, reject, ctx }) {
         yield call(resolve, data);
         yield put(appsActions.deleteServiceBotSuccess());
         yield put(appsActions.updateAllAps(ctx));
-    // yield call(showSuccessNotification, {
-    //   id:
-    //     payload.ids.length === 1
-    //       ? "demo_user_upgraded_to_user"
-    //       : "demo_user_upgraded_to_users"
-    // });
     } catch (error) {
-    // yield put(showNotification(error));
         yield put(appsActions.deleteServiceBotError());
         yield call(reject, error);
     }
@@ -109,14 +86,7 @@ export function* deleteBlackListUsers({ payload, resolve, reject, ctx }) {
         yield call(resolve, data);
         yield put(appsActions.deleteBlackListUsersSuccess());
         yield put(appsActions.updateAllAps(ctx));
-        // yield call(showSuccessNotification, {
-        //   id:
-        //     payload.ids.length === 1
-        //       ? "demo_user_upgraded_to_user"
-        //       : "demo_user_upgraded_to_users"
-        // });
     } catch (error) {
-        // yield put(showNotification(error));
         yield put(appsActions.deleteBlackListUsersError());
         yield call(reject, error);
     }
@@ -129,14 +99,7 @@ export function* addBlackListUsers({ payload, resolve, reject, ctx }) {
         yield call(resolve, data);
         yield put(appsActions.addBlackListUsersSuccess());
         yield put(appsActions.updateAllAps(ctx));
-        // yield call(showSuccessNotification, {
-        //   id:
-        //     payload.ids.length === 1
-        //       ? "demo_user_upgraded_to_user"
-        //       : "demo_user_upgraded_to_users"
-        // });
     } catch (error) {
-        // yield put(showNotification(error));
         yield put(appsActions.addBlackListUsersError());
         yield call(reject, error);
     }
