@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from "prop-types";
 import { Table } from 'semantic-ui-react';
 import ModalModerator from '../../../Modals/ModalModerator';
 
@@ -11,7 +12,7 @@ const TableRow = ({ moderator, updateModerator, upgradeToUser, appName }) => {
         <Table.Row>
             <Table.Cell >{name}</Table.Cell>
             <Table.Cell >
-                {author_permlinks && author_permlinks.map(permlink => renderPermlink(permlink)) }
+                {author_permlinks && author_permlinks.map((permlink) => renderPermlink(permlink)) }
             </Table.Cell>
             <Table.Cell textAlign="right">
                 <ModalModerator
@@ -19,7 +20,7 @@ const TableRow = ({ moderator, updateModerator, upgradeToUser, appName }) => {
                     showButtonContent='Update'
                     submitButtonContent='Update'
                     title='Update To Moderator'
-                    type={'update'}
+                    type="update"
                     onFormSubmit={updateModerator}
                     moderator={moderator}
                 />
@@ -28,13 +29,20 @@ const TableRow = ({ moderator, updateModerator, upgradeToUser, appName }) => {
                     showButtonContent='Delete'
                     submitButtonContent='Delete'
                     title='Delete from Moderators'
-                    type={'delete'}
+                    type="delete"
                     onFormSubmit={upgradeToUser}
                     moderator={moderator}
                 />
             </Table.Cell>
         </Table.Row>
     );
+};
+
+TableRow.propTypes = {
+    moderator: PropTypes.object,
+    updateModerator: PropTypes.func,
+    upgradeToUser: PropTypes.func,
+    appName: PropTypes.string,
 };
 
 export default TableRow;

@@ -1,3 +1,3 @@
-import TopUsers from './TopUsers';
+import { TopUsers } from './TopUsers';
 
 export default TopUsers;

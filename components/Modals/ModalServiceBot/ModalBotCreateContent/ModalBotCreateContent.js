@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { Form } from "semantic-ui-react";
+import { Form, Input, Table } from "semantic-ui-react";
 import { CustomButton } from "../../../common/buttons";
 
 const ModalBotCreateContent = ({
@@ -12,7 +12,12 @@ const ModalBotCreateContent = ({
     const [isLoading, setIsLoading] = useState(false);
     const [name, setName] = useState(null);
     const [postingKey, setPostingKey] = useState(null);
-    const [roles, setRoles] = useState(null);
+    const [botRoles, setBotRoles] = useState([]);
+    const [inputValue, setInputValue] = useState('');
+
+    const handleChange = (e) => {
+        setInputValue(e.target.value);
+    };
 
     const handleChangeName = (e) => {
         setName(e.target.value);
@@ -22,9 +27,18 @@ const ModalBotCreateContent = ({
         setPostingKey(e.target.value);
     };
 
+    const handleClickAdd = () => {
+        const newBotRoles = [inputValue, ...botRoles];
+        setBotRoles(newBotRoles);
+        setInputValue("");
+    };
+    const handleClickDelete = (role) => {
+        const newBotRoles = botRoles.filter((botRole) => botRole !== role);
+        setBotRoles(newBotRoles);
+    };
+
     const handleSubmit = () => {
-        const requestData = { app: appName, name, postingKey, roles };
-        console.log(requestData);
+        const requestData = { app: appName, name, postingKey, roles: botRoles };        
         setIsLoading(true);
         onFormSubmit(requestData)
             .then(() => {
@@ -56,13 +70,42 @@ const ModalBotCreateContent = ({
                     />
                 </Form.Field>
                 <Form.Field>
-                    <Form.Input
-                        label="Roles"
-                        type='text'
-                        value={roles}
-                        onChange={(e, { value }) => setRoles([value])}
-                        placeholder="Roles"
-                    />
+                    <div className='modal-moderator__content-form-label'>Roles</div>
+                    <div className="modal-serviceBot__content-form-input">
+                        <Input
+                            placeholder="Role"
+                            onChange={handleChange}
+                            value={inputValue}
+                        />
+                        <CustomButton content='Add' color='orange' onClick={handleClickAdd} loading={isLoading}/>
+                    </div>
+                    {!!botRoles.length && (
+                        <Table striped singleLine unstackable>
+                            <Table.Header>
+                                <Table.Row>
+                                    <Table.HeaderCell>Roles</Table.HeaderCell>
+                                    <Table.HeaderCell></Table.HeaderCell>
+                                </Table.Row>
+                            </Table.Header>
+                            <Table.Body>
+                                {botRoles.map((role) => (
+                                    <Table.Row key={role}>
+                                        <Table.Cell>
+                                            <div>{role}</div>
+                                        </Table.Cell>
+                                        <Table.Cell textAlign="right">
+                                            <CustomButton
+                                                loading={isLoading}
+                                                color='orange'
+                                                content='Delete'
+                                                onClick={() => { handleClickDelete(role); }}
+                                            />
+                                        </Table.Cell>
+                                    </Table.Row>
+                                ))}
+                            </Table.Body>
+                        </Table>
+                    )}
                 </Form.Field>
 
                 <div className="modal-serviceBot__button">

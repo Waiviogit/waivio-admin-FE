@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { Form } from "semantic-ui-react";
+import { Form, Input, Table } from "semantic-ui-react";
 import { CustomButton } from "../../../common/buttons";
 
 const ModalModeratorCreateContent = ({
@@ -10,17 +10,31 @@ const ModalModeratorCreateContent = ({
     onFormSubmit,
 }) => {
     const [isLoading, setIsLoading] = useState(false);
-    const [name, setName] = useState(null);
-    const [permlinks, setPermlinks] = useState(null);
-    const [roles, setRoles] = useState(null);
+    const [newModeratorName, setName] = useState(null);
+    const [permlinks, setPermlinks] = useState([]);
 
     const handleChangeName = (e) => {
         setName(e.target.value);
     };
 
+    const [inputValue, setInputValue] = useState('');
+
+    const handleChange = (e) => {
+        setInputValue(e.target.value);
+    };
+
+    const handleClickAdd = () => {
+        const newPermlinks = [inputValue, ...permlinks];
+        setPermlinks(newPermlinks);
+        setInputValue("");
+    };
+    const handleClickDelete = (deletePermlink) => {
+        const newPermlinks = permlinks.filter((permlink) => permlink !== deletePermlink);
+        setPermlinks(newPermlinks);
+    };
+
     const handleSubmit = () => {
-        const requestData = { app: appName, moderator: { name, author_permlinks: permlinks } };
-        console.log(requestData);
+        const requestData = { app: appName, moderator: { name: newModeratorName, author_permlinks: permlinks } };
         setIsLoading(true);
         onFormSubmit(requestData)
             .then(() => {
@@ -38,18 +52,36 @@ const ModalModeratorCreateContent = ({
                         label="Name"
                         type="text"
                         onChange={handleChangeName}
-                        value={name}
+                        value={newModeratorName}
                         placeholder="Name"
                     />
                 </Form.Field>
                 <Form.Field>
-                    <Form.Input
-                        label="Permlinks"
-                        type='text'
-                        value={roles}
-                        onChange={(e, { value }) => setPermlinks([value])}
-                        placeholder="Permlinks"
-                    />
+                    <div className='modal-moderator__content-form-label'>Permlinks</div>
+                    <div className="modal-moderator__content-form-input">
+                        <Input
+                            placeholder="Permlink"
+                            onChange={handleChange}
+                            value={inputValue}
+                        />
+                        <CustomButton color='orange' content='Add' onClick={handleClickAdd} loading={isLoading}/>
+                    </div>
+                    {!!permlinks.length && (
+                        <Table striped singleLine unstackable>
+                            <Table.Body>
+                                {permlinks.map((permlink, index) => (
+                                    <Table.Row key={`${index}${permlink}`}>
+                                        <Table.Cell >
+                                            <div>{permlink}</div>
+                                        </Table.Cell>
+                                        <Table.Cell textAlign="right">
+                                            <CustomButton color='orange' content='Delete' loading={isLoading} onClick={() => { handleClickDelete(permlink); }}/>
+                                        </Table.Cell>
+                                    </Table.Row>
+                                ))}
+                            </Table.Body>
+                        </Table>
+                    )}
                 </Form.Field>
 
                 <div className="modal-moderator__button">

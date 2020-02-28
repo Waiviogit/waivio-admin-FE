@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from "prop-types";
 import { Table } from 'semantic-ui-react';
 import ModalServiceBot from '../../../Modals/ModalServiceBot';
 
@@ -20,7 +21,7 @@ const TableRow = ({ bot, updateServiceBot, deleteServiceBot, appName }) => {
                     showButtonContent='Update'
                     submitButtonContent='Update'
                     title='Update Service Bot'
-                    type={'update'}
+                    type="update"
                     onFormSubmit={updateServiceBot}
                     bot={bot}
                 />
@@ -29,13 +30,20 @@ const TableRow = ({ bot, updateServiceBot, deleteServiceBot, appName }) => {
                     showButtonContent='Delete'
                     submitButtonContent='Delete'
                     title='Delete Service Bot'
-                    type={'delete'}
+                    type="delete"
                     onFormSubmit={deleteServiceBot}
                     bot={bot}
                 />
             </Table.Cell>
         </Table.Row>
     );
+};
+
+TableRow.propTypes = {
+    bot: PropTypes.object,
+    updateServiceBot: PropTypes.func,
+    deleteServiceBot: PropTypes.func,
+    appName: PropTypes.string,
 };
 
 export default TableRow;

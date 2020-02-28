@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from "prop-types";
 import { Table } from "semantic-ui-react";
 
 export const TopUsers = ({ top_users }) => {
@@ -24,6 +25,10 @@ export const TopUsers = ({ top_users }) => {
             </Table.Body>
         </Table>
     );
+};
+
+TopUsers.propTypes = {
+    top_users: PropTypes.array,
 };
 
 export default TopUsers;

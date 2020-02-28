@@ -1,27 +1,30 @@
+import './ModalBlackList.scss';
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Form, Modal } from "semantic-ui-react";
 import { CustomButton } from "../../common/buttons";
 import CustomModalHeader from "../../common/CustomModalHeader";
 
-const ModalBlackList = ({ showButtonContent, submitButtonContent, title, appName, onClose, addBlackListUsers }) => {
+const ModalBlackList = ({ showButtonContent, submitButtonContent, title, appName, addBlackListUsers }) => {
     const [isOpen, setIsOpen] = useState(false);
     const handleShow = () => setIsOpen(true);
     const handleClose = () => setIsOpen(false);
     const stopPropagation = (e) => e.stopPropagation();
     const [name, setName] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
-    const handleChangeName = e => {
+    const handleChangeName = (e) => {
         setName(e.target.value);
     };
-    const handleSubmit = () => {
+
+    const handleSubmit = (e) => {
         const requestData = { data: { names: name }, app: appName };
         setName('');
         setIsLoading(true);
+        handleClose();
+        stopPropagation(e);
         addBlackListUsers(requestData)
             .then(() => {
                 setIsLoading(false);
-                onClose();
             })
             .catch(() => setIsLoading(false));
     };
@@ -62,10 +65,9 @@ const ModalBlackList = ({ showButtonContent, submitButtonContent, title, appName
 
 ModalBlackList.propTypes = {
     showButtonContent: PropTypes.string,
-    submitButtonContent : PropTypes.string,
+    submitButtonContent: PropTypes.string,
     title: PropTypes.string,
     appName: PropTypes.string,
-    onClose: PropTypes.func,
     addBlackListUsers: PropTypes.func,
 };
 

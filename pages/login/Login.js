@@ -10,9 +10,9 @@ import { redirect } from "../../helpers/redirect";
 import { CustomButton } from '../../components/common/buttons';
 import { useLocalStorage } from "../../helpers/useLocalStorage";
 
-const Login = ({ signIn, isSignIn, initialize }) => {
+const Login = ({ signIn, isSignIn }) => {
     const [isLoading, setIsLoading] = useState(false);
-    const [userEmail, setUserEmail] = useLocalStorage('userEmail');
+    // const [userEmail, setUserEmail] = useLocalStorage('userEmail');
     const [user, setUser] = useState({ email: "", password: "" });
 
     const handleSignIn = (e) => {
@@ -23,7 +23,7 @@ const Login = ({ signIn, isSignIn, initialize }) => {
             .then(() => {
                 setIsLoading(false);
                 setStorageData('userEmail', user.email);
-                setUserEmail(user.email);
+                // setUserEmail(user.email);
                 initialize();
                 removeStorageData('isLogin', true);
             })
@@ -67,6 +67,7 @@ const Login = ({ signIn, isSignIn, initialize }) => {
 Login.propTypes = {
     signIn: PropTypes.func.isRequired,
     isSignIn: PropTypes.bool,
+    // initialize: PropTypes.func,
 };
 
 Login.getInitialProps = async (ctx) => {

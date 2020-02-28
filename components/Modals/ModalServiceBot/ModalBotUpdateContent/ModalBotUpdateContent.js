@@ -1,11 +1,10 @@
 import "../ModalServiceBot.scss";
 import React, { useState } from "react";
-import { Button, Table, Input } from "semantic-ui-react";
-import { CustomButton } from "../../../common/buttons";
+import { Table, Input } from "semantic-ui-react";
 import PropTypes from "prop-types";
+import { CustomButton } from "../../../common/buttons";
 
 const ModalBotUpdateContent = ({
-    onClose,
     appName,
     onFormSubmit,
     bot,
@@ -45,7 +44,6 @@ const ModalBotUpdateContent = ({
         onFormSubmit(requestData)
             .then(() => {
                 setIsLoading(false);
-                // onClose();
             })
             .catch(() => setIsLoading(false));
     };
@@ -75,7 +73,7 @@ const ModalBotUpdateContent = ({
                                     <div>{role}</div>
                                 </Table.Cell>
                                 <Table.Cell textAlign="right">
-                                    <CustomButton loading={isLoading} color='orange' content='Delete' onClick={() => {handleClickDelete(role)}}/>
+                                    <CustomButton loading={isLoading} color='orange' content='Delete' onClick={() => { handleClickDelete(role); }}/>
                                 </Table.Cell>
                             </Table.Row>
                         ))}
@@ -89,7 +87,6 @@ const ModalBotUpdateContent = ({
 ModalBotUpdateContent.propTypes = {
     onFormSubmit: PropTypes.func,
     appName: PropTypes.string,
-    onClose: PropTypes.func,
     bot: PropTypes.object,
 };
 

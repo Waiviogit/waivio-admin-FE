@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from "prop-types";
 import { Table } from "semantic-ui-react";
 import TableRow from './TableRow';
 
@@ -20,7 +21,7 @@ const ServiceBots = ({ service_bots, updateServiceBot, deleteServiceBot, appName
                 </Table.Row>
             </Table.Header>
             <Table.Body>
-                {service_bots.map(bot => (
+                {service_bots.map((bot) => (
                     <TableRow
                         key={bot.name}
                         bot={bot}
@@ -32,6 +33,13 @@ const ServiceBots = ({ service_bots, updateServiceBot, deleteServiceBot, appName
             </Table.Body>
         </Table>
     );
+};
+
+ServiceBots.propTypes = {
+    service_bots: PropTypes.array,
+    updateServiceBot: PropTypes.func,
+    deleteServiceBot: PropTypes.func,
+    appName: PropTypes.string,
 };
 
 export default ServiceBots;

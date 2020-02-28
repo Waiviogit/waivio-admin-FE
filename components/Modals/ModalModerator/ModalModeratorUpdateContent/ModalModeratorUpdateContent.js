@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 import { CustomButton } from "../../../common/buttons";
 
 const ModalModeratorUpdateContent = ({
-    onClose,
     appName,
     onFormSubmit,
     moderator,
@@ -43,7 +42,6 @@ const ModalModeratorUpdateContent = ({
         onFormSubmit(requestData)
             .then(() => {
                 setIsLoading(false);
-                // onClose();
             })
             .catch(() => setIsLoading(false));
     };
@@ -68,7 +66,7 @@ const ModalModeratorUpdateContent = ({
                     </Table.Header>
                     <Table.Body>
                         {permlinks.map((permlink, index) => (
-                            <Table.Row key={index}>
+                            <Table.Row key={`${index}${permlink}`}>
                                 <Table.Cell >
                                     <div>{permlink}</div>
                                 </Table.Cell>
@@ -87,7 +85,6 @@ const ModalModeratorUpdateContent = ({
 ModalModeratorUpdateContent.propTypes = {
     moderator: PropTypes.object,
     onFormSubmit: PropTypes.func,
-    onClose: PropTypes.func,
     appName: PropTypes.string,
 };
 

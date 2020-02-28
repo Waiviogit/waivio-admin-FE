@@ -1,7 +1,9 @@
 import "../UserApp.scss";
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import { Accordion, Icon } from "semantic-ui-react";
 import dynamic from 'next/dynamic';
+
 const Moderators = dynamic(() => import("./Moderators"));
 const TopUsers = dynamic(() => import("./TopUsers"));
 const ServiceBots = dynamic(() => import("./ServiceBots"));
@@ -129,4 +131,14 @@ export const UserAppContent = ({
             </Accordion.Content>
         </>
     );
+};
+
+UserAppContent.propTypes = {
+    moderators: PropTypes.array,
+    top_users: PropTypes.array,
+    service_bots: PropTypes.array,
+    black_list_users: PropTypes.array,
+    upgradeToModerator: PropTypes.func,
+    createServiceBot: PropTypes.func,
+    appName: PropTypes.string,
 };

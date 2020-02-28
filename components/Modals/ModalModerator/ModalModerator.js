@@ -18,7 +18,6 @@ const ModalModerator = ({
     moderator,
 }) => {
     const [isOpen, setIsOpen] = useState(false);
-
     const handleShow = () => setIsOpen(true);
     const handleClose = () => setIsOpen(false);
     const stopPropagation = (e) => e.stopPropagation();

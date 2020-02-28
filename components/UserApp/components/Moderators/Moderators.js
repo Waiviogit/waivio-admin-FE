@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from "prop-types";
 import { Table } from 'semantic-ui-react';
 import TableRow from "./TableRow";
 
@@ -31,6 +32,13 @@ const Moderators = ({ moderators, appName, updateModerator, upgradeToUser }) => 
             </Table.Body>
         </Table>
     );
+};
+
+Moderators.propTypes = {
+    moderators: PropTypes.array,
+    appName: PropTypes.string,
+    updateModerator: PropTypes.func,
+    upgradeToUser: PropTypes.func,
 };
 
 export default Moderators;

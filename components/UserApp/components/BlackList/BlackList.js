@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Accordion, Button, Table } from "semantic-ui-react";
+import PropTypes from "prop-types";
+import { Accordion, Table } from "semantic-ui-react";
 import { CustomButton } from '../../../common/buttons';
 
 const BlackList = ({ black_list_users, deleteBlackListUsers, appName }) => {
@@ -11,7 +12,6 @@ const BlackList = ({ black_list_users, deleteBlackListUsers, appName }) => {
         deleteBlackListUsers(requestData)
             .then(() => {
                 setIsLoading(false);
-                // onClose();
             })
             .catch(() => setIsLoading(false));
     };
@@ -40,6 +40,12 @@ const BlackList = ({ black_list_users, deleteBlackListUsers, appName }) => {
             </Table>
         </Accordion>
     );
+};
+
+BlackList.propTypes = {
+    black_list_users: PropTypes.array,
+    deleteBlackListUsers: PropTypes.func,
+    appName: PropTypes.string,
 };
 
 export default BlackList;
