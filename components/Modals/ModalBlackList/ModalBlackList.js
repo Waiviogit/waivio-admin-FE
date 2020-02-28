@@ -7,7 +7,10 @@ import CustomModalHeader from "../../common/CustomModalHeader";
 
 const ModalBlackList = ({ showButtonContent, submitButtonContent, title, appName, addBlackListUsers }) => {
     const [isOpen, setIsOpen] = useState(false);
-    const handleShow = () => setIsOpen(true);
+    const handleShow = (e) => {
+        setIsOpen(true);
+        stopPropagation(e);
+    };
     const handleClose = () => setIsOpen(false);
     const stopPropagation = (e) => e.stopPropagation();
     const [name, setName] = useState('');

@@ -18,9 +18,12 @@ const ModalModerator = ({
     moderator,
 }) => {
     const [isOpen, setIsOpen] = useState(false);
-    const handleShow = () => setIsOpen(true);
-    const handleClose = () => setIsOpen(false);
     const stopPropagation = (e) => e.stopPropagation();
+    const handleShow = (e) => {
+        setIsOpen(true);
+        stopPropagation(e);
+    };
+    const handleClose = () => setIsOpen(false);
     const getRenderModal = () => {
         let renderModal = null;
         if (type === "delete") {
