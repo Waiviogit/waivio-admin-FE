@@ -7,7 +7,8 @@ import withRedux from "next-redux-wrapper";
 import withReduxSaga from "next-redux-saga";
 import { PersistGate } from 'redux-persist/integration/react';
 import configureStore from "../redux/store";
-import MainLayout from "../components/MainLayuot";
+import MainLayout from "../components/Layouts/MainLayuot";
+import MenuLayout from "../components/Layouts/MenuLayout";
 
 NProgress.configure({
     easing: "ease",
@@ -32,9 +33,11 @@ export class WaivioAdmin extends App {
         return (
             <Provider store={store}>
                 <PersistGate loading={<div>Loading...</div>} persistor={store.__PERSISTOR}>
-                    <MainLayout pathname={router.pathname}>
-                        <Component {...pageProps} />
-                    </MainLayout>
+                    {/*<MenuLayout router={router}>*/}
+                        <MainLayout pathname={router.pathname}>
+                            <Component {...pageProps} />
+                        </MainLayout>
+                    {/*</MenuLayout>*/}
                 </PersistGate>
             </Provider>
         );

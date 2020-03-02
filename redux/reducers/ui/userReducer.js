@@ -13,6 +13,7 @@ export function userReducer(state = initialState, action) {
     case actions.SIGN_IN_ERROR:
         return initialState;
     case actions.SIGN_OUT_SUCCESS:
+        return { ...state, admin: payload.admin, isSignIn: false };
     default:
         return state;
     }
