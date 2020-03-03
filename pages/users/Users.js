@@ -2,8 +2,8 @@ import React from 'react';
 
 const Users = () => {
     return (
-        <div>
-            Users
+        <div style={{textAlign: 'center'}}>
+            <h1>Users</h1>
         </div>
     );
 };
