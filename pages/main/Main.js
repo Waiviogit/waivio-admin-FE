@@ -10,7 +10,7 @@ const Main = ({ apps }) => {
     return (
         <div className='main'>
             <Container className='main__body'>
-                <div className='main__body-header'><h1>All Your Apps</h1></div>
+                <div className='main__body-header'><h1>All Apps</h1></div>
                 <div className='main__body-content'>
                     {_.map(apps, (app) => (
                         <UserApp 
