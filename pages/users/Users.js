@@ -2,7 +2,7 @@ import React from 'react';
 
 const Users = () => {
     return (
-        <div style={{textAlign: 'center'}}>
+        <div>
             <h1>Users</h1>
         </div>
     );

@@ -2,7 +2,7 @@ import React from 'react';
 
 const Objects = () => {
     return (
-        <div style={{textAlign: 'center'}}>
+        <div>
             <h1>Objects</h1>
         </div>
     );
