@@ -33,11 +33,11 @@ export class WaivioAdmin extends App {
         return (
             <Provider store={store}>
                 <PersistGate loading={<div>Loading...</div>} persistor={store.__PERSISTOR}>
-                    {/*<MenuLayout router={router}>*/}
+                    <MenuLayout router={router}>
                         <MainLayout pathname={router.pathname}>
                             <Component {...pageProps} />
                         </MainLayout>
-                    {/*</MenuLayout>*/}
+                    </MenuLayout>
                 </PersistGate>
             </Provider>
         );

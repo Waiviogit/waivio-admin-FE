@@ -30,19 +30,18 @@ const MenuMain = ({ signOut, getAllApps }) => {
                 />
             </Menu.Item>
             <Menu.Item
-                name="Main"
-                active={activeItem === "home"}
+                name="Apps"
+                active={activeItem === "apps"}
                 onClick={handleItemClick}
             >
-                <Link href="/main">Main</Link>
+                <Link href="/main">Apps</Link>
             </Menu.Item>
             <Menu.Item
                 name="Users"
                 active={activeItem === "users"}
                 onClick={handleItemClick}
             >
-                Users
-                {/*<Link href="/users">Users</Link>*/}
+                <Link href="/users">Users</Link>
             </Menu.Item>
             <Menu.Item
                 name="Objects"
