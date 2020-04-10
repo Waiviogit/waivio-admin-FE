@@ -5,11 +5,9 @@ import { upgradeStatusToModeratorRequest } from '../../../redux/actions/userActi
 import { createServiceBotRequest } from '../../../redux/actions/appsActions';
 export { TopUsers } from "./TopUsers/TopUsers";
 
-
 const mapDispatchToProps = (dispatch) => ({
     upgradeToModerator: dispatchRequestClient(dispatch, upgradeStatusToModeratorRequest),
     createServiceBot: dispatchRequestClient(dispatch, createServiceBotRequest)
 });
  
 export default connect(null, mapDispatchToProps)(UserAppContent);
-

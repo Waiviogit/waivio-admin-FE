@@ -104,3 +104,29 @@ export function* addBlackListUsers({ payload, resolve, reject, ctx }) {
         yield call(reject, error);
     }
 }
+
+export function* deleteSupportedHashtags({ payload, resolve, reject, ctx }) {
+    try {
+        const { data, headers } = yield call([api.apps, api.apps.deleteSupportedHashtags], payload);
+        yield call(updateCookies, headers, ctx);
+        yield call(resolve, data);
+        yield put(appsActions.deleteSupportedHashtagsSuccess());
+        yield put(appsActions.updateAllAps(ctx));
+    } catch (error) {
+        yield put(appsActions.deleteSupportedHashtagsError());
+        yield call(reject, error);
+    }
+}
+
+export function* addSupportedHashtags({ payload, resolve, reject, ctx }) {
+    try {
+        const { data, headers } = yield call([api.apps, api.apps.addSupportedHashtags], payload);
+        yield call(updateCookies, headers, ctx);
+        yield call(resolve, data);
+        yield put(appsActions.addSupportedHashtagsSuccess());
+        yield put(appsActions.updateAllAps(ctx));
+    } catch (error) {
+        yield put(appsActions.addSupportedHashtagsError());
+        yield call(reject, error);
+    }
+}

@@ -22,10 +22,18 @@ export default class Apps extends Base {
     }
 
     deleteBlackListUsers({ data, app }) {
-        return this.apiClient.get(`${config.blackList.pull}/${app}${config.blackList.blackList}`, {}, data);
+        return this.apiClient.get(`${config.moderateArrays.pull}/${app}${config.moderateArrays.moderateArrays}`, {}, data);
     }
 
     addBlackListUsers({ data, app }) {
-        return this.apiClient.get(`${config.blackList.push}/${app}${config.blackList.blackList}`, {}, data);
+        return this.apiClient.get(`${config.moderateArrays.push}/${app}${config.moderateArrays.moderateArrays}`, {}, data);
+    }
+
+    deleteSupportedHashtags({ data, app }) {
+        return this.apiClient.get(`${config.moderateArrays.pull}/${app}${config.moderateArrays.moderateArrays}`, {}, data);
+    }
+
+    addSupportedHashtags({ data, app }) {
+        return this.apiClient.get(`${config.moderateArrays.push}/${app}${config.moderateArrays.moderateArrays}`, {}, data);
     }
 }
