@@ -2,7 +2,7 @@ import "../UserApp.scss";
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { Accordion, Icon } from "semantic-ui-react";
-import userAppsData from "../userAppsData";
+import list from "../userAppsData/list";
 
 export const UserAppContent = props => {
     const [activeIndex, setActiveIndex] = useState(-1);
@@ -14,7 +14,7 @@ export const UserAppContent = props => {
         setActiveIndex(index);
     };
 
-    return userAppsData.map(accordion => {
+    return list.map(accordion => {
         const {
             title,
             index,
