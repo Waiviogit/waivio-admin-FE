@@ -20,8 +20,8 @@
         "push": "/app/push/serviceBots",
         "pull": "/app/pull/serviceBots"
     },
-    "blackList": {
-        "blackList" : "/blackList",
+    "moderateArrays": {
+        "moderateArrays" : "/moderateArrays",
         "pull": "/app/pull",
         "push": "/app/push"
     }

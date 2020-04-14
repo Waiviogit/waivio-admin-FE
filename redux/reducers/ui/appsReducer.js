@@ -16,6 +16,10 @@ export function appsReducer(state = initialState, action) {
         return { ...state, black_list_users: action.payload };
     case actions.ADD_BLACK_LIST_USER_SUCCESS:
         return { ...state, black_list_users: action.payload };
+    case actions.DELETE_SUPPORTED_HASHTAGS_SUCCESS:
+        return { ...state, supported_hashtags: action.payload };
+    case actions.ADD_SUPPORTED_HASHTAGS_SUCCESS:
+        return { ...state, supported_hashtags: action.payload };
     default:
         return state;
     }

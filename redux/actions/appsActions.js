@@ -23,6 +23,14 @@ export const ADD_BLACK_LIST_USER_REQUEST = "ADD_BLACK_LIST_USER_REQUEST";
 export const ADD_BLACK_LIST_USER_SUCCESS = "ADD_BLACK_LIST_USER_SUCCESS";
 export const ADD_BLACK_LIST_USER_ERROR = "ADD_BLACK_LIST_USER_ERROR";
 
+export const ADD_SUPPORTED_HASHTAGS_REQUEST = 'ADD_SUPPORTED_HASHTAGS_REQUEST';
+export const ADD_SUPPORTED_HASHTAGS_SUCCESS = 'ADD_SUPPORTED_HASHTAGS_SUCCESS';
+export const ADD_SUPPORTED_HASHTAGS__ERROR = 'ADD_SUPPORTED_HASHTAGS__ERROR';
+
+export const DELETE_SUPPORTED_HASHTAGS_REQUEST = 'DELETE_SUPPORTED_HASHTAGS_REQUEST';
+export const DELETE_SUPPORTED_HASHTAGS_SUCCESS = 'DELETE_SUPPORTED_HASHTAGS_SUCCESS';
+export const DELETE_SUPPORTED_HASHTAGS__ERROR = 'DELETE_SUPPORTED_HASHTAGS__ERROR';
+
 export const getAllApps = (payload) => ({
     type: GET_ALL_APPS_REQUEST,
     ...payload,
@@ -115,5 +123,35 @@ export const addBlackListUsersSuccess = (payload) => ({
 
 export const addBlackListUsersError = (payload) => ({
     type: ADD_BLACK_LIST_USER_ERROR,
+    payload,
+});
+
+export const deleteSupportedHashtagsRequest = (payload) => ({
+    type: DELETE_SUPPORTED_HASHTAGS_REQUEST,
+    ...payload,
+});
+
+export const deleteSupportedHashtagsSuccess = (payload) => ({
+    type: DELETE_SUPPORTED_HASHTAGS_SUCCESS,
+    payload,
+});
+
+export const deleteSupportedHashtagsError = (payload) => ({
+    type: DELETE_SUPPORTED_HASHTAGS__ERROR,
+    payload,
+});
+
+export const addSupportedHashtagsRequest = (payload) => ({
+    type: ADD_SUPPORTED_HASHTAGS_REQUEST,
+    ...payload,
+});
+
+export const addSupportedHashtagsSuccess = (payload) => ({
+    type: ADD_SUPPORTED_HASHTAGS_SUCCESS,
+    payload,
+});
+
+export const addSupportedHashtagsError = (payload) => ({
+    type: ADD_SUPPORTED_HASHTAGS__ERROR,
     payload,
 });
