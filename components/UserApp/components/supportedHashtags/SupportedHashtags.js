@@ -20,12 +20,12 @@ const SupportedHashtags = ({ supported_hashtags, deleteSupportedHashTag, appName
                     </Table.Row>
                 </Table.Header>
                 <Table.Body>
-                    {map(supported_hashtags, (user, index) => {
+                    {map(supported_hashtags, (hashtag, index) => {
                         return (
-                            <Table.Row key={`${user}${index}`}>
-                                <Table.Cell>{user}</Table.Cell>
+                            <Table.Row key={`${hashtag}${index}`}>
+                                <Table.Cell>{hashtag}</Table.Cell>
                                 <Table.Cell textAlign="right">
-                                    <CustomButton onClick={() => handleClick(user)} content='Delete' color='orange'/>
+                                    <CustomButton onClick={() => handleClick(hashtag)} content='Delete' color='orange'/>
                                 </Table.Cell>
                             </Table.Row>
                         );

@@ -13,6 +13,7 @@ export default function* actionWatcher() {
     yield takeEvery(appsActions.DELETE_BLACK_LIST_USER_REQUEST, deleteBlackListUsers);
     yield takeEvery(appsActions.ADD_BLACK_LIST_USER_REQUEST, addBlackListUsers);
     yield takeEvery(appsActions.ADD_SUPPORTED_HASHTAGS_REQUEST, addSupportedHashtags);
+    yield takeEvery(appsActions.DELETE_SUPPORTED_HASHTAGS_REQUEST, deleteSupportedHashtags);
 }
 
 export function* getAllApps({ payload, resolve, reject, ctx }) {
@@ -107,6 +108,7 @@ export function* addBlackListUsers({ payload, resolve, reject, ctx }) {
 }
 
 export function* deleteSupportedHashtags({ payload, resolve, reject, ctx }) {
+    console.log(payload)
     try {
         const { data, headers } = yield call([api.apps, api.apps.deleteSupportedHashtags], payload);
         yield call(updateCookies, headers, ctx);
