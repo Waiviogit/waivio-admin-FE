@@ -15,7 +15,7 @@ const SupportedHashtags = ({ supported_hashtags, deleteSupportedHashTag, appName
             <Table fixed singleLine unstackable className="user-app-content__blackList-content">
                 <Table.Header>
                     <Table.Row>
-                        <Table.HeaderCell>Supported Hashtags</Table.HeaderCell>
+                        <Table.HeaderCell>Hashtags</Table.HeaderCell>
                         <Table.HeaderCell></Table.HeaderCell>
                     </Table.Row>
                 </Table.Header>

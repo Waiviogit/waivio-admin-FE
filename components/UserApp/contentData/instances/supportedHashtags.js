@@ -27,7 +27,7 @@ const supportedHashtagsTotal = ({ supported_hashtags }) => (
 );
 
 export default new ContentData(
-    'Supported Hashtags',
+    'Hashtags',
     4,
     supportedHashtagsContent,
     supportedHashtagsModal,
