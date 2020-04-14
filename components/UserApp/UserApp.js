@@ -29,7 +29,7 @@ const UserApp = (props) => {
                                       <span>{ title }</span>
                                       <span>{ total(app) }</span>
                                     </div>
-                                    { modal({...app, ...props}) }
+                                    { modal && modal({...app, ...props}) }
                                 </>
                             )}
                     </div>
