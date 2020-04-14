@@ -3,12 +3,12 @@ import TopUsers from "../../components/TopUsers";
 import ContentData from "../contentDataInterface";
 import ModalBlackList from "../../../Modals/ModalBlackList";
 
-const topUsersModal = ({ appName }) => (
+const topUsersModal = ({ name }) => (
     <ModalBlackList
         showButtonContent="Add User"
         submitButtonContent="Add"
         title="Top Users"
-        appName={ appName }
+        appName={ name }
     />);
 
 const topUsersContent = ({ top_users }) => (

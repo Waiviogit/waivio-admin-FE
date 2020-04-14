@@ -3,19 +3,19 @@ import ContentData from "../contentDataInterface";
 import BlackList from "../../components/BlackList";
 import ModalBlackList from "../../../Modals/ModalBlackList";
 
-const usersBlackListModal = ({ appName, addBlackListUsers }) => (
+const usersBlackListModal = ({ name, addBlackListUsers }) => (
     <ModalBlackList
         showButtonContent="Add User"
         submitButtonContent="Add"
         title="Add User"
-        appName={ appName }
+        appName={ name }
         addBlackListUsers={addBlackListUsers}
     />);
 
-const usersBlackListContent = ({ black_list_users, appName }) => (
+const usersBlackListContent = ({ black_list_users, name }) => (
     <div className="user-app-content__serviceBots">
         <div className="user-app-content__serviceBots">
-            <BlackList black_list_users={ black_list_users } appName={ appName }/>
+            <BlackList black_list_users={ black_list_users } appName={ name }/>
         </div>
     </div>
 );

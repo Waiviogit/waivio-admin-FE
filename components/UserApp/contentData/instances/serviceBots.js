@@ -3,20 +3,20 @@ import ContentData from "../contentDataInterface";
 import ServiceBots from "../../components/ServiceBots";
 import ModalServiceBot from "../../../Modals/ModalServiceBot";
 
-const serviceBotsModal = ({ appName, createServiceBot }) => (
+const serviceBotsModal = ({ name, createServiceBot }) => (
     <ModalServiceBot
         showButtonContent="Create Service Bot"
         submitButtonContent="Create"
         title="Create Service Bot"
         type="create"
         onFormSubmit={ createServiceBot }
-        appName={ appName }
+        appName={ name }
     />);
 
-const serviceBotsContent = ({ service_bots, appName }) => (
+const serviceBotsContent = ({ service_bots, name }) => (
     <div className="user-app-content__serviceBots">
         <div className="user-app-content__serviceBots">
-            <ServiceBots service_bots={ service_bots } appName={ appName } />
+            <ServiceBots service_bots={ service_bots } appName={ name } />
         </div>
     </div>
 );
