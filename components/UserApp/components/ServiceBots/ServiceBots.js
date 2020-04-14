@@ -6,7 +6,7 @@ import TableRow from './TableRow';
 const ServiceBots = ({ service_bots, updateServiceBot, deleteServiceBot, appName }) => {
     return (
         <Table
-            fixed
+            ui
             striped
             singleLine
             unstackable
