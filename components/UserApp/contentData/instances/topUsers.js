@@ -3,14 +3,6 @@ import TopUsers from "../../components/TopUsers";
 import ContentData from "../contentDataInterface";
 import ModalBlackList from "../../../Modals/ModalBlackList";
 
-const topUsersModal = ({ name }) => (
-    <ModalBlackList
-        showButtonContent="Add User"
-        submitButtonContent="Add"
-        title="Top Users"
-        appName={ name }
-    />);
-
 const topUsersContent = ({ top_users }) => (
     <div className="user-app-content__topUsers">
         <TopUsers top_users={ top_users } />
@@ -26,6 +18,6 @@ const topUsersTotal = ({ top_users }) => (
 export default new ContentData(
     'Top Users', 3,
     topUsersContent,
-    topUsersModal,
+    null,
     topUsersTotal,
 );
