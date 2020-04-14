@@ -12,6 +12,7 @@ export default function* actionWatcher() {
     yield takeEvery(appsActions.DELETE_SERVICE_BOT_REQUEST, deleteServiceBot);
     yield takeEvery(appsActions.DELETE_BLACK_LIST_USER_REQUEST, deleteBlackListUsers);
     yield takeEvery(appsActions.ADD_BLACK_LIST_USER_REQUEST, addBlackListUsers);
+    yield takeEvery(appsActions.ADD_SUPPORTED_HASHTAGS_REQUEST, addSupportedHashtags);
 }
 
 export function* getAllApps({ payload, resolve, reject, ctx }) {

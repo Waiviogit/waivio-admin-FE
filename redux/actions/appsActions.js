@@ -141,7 +141,7 @@ export const deleteSupportedHashtagsError = (payload) => ({
     payload,
 });
 
-export const addSupportedHashtagsRequest = (payload) => ({
+export const addSupportedHashtagsRequest = (payload) =>  ({
     type: ADD_SUPPORTED_HASHTAGS_REQUEST,
     ...payload,
 });

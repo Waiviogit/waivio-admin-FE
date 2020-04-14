@@ -1,10 +1,10 @@
 import React from "react";
 import ContentData from "../contentDataInterface";
 import SupportedHashtags from "../../components/supportedHashtags";
-import ModalBlackList from "../../../Modals/ModalBlackList";
+import ModalSupportedHashtags from "../../../Modals/ModalSupportedHashtags";
 
 const supportedHashtagsModal = ({ name }) => (
-    <ModalBlackList
+    <ModalSupportedHashtags
         showButtonContent="Add hashtag"
         submitButtonContent="Add"
         title="Supported hashtag"
