@@ -108,7 +108,6 @@ export function* addBlackListUsers({ payload, resolve, reject, ctx }) {
 }
 
 export function* deleteSupportedHashtags({ payload, resolve, reject, ctx }) {
-    console.log(payload)
     try {
         const { data, headers } = yield call([api.apps, api.apps.deleteSupportedHashtags], payload);
         yield call(updateCookies, headers, ctx);
