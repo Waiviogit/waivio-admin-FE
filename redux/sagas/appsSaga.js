@@ -12,6 +12,8 @@ export default function* actionWatcher() {
     yield takeEvery(appsActions.DELETE_SERVICE_BOT_REQUEST, deleteServiceBot);
     yield takeEvery(appsActions.DELETE_BLACK_LIST_USER_REQUEST, deleteBlackListUsers);
     yield takeEvery(appsActions.ADD_BLACK_LIST_USER_REQUEST, addBlackListUsers);
+    yield takeEvery(appsActions.ADD_SUPPORTED_HASHTAGS_REQUEST, addSupportedHashtags);
+    yield takeEvery(appsActions.DELETE_SUPPORTED_HASHTAGS_REQUEST, deleteSupportedHashtags);
 }
 
 export function* getAllApps({ payload, resolve, reject, ctx }) {
@@ -101,6 +103,32 @@ export function* addBlackListUsers({ payload, resolve, reject, ctx }) {
         yield put(appsActions.updateAllAps(ctx));
     } catch (error) {
         yield put(appsActions.addBlackListUsersError());
+        yield call(reject, error);
+    }
+}
+
+export function* deleteSupportedHashtags({ payload, resolve, reject, ctx }) {
+    try {
+        const { data, headers } = yield call([api.apps, api.apps.deleteSupportedHashtags], payload);
+        yield call(updateCookies, headers, ctx);
+        yield call(resolve, data);
+        yield put(appsActions.deleteSupportedHashtagsSuccess());
+        yield put(appsActions.updateAllAps(ctx));
+    } catch (error) {
+        yield put(appsActions.deleteSupportedHashtagsError());
+        yield call(reject, error);
+    }
+}
+
+export function* addSupportedHashtags({ payload, resolve, reject, ctx }) {
+    try {
+        const { data, headers } = yield call([api.apps, api.apps.addSupportedHashtags], payload);
+        yield call(updateCookies, headers, ctx);
+        yield call(resolve, data);
+        yield put(appsActions.addSupportedHashtagsSuccess());
+        yield put(appsActions.updateAllAps(ctx));
+    } catch (error) {
+        yield put(appsActions.addSupportedHashtagsError());
         yield call(reject, error);
     }
 }

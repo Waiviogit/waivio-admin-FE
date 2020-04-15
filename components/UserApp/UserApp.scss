@@ -1,42 +1,83 @@
 @import "utils/veriables";
 
-.user-app-content {
+.user-app {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  align-items: center;
 
-  &__moderators {
-    display: flex;
-    justify-content: space-between;
-    &-names {
-      border: none!important;
-    }
+  h2 {
+    text-align: center;
+    margin: 20px;
   }
-  &__title{
+
+  &__content {
     display: flex;
-    justify-content: space-between;
-    &-btn button {
-      width: 170px;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+      &-header {
+      width: 100%;
+      padding: 10px;
+      background: $color-white;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      align-content: center;
+      h3 {
+        margin: 20px 0 0 0;
+        height: 40px;
+        font-size: 20px;
+
+        &:hover {
+          cursor: pointer;
+          color: $color-orange;
+        }
+        &.active {
+          color: $color-orange;
+          &:after {
+            content: '';
+            display: inline-block;
+            border-bottom: 6px solid $color-orange;
+            width: 100%;
+            margin-top: 20px;
+          }
+        }
+      }
     }
-  }
-  &__topUsers {
-    display: flex;
-    justify-content: space-between;
-    &-names {
-      border: none!important;
-    }
-  }
-  &__serviceBots {
-    .accordion.ui.fluid.styled {
-      box-shadow: none!important;
-    }
-    th:nth-child(2) {
-      width: 50%!important;
-    }
-    th:nth-child(4) {
-      width: 30%!important;
-    }
-    display: flex;
-    justify-content: space-between;
-    &-names {
-      border: none!important;
+
+    &-body {
+      width: 80%;
+      margin-top: 35px;
+      &-header {
+        font-size: 20px;
+        width: 100%;
+        height: 50px;
+        margin-bottom: 10px;
+        padding: 30px;
+        background: $color-white;
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        &-title {
+          display: flex;
+        }
+      }
+      &-main {
+        border-radius: 4px;
+        max-height: 660px;
+        overflow-y: scroll;
+        background: $color-white;
+      }
+      .total-number-of-block {
+        background: $color-orange;
+        font-size: 14px;
+        padding: 3px 15px;
+        border-radius: 5px;
+        margin-left: 15px;
+        color: $color-white;
+      }
     }
   }
 }
