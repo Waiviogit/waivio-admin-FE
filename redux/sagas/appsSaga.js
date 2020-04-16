@@ -86,7 +86,7 @@ export function* deleteBlackListUsers({ payload, resolve, reject, ctx }) {
         const { data, headers } = yield call([api.apps, api.apps.deleteBlackListUsers], payload);
         yield call(updateCookies, headers, ctx);
         yield call(resolve, data);
-        yield put(appsActions.deleteBlackListUsersSuccess());
+        yield put(appsActions.deleteBlackListUsersSuccess(payload.data.names));
         yield put(appsActions.updateAllAps(ctx));
     } catch (error) {
         yield put(appsActions.deleteBlackListUsersError());
@@ -99,7 +99,7 @@ export function* addBlackListUsers({ payload, resolve, reject, ctx }) {
         const { data, headers } = yield call([api.apps, api.apps.addBlackListUsers], payload);
         yield call(updateCookies, headers, ctx);
         yield call(resolve, data);
-        yield put(appsActions.addBlackListUsersSuccess());
+        yield put(appsActions.addBlackListUsersSuccess(payload.data.names));
         yield put(appsActions.updateAllAps(ctx));
     } catch (error) {
         yield put(appsActions.addBlackListUsersError());
@@ -112,7 +112,7 @@ export function* deleteSupportedHashtags({ payload, resolve, reject, ctx }) {
         const { data, headers } = yield call([api.apps, api.apps.deleteSupportedHashtags], payload);
         yield call(updateCookies, headers, ctx);
         yield call(resolve, data);
-        yield put(appsActions.deleteSupportedHashtagsSuccess());
+        yield put(appsActions.deleteSupportedHashtagsSuccess(payload.data.permlinks));
         yield put(appsActions.updateAllAps(ctx));
     } catch (error) {
         yield put(appsActions.deleteSupportedHashtagsError());
@@ -125,7 +125,7 @@ export function* addSupportedHashtags({ payload, resolve, reject, ctx }) {
         const { data, headers } = yield call([api.apps, api.apps.addSupportedHashtags], payload);
         yield call(updateCookies, headers, ctx);
         yield call(resolve, data);
-        yield put(appsActions.addSupportedHashtagsSuccess());
+        yield put(appsActions.addSupportedHashtagsSuccess(payload.data.permlinks));
         yield put(appsActions.updateAllAps(ctx));
     } catch (error) {
         yield put(appsActions.addSupportedHashtagsError());

@@ -1,9 +1,10 @@
 export default class ContentData {
-    constructor(title, index, content, modal, total) {
+    constructor(title, index, content, modal, total, search) {
         this.title = title;
         this.index = index;
         this.modal = modal;
         this.content = content;
         this.total = total;
+        this.search = search;
     }
 }

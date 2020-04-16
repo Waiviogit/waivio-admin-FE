@@ -79,5 +79,36 @@
         color: $color-white;
       }
     }
+
+    &-search {
+      display: flex;
+      align-content: center;
+      position: relative;
+      &-input {
+        width: 400px!important;
+        height: 40px;
+      }
+      &-btn {
+        margin-left: 20px!important;
+      }
+      &-modal {
+        position: absolute;
+        width: 400px;
+        max-height: 400px;
+        background: $color-white;
+        border: 1px solid $color-orange;
+        border-radius: 4px;
+        top: 40px;
+        overflow-y: scroll;
+        &-user {
+          padding: 10px;
+
+          &:hover {
+            opacity: 0.8;
+            background: $color-orange;
+          }
+        }
+      }
+    }
   }
 }
