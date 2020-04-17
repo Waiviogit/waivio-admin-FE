@@ -2,8 +2,9 @@ import React from 'react';
 import PropTypes from "prop-types";
 import { Table } from 'semantic-ui-react';
 import TableRow from "./TableRow";
+import { isEmpty, map } from "lodash";
 
-const Moderators = ({ moderators, appName, updateModerator, upgradeToUser }) => {
+const Moderators = ({ moderators, appName, updateModerator, upgradeToUser, searchingContent }) => {
     return (
         <Table
             fixed
@@ -20,7 +21,8 @@ const Moderators = ({ moderators, appName, updateModerator, upgradeToUser }) => 
                 </Table.Row>
             </Table.Header>
             <Table.Body>
-                {moderators.map((moderator, index) => (
+                {map(isEmpty(searchingContent) ? moderators : searchingContent,
+                    (moderator, index) => (
                     <TableRow
                         key={`${index}${moderator.name}`}
                         moderator={moderator}

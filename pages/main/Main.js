@@ -12,11 +12,12 @@ const Main = ({ apps }) => {
                 <div className='main__body-header'><h1>Apps</h1></div>
                 <div className='main__body-content'>
                     {map(apps, app => (
-                        <div className='main__body-content-app'>
-                            <Link href={`/main/${app.name}`}>
-                                <a>{app.name}</a>
-                            </Link>
-                        </div>
+                        <Link key={app.name} href={`/main/${app.name}`}>
+                            <div className='main__body-content-app'>
+                                    <a>{app.name}</a>
+                            </div>
+                        </Link>
+
                     ))}
                 </div>
             </Container>

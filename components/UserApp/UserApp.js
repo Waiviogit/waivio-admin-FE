@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, Fragment } from 'react';
 import PropTypes from "prop-types";
 import { map } from 'lodash';
 import contentData from './contentData'
@@ -7,6 +7,7 @@ import './UserApp.scss'
 const UserApp = (props) => {
     const { app } = props;
     const [activeIndex, setActiveIndex] = useState(0);
+
     return (
         <div className='user-app'>
             <h2>{ app.name }</h2>
@@ -14,7 +15,8 @@ const UserApp = (props) => {
                 <div className='user-app__content-header'>
                     {map(contentData, ({ title, index }) =>
                         <h3
-                            className={activeIndex === index && 'active'}
+                            key={`header-title-${index}`}
+                            className={activeIndex === index ? 'active' : ''}
                             onClick={() => setActiveIndex(index)}
                         >
                             { title }
@@ -23,18 +25,21 @@ const UserApp = (props) => {
                 </div>
                 <div className='user-app__content-body'>
                     <div className='user-app__content-body-header'>
-                        {map(contentData, ({ title, index, modal, total }) => index === activeIndex &&
-                                <>
-                                    <div className='user-app__content-body-header-title'>
+                        {map(contentData, ({ title, index, modal, total, search }) => index === activeIndex &&
+                                <Fragment key={index}>
+                                    <div key={`body-title-${index}`} className='user-app__content-body-header-title'>
                                       <span>{ title }</span>
-                                      <span>{ total(app) }</span>
+                                        { total(app) }
                                     </div>
+                                    { search && search(app) }
                                     { modal && modal({...app, ...props}) }
-                                </>
+                                </Fragment>
                             )}
                     </div>
                     <div className='user-app__content-body-main'>
-                        {map(contentData, ({ index, content }) => index === activeIndex && content(app) )}
+                        {
+                            map(contentData, ({ index, content }) => index === activeIndex && content(app, index) )
+                        }
                     </div>
                 </div>
             </div>

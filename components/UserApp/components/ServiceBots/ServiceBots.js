@@ -2,8 +2,9 @@ import React from 'react';
 import PropTypes from "prop-types";
 import { Table } from "semantic-ui-react";
 import TableRow from './TableRow';
+import { isEmpty, map } from "lodash";
 
-const ServiceBots = ({ service_bots, updateServiceBot, deleteServiceBot, appName }) => {
+const ServiceBots = ({ service_bots, updateServiceBot, deleteServiceBot, appName, searchingContent }) => {
     return (
         <Table
             ui
@@ -21,7 +22,8 @@ const ServiceBots = ({ service_bots, updateServiceBot, deleteServiceBot, appName
                 </Table.Row>
             </Table.Header>
             <Table.Body>
-                {service_bots.map((bot) => (
+                {map(isEmpty(searchingContent) ? service_bots : searchingContent,
+                    bot => (
                     <TableRow
                         key={bot.name}
                         bot={bot}

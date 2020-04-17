@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import PropTypes from "prop-types";
 import { Accordion, Table } from "semantic-ui-react";
+import { map, isEmpty } from 'lodash';
 import { CustomButton } from '../../../common/buttons';
 
-const BlackList = ({ black_list_users, deleteBlackListUsers, appName }) => {
+const BlackList = ({ black_list_users, deleteBlackListUsers, appName, searchingContent }) => {
     const [isLoading, setIsLoading] = useState(false);
 
     const handleClick = (user) => {
@@ -26,7 +27,8 @@ const BlackList = ({ black_list_users, deleteBlackListUsers, appName }) => {
                     </Table.Row>
                 </Table.Header>
                 <Table.Body>
-                    {black_list_users.map((user, index) => {
+                    {map(isEmpty(searchingContent) ? black_list_users : searchingContent,
+                        (user, index) => {
                         return (
                             <Table.Row key={`${user}${index}`}>
                                 <Table.Cell>{user}</Table.Cell>

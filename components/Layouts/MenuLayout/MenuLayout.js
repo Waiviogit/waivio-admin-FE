@@ -17,7 +17,7 @@ const MenuLayout = ({ children, router, isSignIn }) => {
 
 MenuLayout.propTypes = {
     children: PropTypes.object,
-    isSignIn: PropTypes.string,
+    isSignIn: PropTypes.bool,
     router: PropTypes.object,
 };
 

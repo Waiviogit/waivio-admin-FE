@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useLocalStorage } from "../../helpers/useLocalStorage";
 import { setStorageData } from "../../helpers/localeStorage";
 import { CustomButton } from "../common/buttons";
+import './MenuMain.scss';
 
 const MenuMain = ({ signOut, getAllApps }) => {
     const [activeItem, setActiveItem] = useState(false);
@@ -24,31 +25,38 @@ const MenuMain = ({ signOut, getAllApps }) => {
     return (
         <Menu className="main__menu-body" size="large" inverted>
             <Menu.Item>
-                <Image
-                    src="/static/icons/waivio-logo.svg"
-                    className="menu__body-logo"
-                />
+                <Link href='/main'>
+                    <a>
+                        <Image
+                            src="/static/icons/waivio-logo.svg"
+                            className="menu__body-logo"
+                        />
+                    </a>
+                </Link>
             </Menu.Item>
             <Menu.Item
+                as='div'
                 name="Apps"
                 active={activeItem === "apps"}
                 onClick={handleItemClick}
             >
-                <Link href="/main">Apps</Link>
+                <Link href="/main"><a>Apps</a></Link>
             </Menu.Item>
             <Menu.Item
+                as='div'
                 name="Users"
                 active={activeItem === "users"}
                 onClick={handleItemClick}
             >
-                <Link href="/users">Users</Link>
+                <Link href="/users"><a>Users</a></Link>
             </Menu.Item>
             <Menu.Item
+                as='div'
                 name="Objects"
                 active={activeItem === "objects"}
                 onClick={handleItemClick}
             >
-                <Link href="/objects">Objects</Link>
+                <Link href="/objects"><a>Objects</a></Link>
             </Menu.Item>
             <Menu.Menu className="main__menu-body-right" position="right">
                 <Menu.Item>
