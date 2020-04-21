@@ -4,7 +4,7 @@ import { deleteSupportedHashtagsRequest } from "../../../../redux/actions/appsAc
 import { connect } from "react-redux";
 
 const mapSateToProps = state => ({
-    searchingContent: state.ui.search.supported_hashtags
+    searchingContent: state.ui.search.supported_hashtags,
 });
 
 const mapDispatchToProps = (dispatch) => ({

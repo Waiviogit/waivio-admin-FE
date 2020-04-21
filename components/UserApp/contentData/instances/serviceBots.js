@@ -2,9 +2,20 @@ import React from "react";
 import ContentData from "../contentDataInterface";
 import ServiceBots from "../../components/ServiceBots";
 import ModalServiceBot from "../../../Modals/ModalServiceBot";
-import { searchServiceBots } from "../../../../redux/actions/searchActions";
+import { searchServiceBots, setInputValue } from "../../../../redux/actions/searchActions";
 import { connect } from "react-redux";
 import Search from "../../components/Search";
+
+const serviceBotsTitle = ({ service_bots }) => {
+    return service_bots ?
+        <>
+            <span>Service Bots</span>
+            <div className='total-number-of-block'>
+                {service_bots.length}
+            </div>
+        </> :
+        <span>Service Bots</span>;
+};
 
 const serviceBotsModal = ({ name, createServiceBot }) => (
     <ModalServiceBot
@@ -24,17 +35,16 @@ const serviceBotsContent = ({ service_bots, name } , index) => (
     </div>
 );
 
-const serviceBotsTotal = ({ service_bots }) => (
-    <div className='total-number-of-block'>
-        { service_bots.length }
-    </div>
-);
-
 const serviceBotsSearch = ({ service_bots }) => {
+    const mapSateToProps = state => ({
+        inputValue: state.ui.search.inputValue
+    });
     const mapDispatchToProps = (dispatch) => ({
         searchHandle: (payload) => dispatch(searchServiceBots(payload)),
+        setInputValue: (payload) => dispatch(setInputValue(payload))
+
     });
-    const ConnectedServiceBotsSearch = connect(null, mapDispatchToProps)(Search);
+    const ConnectedServiceBotsSearch = connect(mapSateToProps, mapDispatchToProps)(Search);
     return (
         <ConnectedServiceBotsSearch
             list={service_bots}
@@ -43,10 +53,9 @@ const serviceBotsSearch = ({ service_bots }) => {
 };
 
 export default new ContentData(
-    'Service Bots',
+    serviceBotsTitle,
     1,
     serviceBotsContent,
     serviceBotsModal,
-    serviceBotsTotal,
     serviceBotsSearch,
 );

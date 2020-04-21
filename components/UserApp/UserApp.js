@@ -7,7 +7,31 @@ import './UserApp.scss'
 const UserApp = (props) => {
     const { app } = props;
     const [activeIndex, setActiveIndex] = useState(0);
-
+    // app.tagsData = {
+    //     "Ingredients": {
+    //         "apple": "apple",
+    //         "apple butter": "apple-butter",
+    //         "apple cider": "apple-cider",
+    //         "apple cider vinegar": "apple-cider-vinegar",
+    //         "apple jelly": "apple-jelly",
+    //         "apple juice": "apple-juice",
+    //         "apple sauce": "apple-sauce",
+    //         "crabapples": "crabapples",
+    //         "pineapple": "pineapple",
+    //         "pineapple juice": "pineapple-juice"
+    //     },
+    //     "Cuisine": {
+    //         "Farm-to-table": "farmtotable",
+    //         "Arabic": "arabic"
+    //     },
+    //     "Features": {
+    //         "Farm To Table": "farmtotable",
+    //         "Notable Wine List": "wine",
+    //         "Parking Available": "parking",
+    //         "Table Service": "tableservice",
+    //         "Wi-Fi available": "wifi"
+    //     }
+    // }
     return (
         <div className='user-app'>
             <h2>{ app.name }</h2>
@@ -19,20 +43,21 @@ const UserApp = (props) => {
                             className={activeIndex === index ? 'active' : ''}
                             onClick={() => setActiveIndex(index)}
                         >
-                            { title }
+                            { title({}) }
                         </h3>
                     )}
                 </div>
                 <div className='user-app__content-body'>
                     <div className='user-app__content-body-header'>
-                        {map(contentData, ({ title, index, modal, total, search }) => index === activeIndex &&
+                        {map(contentData, ({ title, index, modal, search }) => index === activeIndex &&
                                 <Fragment key={index}>
                                     <div key={`body-title-${index}`} className='user-app__content-body-header-title'>
-                                      <span>{ title }</span>
-                                        { total(app) }
+                                      { title(app) }
                                     </div>
-                                    { search && search(app) }
-                                    { modal && modal({...app, ...props}) }
+                                    <div className='user-app__content-actionbar'>
+                                        { search && search(app) }
+                                        { modal && modal({...app, ...props}) }
+                                    </div>
                                 </Fragment>
                             )}
                     </div>

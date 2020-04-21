@@ -4,7 +4,15 @@ import { Table } from 'semantic-ui-react';
 import TableRow from "./TableRow";
 import { isEmpty, map } from "lodash";
 
-const Moderators = ({ moderators, appName, updateModerator, upgradeToUser, searchingContent }) => {
+const Moderators = props => {
+    const {
+        appName,
+        moderators,
+        upgradeToUser,
+        updateModerator,
+        searchingContent,
+    } = props;
+
     return (
         <Table
             fixed
@@ -17,7 +25,7 @@ const Moderators = ({ moderators, appName, updateModerator, upgradeToUser, searc
                 <Table.Row>
                     <Table.HeaderCell>Name</Table.HeaderCell>
                     <Table.HeaderCell>Permlinks</Table.HeaderCell>
-                    <Table.HeaderCell></Table.HeaderCell>
+                    <Table.HeaderCell/>
                 </Table.Row>
             </Table.Header>
             <Table.Body>

@@ -4,7 +4,7 @@ import Moderators from "./Moderators";
 import {updateModeratorRequest, upgradeStatusToUserRequest} from "../../../../redux/actions/userActions";
 
 const mapSateToProps = state => ({
-    searchingContent: state.ui.search.moderators
+    searchingContent: state.ui.search.moderators,
 });
 
 const mapDispatchToProps = (dispatch) => ({

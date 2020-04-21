@@ -4,7 +4,15 @@ import { Table } from "semantic-ui-react";
 import TableRow from './TableRow';
 import { isEmpty, map } from "lodash";
 
-const ServiceBots = ({ service_bots, updateServiceBot, deleteServiceBot, appName, searchingContent }) => {
+const ServiceBots = props => {
+    const {
+        appName,
+        service_bots,
+        updateServiceBot,
+        deleteServiceBot,
+        searchingContent,
+    } = props;
+
     return (
         <Table
             ui
@@ -18,7 +26,7 @@ const ServiceBots = ({ service_bots, updateServiceBot, deleteServiceBot, appName
                     <Table.HeaderCell>Name</Table.HeaderCell>
                     <Table.HeaderCell>Posting Key</Table.HeaderCell>
                     <Table.HeaderCell>Roles</Table.HeaderCell>
-                    <Table.HeaderCell></Table.HeaderCell>
+                    <Table.HeaderCell/>
                 </Table.Row>
             </Table.Header>
             <Table.Body>

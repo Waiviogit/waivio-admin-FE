@@ -4,7 +4,7 @@ import ServiceBots from "./ServiceBots";
 import { updateServiceBotRequest, deleteServiceBotRequest } from "../../../../redux/actions/appsActions";
 
 const mapSateToProps = state => ({
-    searchingContent: state.ui.search.service_bots
+    searchingContent: state.ui.search.service_bots,
 });
 
 const mapDispatchToProps = (dispatch) => ({
