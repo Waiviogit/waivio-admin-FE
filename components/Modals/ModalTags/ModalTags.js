@@ -64,8 +64,10 @@ const ModalTags = ({ showButtonContent, submitButtonContent, title, appName, mod
                         <Form>
                             <Form.Field>
                                 <Form.Select
+                                    className='modal-blackList__content-form-select'
                                     label="Category"
                                     type="text"
+                                    color="orange"
                                     placeholder="Category"
                                     options={ selectOptions }
                                     onChange={handleChangeCategory}

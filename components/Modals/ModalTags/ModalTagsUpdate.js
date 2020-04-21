@@ -45,7 +45,7 @@ const ModalTagsUpdate =  props => {
             },
             app: appName
         };
-        
+
         const requestDataUpdate = {
             data: {
                 action: 'update',
