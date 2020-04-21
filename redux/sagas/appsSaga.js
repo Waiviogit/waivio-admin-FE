@@ -13,6 +13,7 @@ export default function* actionWatcher() {
     yield takeEvery(appsActions.DELETE_BLACK_LIST_USER_REQUEST, deleteBlackListUsers);
     yield takeEvery(appsActions.ADD_BLACK_LIST_USER_REQUEST, addBlackListUsers);
     yield takeEvery(appsActions.ADD_SUPPORTED_HASHTAGS_REQUEST, addSupportedHashtags);
+    yield takeEvery(appsActions.DELETE_SUPPORTED_HASHTAGS_REQUEST, deleteSupportedHashtags);
     yield takeEvery(appsActions.MODERATE_TAG_REQUEST, moderateTags);
 }
 
