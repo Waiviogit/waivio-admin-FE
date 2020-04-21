@@ -10,6 +10,7 @@ export default props => {
         appName,
         keyIndex,
         category,
+        dataTagsKeys,
         deleteHandleClick
     } = props;
 
@@ -22,6 +23,7 @@ export default props => {
                     tag={ tag }
                     tagKey={tagKey}
                     appName={appName}
+                    dataTagsKeys={dataTagsKeys}
                 />
                 <CustomButton
                     onClick={() => deleteHandleClick(

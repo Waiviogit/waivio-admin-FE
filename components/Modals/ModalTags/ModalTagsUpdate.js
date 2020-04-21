@@ -11,9 +11,11 @@ const ModalTagsUpdate =  props => {
         appName,
         category,
         tag,
-        tagKey,
         moderateTag,
+        dataTagsKeys,
     } = props;
+
+    let { tagKey } = props;
 
     const stopPropagation = (e) => e.stopPropagation();
     const [isOpen, setIsOpen] = useState(false);
@@ -29,6 +31,9 @@ const ModalTagsUpdate =  props => {
 
     const [isLoading, setIsLoading] = useState(false);
     const handleSubmit = (e) => {
+        if (typeof tagKey === 'number') {
+            tagKey = dataTagsKeys[tagKey]
+        }
         const requestDataDelete = {
             data: {
                 action: 'delete',
@@ -40,6 +45,7 @@ const ModalTagsUpdate =  props => {
             },
             app: appName
         };
+        
         const requestDataUpdate = {
             data: {
                 action: 'update',
