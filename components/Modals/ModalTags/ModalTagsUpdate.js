@@ -5,16 +5,23 @@ import { dispatchRequestClient } from "../../../helpers/asyncActions";
 import { moderateTagsRequest } from "../../../redux/actions/appsActions";
 import { connect } from "react-redux";
 import CustomModalHeader from "../../common/CustomModalHeader";
+import { keys, map } from "lodash";
 
 const ModalTagsUpdate =  props => {
     const {
-        appName,
-        category,
         tag,
+        appName,
+        oldCategory,
+        tagsData,
         moderateTag,
         dataTagsKeys,
     } = props;
 
+    const selectOptions = map(keys(tagsData), category => ({
+        key: category,
+        value: category,
+        text: category,
+    }));
     let { tagKey } = props;
 
     const stopPropagation = (e) => e.stopPropagation();
@@ -29,6 +36,9 @@ const ModalTagsUpdate =  props => {
     const [newTag, setNewTag] = useState('');
     const handleChangeTag = (e) => setNewTag(e.target.value);
 
+    const [category, setCategory] = useState(oldCategory);
+    const handleChangeCategory = (e) => setCategory(e.target.textContent);
+
     const [isLoading, setIsLoading] = useState(false);
     const handleSubmit = (e) => {
         if (typeof tagKey === 'number') {
@@ -38,7 +48,7 @@ const ModalTagsUpdate =  props => {
             data: {
                 action: 'delete',
                 tags: {
-                    category,
+                    oldCategory,
                     tag: tagKey,
                     value: tag
                 }
@@ -79,11 +89,15 @@ const ModalTagsUpdate =  props => {
                 <div className="modal-blackList__content-form">
                     <Form>
                         <Form.Field>
-                            <Form.Input
-                                fluid
-                                label='Category'
+                            <Form.Select
+                                className='modal-blackList__content-form-select'
+                                label="Category"
+                                type="text"
+                                color="orange"
+                                placeholder="Category"
                                 value={category}
-                                readOnly
+                                options={ selectOptions }
+                                onChange={handleChangeCategory}
                             />
                         </Form.Field>
                         <Form.Field>

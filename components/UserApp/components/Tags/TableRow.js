@@ -9,6 +9,7 @@ export default props => {
         tagKey,
         appName,
         keyIndex,
+        tagsData,
         category,
         dataTagsKeys,
         deleteHandleClick
@@ -19,10 +20,11 @@ export default props => {
             <Table.Cell>{tag}</Table.Cell>
             <Table.Cell textAlign="right">
                 <ModalTagsUpdate
-                    category={category[0]}
+                    oldCategory={category[0]}
                     tag={ tag }
                     tagKey={tagKey}
                     appName={appName}
+                    tagsData={tagsData}
                     dataTagsKeys={dataTagsKeys}
                 />
                 <CustomButton

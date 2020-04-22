@@ -75,6 +75,7 @@ const Tags = props => {
                                                 category={searchingCategory}
                                                 keyIndex={keyIndex}
                                                 appName={appName}
+                                                tagsData={tagsData}
                                                 dataTagsKeys={dataTagsKeys}
                                                 deleteHandleClick={deleteHandleClick}
                                             />
@@ -86,6 +87,7 @@ const Tags = props => {
                                                 category={category}
                                                 keyIndex={-1}
                                                 appName={appName}
+                                                tagsData={tagsData}
                                                 dataTagsKeys={dataTagsKeys}
                                                 deleteHandleClick={deleteHandleClick}
                                             />
@@ -104,6 +106,7 @@ const Tags = props => {
                                             category={allTagsData[contentIndex]}
                                             keyIndex={keyIndex}
                                             appName={appName}
+                                            tagsData={tagsData}
                                             dataTagsKeys={dataTagsKeys}
                                             deleteHandleClick={deleteHandleClick}
                                         />

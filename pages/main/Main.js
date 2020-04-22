@@ -17,7 +17,6 @@ const Main = ({ apps }) => {
                                     <a>{app.name}</a>
                             </div>
                         </Link>
-
                     ))}
                 </div>
             </Container>
