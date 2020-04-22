@@ -5,6 +5,7 @@ import BlackList from './BlackList';
 
 const mapSateToProps = state => ({
     searchingContent: state.ui.search.black_list_users,
+    sortBy: state.ui.sort.sortBy,
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -5,6 +5,7 @@ import ModalSupportedHashtags from "../../../Modals/ModalSupportedHashtags";
 import { searchSupportedHashtags, setInputValue } from "../../../../redux/actions/searchActions";
 import { connect } from "react-redux";
 import Search from "../../components/Search";
+import Sort from "../../components/Sort";
 
 const supportedHashtagsTitle = ({ supported_hashtags }) => {
     return supported_hashtags ?
@@ -56,4 +57,5 @@ export default new ContentData(
     supportedHashtagsContent,
     supportedHashtagsModal,
     supportedHashtagsSearch,
+    () => <Sort/>,
 );

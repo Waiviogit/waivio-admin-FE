@@ -1,3 +1,4 @@
+export const SET_INPUT_VALUE = 'SET_INPUT_VALUE';
 export const SEARCH_MODERATORS = 'SEARCH_MODERATORS';
 export const SEARCH_SERVICE_BOTS = 'SEARCH_SERVICE_BOTS';
 export const SEARCH_BLACK_LIST_USERS = 'SEARCH_BLACK_LIST_USERS';
@@ -5,7 +6,7 @@ export const SEARCH_TOP_USERS = 'SEARCH_TOP_USERS';
 export const SEARCH_SUPPORTED_HASHTAGS = 'SEARCH_SUPPORTED_HASHTAGS';
 export const SEARCH_TAGS = 'SEARCH_TAGS';
 export const CLEAR_SEARCHED_CONTENT = 'CLEAR_SEARCHED_CONTENT';
-export const SET_INPUT_VALUE = 'SET_INPUT_VALUE';
+export const SEARCH_STATISTICS = 'SEARCH_STATISTICS';
 
 export const searchModerators= (payload) =>  ({
     type: SEARCH_MODERATORS,
@@ -39,6 +40,11 @@ export const searchTags = (payload) =>  ({
 
 export const setInputValue = (payload) =>  ({
     type: SET_INPUT_VALUE,
+    payload,
+});
+
+export const searchStatistics = (payload) =>  ({
+    type: SEARCH_STATISTICS,
     payload,
 });
 
