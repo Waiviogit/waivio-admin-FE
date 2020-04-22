@@ -36,4 +36,8 @@ export default class Apps extends Base {
     addSupportedHashtags({ data, app }) {
         return this.apiClient.get(`${config.moderateArrays.push}/${app}${config.moderateArrays.moderateArrays}`, {}, data);
     }
+
+    moderateTags({ data, app }) {
+        return this.apiClient.post(`${config.moderateTags.app}/${app}${config.moderateTags.moderateTags}`, data);
+    }
 }

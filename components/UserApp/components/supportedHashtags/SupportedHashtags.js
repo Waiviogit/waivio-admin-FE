@@ -4,7 +4,14 @@ import { isEmpty, map } from 'lodash';
 import { Accordion, Table } from "semantic-ui-react";
 import { CustomButton } from '../../../common/buttons';
 
-const SupportedHashtags = ({ supported_hashtags, deleteSupportedHashTag, appName, searchingContent }) => {
+const SupportedHashtags = props => {
+    const {
+        appName,
+        searchingContent,
+        supported_hashtags,
+        deleteSupportedHashTag
+    } = props;
+
     const handleClick = (hashtag) => {
         const requestData = { data: { permlinks: hashtag }, app: appName };
         deleteSupportedHashTag(requestData)
@@ -16,7 +23,7 @@ const SupportedHashtags = ({ supported_hashtags, deleteSupportedHashTag, appName
                 <Table.Header>
                     <Table.Row>
                         <Table.HeaderCell>Supported Hashtags</Table.HeaderCell>
-                        <Table.HeaderCell></Table.HeaderCell>
+                        <Table.HeaderCell/>
                     </Table.Row>
                 </Table.Header>
                 <Table.Body>

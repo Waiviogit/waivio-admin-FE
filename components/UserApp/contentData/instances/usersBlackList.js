@@ -4,7 +4,18 @@ import BlackList from "../../components/BlackList";
 import ModalBlackList from "../../../Modals/ModalBlackList";
 import Search from "../../components/Search";
 import { connect } from 'react-redux';
-import { searchBlackListUsers } from "../../../../redux/actions/searchActions";
+import { searchBlackListUsers, setInputValue } from "../../../../redux/actions/searchActions";
+
+const usersBlackListTitle = ({ black_list_users }) => {
+    return black_list_users ?
+        <>
+            <span>User's Black List</span>
+            <div className='total-number-of-block'>
+                {black_list_users.length}
+            </div>
+        </> :
+        <span>User's Black List</span>;
+};
 
 const usersBlackListModal = ({ name, addBlackListUsers }) => (
     <ModalBlackList
@@ -23,17 +34,15 @@ const usersBlackListContent = ({ black_list_users, name }, index) => (
     </div>
 );
 
-const usersBlackTotal = ({ black_list_users }) => (
-    <div className='total-number-of-block'>
-        { black_list_users.length }
-    </div>
-);
-
 const usersBlackListSearch = ({ black_list_users }) => {
+    const mapSateToProps = state => ({
+        inputValue: state.ui.search.inputValue
+    });
     const mapDispatchToProps = (dispatch) => ({
         searchHandle: (payload) => dispatch(searchBlackListUsers(payload)),
+        setInputValue: (payload) => dispatch(setInputValue(payload))
     });
-    const ConnectedUsersBlackListSearch = connect(null, mapDispatchToProps)(Search);
+    const ConnectedUsersBlackListSearch = connect(mapSateToProps, mapDispatchToProps)(Search);
     return (
         <ConnectedUsersBlackListSearch
             list={black_list_users}
@@ -42,10 +51,9 @@ const usersBlackListSearch = ({ black_list_users }) => {
 };
 
 export default new ContentData(
-    `User's Black List`,
+    usersBlackListTitle,
     2,
     usersBlackListContent,
     usersBlackListModal,
-    usersBlackTotal,
     usersBlackListSearch,
 );

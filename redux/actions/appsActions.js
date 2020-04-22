@@ -31,6 +31,10 @@ export const DELETE_SUPPORTED_HASHTAGS_REQUEST = 'DELETE_SUPPORTED_HASHTAGS_REQU
 export const DELETE_SUPPORTED_HASHTAGS_SUCCESS = 'DELETE_SUPPORTED_HASHTAGS_SUCCESS';
 export const DELETE_SUPPORTED_HASHTAGS__ERROR = 'DELETE_SUPPORTED_HASHTAGS__ERROR';
 
+export const MODERATE_TAG_REQUEST = 'MODERATE_TAG_REQUEST';
+export const MODERATE_TAG_SUCCESS = 'MODERATE_TAG_SUCCESS';
+export const MODERATE_TAG__ERROR = 'MODERATE_TAG__ERROR';
+
 export const getAllApps = (payload) => ({
     type: GET_ALL_APPS_REQUEST,
     ...payload,
@@ -153,5 +157,20 @@ export const addSupportedHashtagsSuccess = (payload) => ({
 
 export const addSupportedHashtagsError = (payload) => ({
     type: ADD_SUPPORTED_HASHTAGS__ERROR,
+    payload,
+});
+
+export const moderateTagsRequest = (payload) => ({
+    type: MODERATE_TAG_REQUEST,
+    ...payload,
+});
+
+export const moderateTagsSuccess = (payload) => ({
+    type: MODERATE_TAG_SUCCESS,
+    payload,
+});
+
+export const moderateTagsError = (payload) => ({
+    type: MODERATE_TAG__ERROR,
     payload,
 });

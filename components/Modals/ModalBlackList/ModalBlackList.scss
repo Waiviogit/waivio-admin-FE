@@ -21,6 +21,11 @@
         border: 1px solid $color-orange !important;
       }
     }
+    &-select {
+      .visible {
+        border-color: $color-orange!important;
+      }
+    }
   }
 
   &__button {

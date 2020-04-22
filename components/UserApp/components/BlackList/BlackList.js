@@ -4,7 +4,14 @@ import { Accordion, Table } from "semantic-ui-react";
 import { map, isEmpty } from 'lodash';
 import { CustomButton } from '../../../common/buttons';
 
-const BlackList = ({ black_list_users, deleteBlackListUsers, appName, searchingContent }) => {
+const BlackList = props => {
+    const {
+        appName,
+        searchingContent,
+        black_list_users,
+        deleteBlackListUsers,
+    } = props;
+
     const [isLoading, setIsLoading] = useState(false);
 
     const handleClick = (user) => {
@@ -23,7 +30,7 @@ const BlackList = ({ black_list_users, deleteBlackListUsers, appName, searchingC
                 <Table.Header>
                     <Table.Row>
                         <Table.HeaderCell>Users</Table.HeaderCell>
-                        <Table.HeaderCell></Table.HeaderCell>
+                        <Table.HeaderCell/>
                     </Table.Row>
                 </Table.Header>
                 <Table.Body>

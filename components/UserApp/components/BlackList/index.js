@@ -4,7 +4,7 @@ import { deleteBlackListUsersRequest } from '../../../../redux/actions/appsActio
 import BlackList from './BlackList';
 
 const mapSateToProps = state => ({
-    searchingContent: state.ui.search.black_list_users
+    searchingContent: state.ui.search.black_list_users,
 });
 
 const mapDispatchToProps = (dispatch) => ({

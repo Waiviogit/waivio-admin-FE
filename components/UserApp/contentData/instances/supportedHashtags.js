@@ -2,9 +2,20 @@ import React from "react";
 import ContentData from "../contentDataInterface";
 import SupportedHashtags from "../../components/supportedHashtags";
 import ModalSupportedHashtags from "../../../Modals/ModalSupportedHashtags";
-import { searchSupportedHashtags } from "../../../../redux/actions/searchActions";
+import { searchSupportedHashtags, setInputValue } from "../../../../redux/actions/searchActions";
 import { connect } from "react-redux";
 import Search from "../../components/Search";
+
+const supportedHashtagsTitle = ({ supported_hashtags }) => {
+    return supported_hashtags ?
+        <>
+            <span>Supported Hashtags</span>
+            <div className='total-number-of-block'>
+                {supported_hashtags.length}
+            </div>
+        </> :
+        <span>Supported Hashtags</span>;
+};
 
 const supportedHashtagsModal = ({ name }) => (
     <ModalSupportedHashtags
@@ -23,17 +34,15 @@ const supportedHashtagsContent = ({ supported_hashtags, name }, index) => (
     </div>
 );
 
-const supportedHashtagsTotal = ({ supported_hashtags }) => (
-    <div className='total-number-of-block'>
-        { supported_hashtags.length }
-    </div>
-);
-
 const supportedHashtagsSearch = ({ supported_hashtags }) => {
+    const mapSateToProps = state => ({
+        inputValue: state.ui.search.inputValue
+    });
     const mapDispatchToProps = (dispatch) => ({
         searchHandle: (payload) => dispatch(searchSupportedHashtags(payload)),
+        setInputValue: (payload) => dispatch(setInputValue(payload))
     });
-    const ConnectedSupportedHashtagsSearch = connect(null, mapDispatchToProps)(Search);
+    const ConnectedSupportedHashtagsSearch = connect(mapSateToProps, mapDispatchToProps)(Search);
     return (
         <ConnectedSupportedHashtagsSearch
             list={supported_hashtags}
@@ -42,10 +51,9 @@ const supportedHashtagsSearch = ({ supported_hashtags }) => {
 };
 
 export default new ContentData(
-    'Supported Hashtags',
+    supportedHashtagsTitle,
     4,
     supportedHashtagsContent,
     supportedHashtagsModal,
-    supportedHashtagsTotal,
     supportedHashtagsSearch,
 );

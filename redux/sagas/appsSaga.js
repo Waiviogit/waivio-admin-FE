@@ -14,6 +14,7 @@ export default function* actionWatcher() {
     yield takeEvery(appsActions.ADD_BLACK_LIST_USER_REQUEST, addBlackListUsers);
     yield takeEvery(appsActions.ADD_SUPPORTED_HASHTAGS_REQUEST, addSupportedHashtags);
     yield takeEvery(appsActions.DELETE_SUPPORTED_HASHTAGS_REQUEST, deleteSupportedHashtags);
+    yield takeEvery(appsActions.MODERATE_TAG_REQUEST, moderateTags);
 }
 
 export function* getAllApps({ payload, resolve, reject, ctx }) {
@@ -132,3 +133,17 @@ export function* addSupportedHashtags({ payload, resolve, reject, ctx }) {
         yield call(reject, error);
     }
 }
+
+export function* moderateTags({ payload, resolve, reject, ctx }) {
+    try {
+        const { data, headers } = yield call([api.apps, api.apps.moderateTags], payload);
+        yield call(updateCookies, headers, ctx);
+        yield call(resolve, data);
+        yield put(appsActions.moderateTagsSuccess(payload.data));
+        yield put(appsActions.updateAllAps(ctx));
+    } catch (error) {
+        yield put(appsActions.moderateTagsError());
+        yield call(reject, error);
+    }
+}
+

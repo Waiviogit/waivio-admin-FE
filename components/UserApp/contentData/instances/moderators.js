@@ -4,7 +4,18 @@ import Moderators from "../../components/Moderators";
 import ModalModerator from "../../../Modals/ModalModerator";
 import Search from "../../components/Search";
 import { connect } from 'react-redux';
-import { searchModerators } from "../../../../redux/actions/searchActions";
+import { searchModerators, setInputValue } from "../../../../redux/actions/searchActions";
+
+const moderatorsTitle = ({ moderators }) => {
+    return moderators ?
+        <>
+            <span>Moderators</span>
+            <div className='total-number-of-block'>
+                {moderators.length}
+            </div>
+        </> :
+        <span>Moderators</span>;
+};
 
 const moderatorsModal = ({ name, upgradeToModerator }) => (
     <ModalModerator
@@ -25,17 +36,16 @@ const moderatorsContent = ({ moderators, name }, index) => (
     </div>
 );
 
-const moderatorsTotal = ({ moderators }) => (
-    <div className='total-number-of-block'>
-        { moderators.length }
-    </div>
-);
 
 const moderatorsSearch = ({ moderators }) => {
+    const mapSateToProps = state => ({
+        inputValue: state.ui.search.inputValue
+    });
     const mapDispatchToProps = (dispatch) => ({
         searchHandle: (payload) => dispatch(searchModerators(payload)),
+        setInputValue: (payload) => dispatch(setInputValue(payload))
     });
-    const ConnectedModeratorsSearch = connect(null, mapDispatchToProps)(Search);
+    const ConnectedModeratorsSearch = connect(mapSateToProps, mapDispatchToProps)(Search);
     return (
         <ConnectedModeratorsSearch
             list={moderators}
@@ -44,10 +54,9 @@ const moderatorsSearch = ({ moderators }) => {
 };
 
 export default new ContentData(
-    'Moderators',
+    moderatorsTitle,
     0,
     moderatorsContent,
     moderatorsModal,
-    moderatorsTotal,
     moderatorsSearch,
 );

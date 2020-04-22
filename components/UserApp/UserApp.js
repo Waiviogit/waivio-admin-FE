@@ -19,20 +19,21 @@ const UserApp = (props) => {
                             className={activeIndex === index ? 'active' : ''}
                             onClick={() => setActiveIndex(index)}
                         >
-                            { title }
+                            { title({}) }
                         </h3>
                     )}
                 </div>
                 <div className='user-app__content-body'>
                     <div className='user-app__content-body-header'>
-                        {map(contentData, ({ title, index, modal, total, search }) => index === activeIndex &&
+                        {map(contentData, ({ title, index, modal, search }) => index === activeIndex &&
                                 <Fragment key={index}>
                                     <div key={`body-title-${index}`} className='user-app__content-body-header-title'>
-                                      <span>{ title }</span>
-                                        { total(app) }
+                                      { title(app) }
                                     </div>
-                                    { search && search(app) }
-                                    { modal && modal({...app, ...props}) }
+                                    <div className='user-app__content-actionbar'>
+                                        { search && search(app) }
+                                        { modal && modal({...app, ...props}) }
+                                    </div>
                                 </Fragment>
                             )}
                     </div>
