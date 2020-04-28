@@ -14,7 +14,6 @@ const SupportedHashtags = props => {
         deleteSupportedHashTag,
         sortBy,
     } = props;
-
     const handleClick = (hashtag) => {
         const requestData = { data: { permlinks: hashtag }, app: appName };
         deleteSupportedHashTag(requestData)
@@ -67,15 +66,15 @@ const SupportedHashtags = props => {
                         sortUsers(supported_hashtags, sortBy, isUpFollowersSort, isUpWeightSort, isUpNameSort) :
                         sortUsers(searchingContent, sortBy, isUpFollowersSort, isUpWeightSort, isUpNameSort),
                         (hashtag, index) => {
-                            const { name, alias, followers_count, wobjects_weight } = hashtag;
+                            const { default_name, alias, followers_count, wobjects_weight } = hashtag;
                         return (
-                            <Table.Row key={`${name}${index}`}>
-                                <Table.Cell>{name}</Table.Cell>
+                            <Table.Row key={`${default_name}${index}`}>
+                                <Table.Cell>{default_name}</Table.Cell>
                                 <Table.Cell>{alias}</Table.Cell>
                                 <Table.Cell>{followers_count}</Table.Cell>
                                 <Table.Cell>{wobjects_weight}</Table.Cell>
                                 <Table.Cell textAlign="right">
-                                    <CustomButton onClick={() => handleClick(hashtag)} content='Delete' color='orange'/>
+                                    <CustomButton onClick={() => handleClick(default_name)} content='Delete' color='orange'/>
                                 </Table.Cell>
                             </Table.Row>
                         );

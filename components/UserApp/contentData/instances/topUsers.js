@@ -45,5 +45,5 @@ export default new ContentData(
     topUsersContent,
     null,
     topUsersSearch,
-    () => <Sort/>,
+    (key) => <Sort key={key}/>,
 );

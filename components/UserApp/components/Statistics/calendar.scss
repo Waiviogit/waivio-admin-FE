@@ -1,0 +1,96 @@
+@import "utils/veriables";
+
+.statistics__search {
+  width: 100%;
+  display: flex;
+  flex: 0 1 0;
+  padding: 0;
+
+  &--input {
+    height: 40px;
+    input {
+      &:focus {
+        border-color: $color-orange!important;
+      }
+    }
+  }
+
+  &--btn {
+    height: 40px;
+    white-space: nowrap;
+  }
+
+
+  &--calendar {
+    position: relative;
+    width: 250px;
+    margin: 0 20px;
+    &-btn {
+      background: $color-white!important;
+      border: 1px solid $color-border-grey!important;
+      color: $color-grey!important;
+      display: flex;
+      width: 250px;
+      font-size: 13px!important;
+      &:hover {
+        background: $color-white!important;
+        border: 1px solid $color-grey!important;
+        color: $color-grey!important;
+      }
+    }
+    &-body{
+      color: $color-grey!important;
+      top: 40px;
+      width: 250px;
+      font-size: 14px;
+      position: absolute;
+      border-radius: 4px;
+      abbr {
+        text-decoration: none;
+        font-weight: 600;
+      }
+      .react-calendar {
+        &__navigation {
+          &__label {
+            font-weight: 600;
+            width: 50px;
+          }
+          &__arrow {
+            min-width: 30px!important;
+          }
+        }
+        &__tile {
+          &--active {
+            background: rgba(255, 147, 46, 0.2);
+            color: $color-black;
+            border-top: 1px solid $color-orange;
+            border-bottom: 1px solid $color-orange;
+            &:hover {
+              background: rgba(255, 147, 46, 0.8);
+            }
+            &:focus {
+              background: rgba(255, 147, 46, 0.5);
+            }
+          }
+          &--rangeStart {
+            color: $color-orange;
+            font-weight: 600;
+            background: rgba(255, 147, 46, 0.5);
+            border: 1px solid $color-orange;
+          }
+          &--rangeEnd {
+            color: $color-orange;
+            font-weight: 600;
+            background: rgba(255, 147, 46, 0.5);
+            border: 1px solid $color-orange;
+          }
+          &--now {
+            background: $color-white;
+            color: $color-orange;
+            border: 1px solid $color-orange;
+          }
+        }
+      }
+    }
+  }
+}

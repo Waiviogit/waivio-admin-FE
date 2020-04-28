@@ -10,29 +10,29 @@ const TableRow = ({ moderator, updateModerator, upgradeToUser, appName }) => {
 
     return (
         <Table.Row>
-            <Table.Cell >{name}</Table.Cell>
-            <Table.Cell >
-                {author_permlinks && author_permlinks.map((permlink) => renderPermlink(permlink)) }
-            </Table.Cell>
+            <Table.Cell >{ name.name }</Table.Cell>
+            <Table.Cell >{ name.alias }</Table.Cell>
+            <Table.Cell >{ name.followers_count }</Table.Cell>
+            <Table.Cell >{ name.wobjects_weight }</Table.Cell>
             <Table.Cell textAlign="right">
-                <ModalModerator
-                    appName={appName}
-                    showButtonContent='Update'
-                    submitButtonContent='Update'
-                    title='Update To Moderator'
-                    type="update"
-                    onFormSubmit={updateModerator}
-                    moderator={moderator}
-                />
-                <ModalModerator
-                    appName={appName}
-                    showButtonContent='Delete'
-                    submitButtonContent='Delete'
-                    title='Delete from Moderators'
-                    type="delete"
-                    onFormSubmit={upgradeToUser}
-                    moderator={moderator}
-                />
+                {/*<ModalModerator*/}
+                {/*    appName={appName}*/}
+                {/*    showButtonContent='Update'*/}
+                {/*    submitButtonContent='Update'*/}
+                {/*    title='Update To Moderator'*/}
+                {/*    type="update"*/}
+                {/*    onFormSubmit={updateModerator}*/}
+                {/*    moderator={moderator}*/}
+                {/*/>*/}
+                {/*<ModalModerator*/}
+                {/*    appName={appName}*/}
+                {/*    showButtonContent='Delete'*/}
+                {/*    submitButtonContent='Delete'*/}
+                {/*    title='Delete from Moderators'*/}
+                {/*    type="delete"*/}
+                {/*    onFormSubmit={upgradeToUser}*/}
+                {/*    moderator={moderator}*/}
+                {/*/>*/}
             </Table.Cell>
         </Table.Row>
     );

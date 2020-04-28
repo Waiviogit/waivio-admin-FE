@@ -19,7 +19,7 @@ const BlackList = props => {
 
     const handleClick = (user) => {
         setIsLoading(true);
-        const requestData = { data: { names: user }, app: appName };
+        const requestData = { data: { names: [user] }, app: appName };
         deleteBlackListUsers(requestData)
             .then(() => {
                 setIsLoading(false);
@@ -80,7 +80,7 @@ const BlackList = props => {
                                 <Table.Cell>{followers_count}</Table.Cell>
                                 <Table.Cell>{wobjects_weight}</Table.Cell>
                                 <Table.Cell textAlign="right">
-                                    <CustomButton onClick={() => handleClick(user)} content='Delete' color='orange'/>
+                                    <CustomButton onClick={() => handleClick(name)} content='Delete' color='orange'/>
                                 </Table.Cell>
                             </Table.Row>
                         );

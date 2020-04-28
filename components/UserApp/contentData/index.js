@@ -6,4 +6,4 @@ import supportedHashtags from "./instances/supportedHashtags";
 import tags from './instances/tags'
 import statistics from "./instances/statistics";
 
-export default [moderators, serviceBots, usersBlackList, topUsers, supportedHashtags, tags, statistics]
+export default [moderators, serviceBots, usersBlackList, topUsers, supportedHashtags, tags]

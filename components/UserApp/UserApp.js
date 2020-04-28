@@ -7,30 +7,14 @@ import './UserApp.scss'
 const UserApp = (props) => {
     const { app, setSortBy } = props;
     const [activeIndex, setActiveIndex] = useState(0);
-    app.black_list_users = [
-        {name: 'tw', alias: 'blabla', followers_count: 2, wobjects_weight: 12323123.7168839},
-        {name: 'bla', alias: 'blabla', followers_count: 32, wobjects_weight: 523522123.7168839},
-        {name: 'test', alias: 'blabla', followers_count: 421, wobjects_weight: 55443543.7168839},
-        {name: 'rand', alias: 'blabla', followers_count: 12, wobjects_weight: 12414542.7168839},
-    ];
-    app.top_users = [
-        {name: 'tw', alias: 'blabla', followers_count: 2, wobjects_weight: 12323123.7168839},
-        {name: 'bla', alias: 'blabla', followers_count: 32, wobjects_weight: 523522123.7168839},
-        {name: 'test', alias: 'blabla', followers_count: 421, wobjects_weight: 55443543.7168839},
-        {name: 'abs', alias: 'blabla', followers_count: 421, wobjects_weight: 23123123.7168839},
-        {name: 'rand', alias: 'blabla', followers_count: 12, wobjects_weight: 12414542.7168839},
-    ];
-    app.supported_hashtags = [
-        {name: 'tw', alias: 'blabla', followers_count: 2, wobjects_weight: 12323123.7168839},
-        {name: 'bla', alias: 'blabla', followers_count: 32, wobjects_weight: 523522123.7168839},
-        {name: 'test', alias: 'blabla', followers_count: 421, wobjects_weight: 55443543.7168839},
-        {name: 'abs', alias: 'blabla', followers_count: 421, wobjects_weight: 23123123.7168839},
-        {name: 'rand', alias: 'blabla', followers_count: 12, wobjects_weight: 12414542.7168839},
-    ];
 
     useEffect(() => {
         setSortBy('alphabet')
     }, []);
+
+    app.statistics = {
+        statistics: {}
+    };
 
     return (
         <div className='user-app'>

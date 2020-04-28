@@ -14,7 +14,7 @@ const ModalModeratorDeleteContent = ({
     const { name, author_permlinks } = moderator;
 
     const handleSubmit = () => {
-        const requestData = { app: appName, moderator: { name, author_permlinks} };
+        const requestData = { app: appName, moderator: { name: name.name, author_permlinks} };
         setIsLoading(true);
         onFormSubmit(requestData)
             .then(() => {

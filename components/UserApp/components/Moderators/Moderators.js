@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from "prop-types";
 import { Table } from 'semantic-ui-react';
 import TableRow from "./TableRow";
-import { isEmpty, map } from "lodash";
+import { isEmpty, map, find } from "lodash";
 
 const Moderators = props => {
     const {
@@ -12,6 +12,10 @@ const Moderators = props => {
         updateModerator,
         searchingContent,
     } = props;
+
+    const searchingModerator = !isEmpty(searchingContent) ?
+        [find(moderators, moderator => moderator.name.name === searchingContent[0].name)]
+        : [];
 
     return (
         <Table
@@ -24,15 +28,17 @@ const Moderators = props => {
             <Table.Header>
                 <Table.Row>
                     <Table.HeaderCell>Name</Table.HeaderCell>
-                    <Table.HeaderCell>Permlinks</Table.HeaderCell>
+                    <Table.HeaderCell>Alias</Table.HeaderCell>
+                    <Table.HeaderCell>Followers</Table.HeaderCell>
+                    <Table.HeaderCell>Weight</Table.HeaderCell>
                     <Table.HeaderCell/>
                 </Table.Row>
             </Table.Header>
             <Table.Body>
-                {map(isEmpty(searchingContent) ? moderators : searchingContent,
+                {map(isEmpty(searchingModerator) ? moderators : searchingModerator,
                     (moderator, index) => (
                     <TableRow
-                        key={`${index}${moderator.name}`}
+                        key={`${index}${moderator.name.name}`}
                         moderator={moderator}
                         appName={appName}
                         updateModerator={updateModerator}

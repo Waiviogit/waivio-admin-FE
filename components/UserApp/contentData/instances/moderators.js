@@ -11,7 +11,7 @@ const moderatorsTitle = ({ moderators }) => {
         <>
             <span>Moderators</span>
             <div className='total-number-of-block'>
-                {moderators.length}
+                { moderators.length }
             </div>
         </> :
         <span>Moderators</span>;
@@ -38,6 +38,7 @@ const moderatorsContent = ({ moderators, name }, index) => (
 
 
 const moderatorsSearch = ({ moderators }) => {
+    const moderatorsList = moderators.map(mod => mod.name);
     const mapSateToProps = state => ({
         inputValue: state.ui.search.inputValue
     });
@@ -48,7 +49,7 @@ const moderatorsSearch = ({ moderators }) => {
     const ConnectedModeratorsSearch = connect(mapSateToProps, mapDispatchToProps)(Search);
     return (
         <ConnectedModeratorsSearch
-            list={moderators}
+            list={moderatorsList}
         />
     )
 };
