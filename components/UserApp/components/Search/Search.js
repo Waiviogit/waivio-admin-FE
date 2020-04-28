@@ -5,7 +5,6 @@ import { Input } from "semantic-ui-react";
 import ClearIcon from "./ClearIcon";
 
 const Search = ({ list, searchHandle, inputValue, setInputValue }) => {
-
     if(list.mustBeSpreded) {
         let newList = [];
         forEach(list, item => {

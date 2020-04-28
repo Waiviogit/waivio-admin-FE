@@ -1,12 +1,20 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import PropTypes from "prop-types";
 import { map } from 'lodash';
 import contentData from './contentData'
 import './UserApp.scss'
 
 const UserApp = (props) => {
-    const { app } = props;
+    const { app, setSortBy } = props;
     const [activeIndex, setActiveIndex] = useState(0);
+
+    useEffect(() => {
+        setSortBy('alphabet')
+    }, []);
+
+    app.statistics = {
+        statistics: {}
+    };
 
     return (
         <div className='user-app'>
@@ -37,6 +45,7 @@ const UserApp = (props) => {
                                 </Fragment>
                             )}
                     </div>
+                    {map(contentData, ({ sort, index }) => index === activeIndex && sort && sort(index))}
                     <div className='user-app__content-body-main'>
                         {
                             map(contentData, ({ index, content }) => index === activeIndex && content(app, index) )

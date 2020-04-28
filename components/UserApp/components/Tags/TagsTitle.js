@@ -27,7 +27,7 @@ const TagsTitle = ({ tagsData, setContentIndex, contentIndex, clearSearchedConte
                     onClick={changeContentIndex(0)}
                 >
                 All
-            </span>
+                </span>
                 <div className='total-number-of-block'>
                     { totalLength }
                 </div>

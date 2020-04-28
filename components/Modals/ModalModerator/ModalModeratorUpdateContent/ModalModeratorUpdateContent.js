@@ -16,14 +16,14 @@ const ModalModeratorUpdateContent = ({
     const handleChange = (e) => {
         setInputValue(e.target.value);
     };
-    
+
     const handleClickAdd = () => {
         const newPermlinks = [inputValue, ...permlinks];
         setPermlinks(newPermlinks);
         setInputValue("");
         const requestData = {
             type: "Add",
-            data: { app: appName, moderator: { name, author_permlinks: newPermlinks } },
+            data: { app: appName, moderator: { name: name.name, author_permlinks: newPermlinks } },
         };
         sendRequest(requestData);
     };
@@ -32,7 +32,7 @@ const ModalModeratorUpdateContent = ({
         setPermlinks(newPermlinks);
         const requestData = {
             type: "Delete",
-            data: { app: appName, moderator: { name, author_permlinks: [deletePermlink] } },
+            data: { app: appName, moderator: { name: name.name, author_permlinks: [deletePermlink] } },
         };
         sendRequest(requestData);
     };

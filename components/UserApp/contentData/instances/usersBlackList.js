@@ -5,6 +5,7 @@ import ModalBlackList from "../../../Modals/ModalBlackList";
 import Search from "../../components/Search";
 import { connect } from 'react-redux';
 import { searchBlackListUsers, setInputValue } from "../../../../redux/actions/searchActions";
+import Sort from "../../components/Sort";
 
 const usersBlackListTitle = ({ black_list_users }) => {
     return black_list_users ?
@@ -56,4 +57,5 @@ export default new ContentData(
     usersBlackListContent,
     usersBlackListModal,
     usersBlackListSearch,
+    (key) => <Sort key={key}/>,
 );

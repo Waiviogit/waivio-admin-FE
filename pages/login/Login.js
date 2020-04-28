@@ -10,7 +10,7 @@ import { redirect } from "../../helpers/redirect";
 import { CustomButton } from '../../components/common/buttons';
 
 const Login = ({ signIn, isSignIn }) => {
-    const [isLoading, setIsLoading] = useState(false);    
+    const [isLoading, setIsLoading] = useState(false);
     const [user, setUser] = useState({ email: "", password: "" });
 
     const handleSignIn = (e) => {
@@ -20,7 +20,7 @@ const Login = ({ signIn, isSignIn }) => {
         signIn({ user })
             .then(() => {
                 setIsLoading(false);
-                setStorageData('userEmail', user.email);                
+                setStorageData('userEmail', user.email);
                 removeStorageData('isLogin', true);
             })
             .catch(() => setIsLoading(false));

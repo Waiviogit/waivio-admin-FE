@@ -7,10 +7,11 @@ import { setStorageData } from "../../helpers/localeStorage";
 import { CustomButton } from "../common/buttons";
 import './MenuMain.scss';
 
-const MenuMain = ({ signOut, getAllApps }) => {
+const MenuMain = ({ signOut, getAllApps, resetTagsContentIndex }) => {
     const [activeItem, setActiveItem] = useState(false);
     const [userEmail] = useLocalStorage("userEmail");
     const handleItemClick = (e, { name }) => {
+        resetTagsContentIndex();
         setActiveItem(name);
     };
     const handleClick = () => {
@@ -19,7 +20,7 @@ const MenuMain = ({ signOut, getAllApps }) => {
     };
 
     useEffect(() => {
-        getAllApps(userEmail);
+        setTimeout(() => getAllApps(userEmail), 300)
     }, []);
 
     return (
@@ -28,6 +29,7 @@ const MenuMain = ({ signOut, getAllApps }) => {
                 <Link href='/main'>
                     <a>
                         <Image
+                            onClick={resetTagsContentIndex}
                             src="/static/icons/waivio-logo.svg"
                             className="menu__body-logo"
                         />

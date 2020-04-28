@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 
 const mapSateToProps = state => ({
     searchingContent: state.ui.search.supported_hashtags,
+    sortBy: state.ui.sort.sortBy,
 });
 
 const mapDispatchToProps = (dispatch) => ({

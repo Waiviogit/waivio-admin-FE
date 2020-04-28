@@ -3,6 +3,7 @@ import TopUsers from "../../components/TopUsers";
 import ContentData from "../contentDataInterface";
 import { searchTopUsers, setInputValue } from "../../../../redux/actions/searchActions";
 import Search from "../../components/Search";
+import Sort from "../../components/Sort";
 import { connect } from 'react-redux';
 
 const topUsersTitle = ({ top_users }) => {
@@ -44,4 +45,5 @@ export default new ContentData(
     topUsersContent,
     null,
     topUsersSearch,
+    (key) => <Sort key={key}/>,
 );
