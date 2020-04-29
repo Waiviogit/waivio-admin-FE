@@ -22,7 +22,7 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "informed": "^3.3.2",
     "lodash": "4.17.11",
-    "next": "9.2.1",
+    "next": "9.3.6",
     "next-redux-saga": "3.0.0",
     "next-redux-wrapper": "^4.0.1",
     "next-router-events": "^2.1.0",
