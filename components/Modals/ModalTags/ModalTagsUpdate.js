@@ -48,7 +48,7 @@ const ModalTagsUpdate =  props => {
             data: {
                 action: 'delete',
                 tags: {
-                    oldCategory,
+                    category: oldCategory,
                     tag: tagKey,
                     value: tag
                 }
@@ -74,8 +74,8 @@ const ModalTagsUpdate =  props => {
         e.preventDefault();
         moderateTag(requestDataDelete)
             .then(() => {
-                    moderateTag(requestDataUpdate);
-                    setIsLoading(false)
+                moderateTag(requestDataUpdate);
+                setIsLoading(false)
             })
             .catch(() => setIsLoading(false))
     };

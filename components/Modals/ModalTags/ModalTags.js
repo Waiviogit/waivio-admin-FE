@@ -12,7 +12,6 @@ const ModalTags = ({ showButtonContent, submitButtonContent, title, appName, mod
        value: category,
        text: category,
     }));
-
     const stopPropagation = (e) => e.stopPropagation();
     const [isOpen, setIsOpen] = useState(false);
 
